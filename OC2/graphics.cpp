@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-#include "OC2.h"
+//#include <windows.h>
+#include "oc2.h"
 
 // handles almost all graphics in the game
 
@@ -35,7 +35,7 @@ extern short			SIZE_X,SIZE_Y,BLOCKSIZE,xmiddle,ymiddle;
 extern short			ep_x[MAXEXPLOSIONPARTICLES];
 extern short			ep_y[MAXEXPLOSIONPARTICLES];
 extern short			ep_v[MAXEXPLOSIONPARTICLES];			// velocity
-extern long				ep_e[MAXEXPLOSIONPARTICLES];			
+extern long				ep_e[MAXEXPLOSIONPARTICLES];
 
 extern short			ec_counter;
 extern unsigned char	ec_selected;
@@ -43,7 +43,7 @@ extern unsigned char	ec_selected;
 extern short			ec_x[MAXCHARGES];
 extern short			ec_y[MAXCHARGES];
 extern short			ec_dir[MAXCHARGES];
-extern long				ec_timer[MAXCHARGES];					
+extern long				ec_timer[MAXCHARGES];
 extern unsigned char	ec_type[MAXCHARGES];
 extern short			ec_amount[MAXCHARGES];
 extern bool				ec_primed[MAXCHARGES];
@@ -68,8 +68,8 @@ extern int				m_button,m_x,m_y,m_down_x,m_down_y,m_up_x,m_up_y,m_event;
 
 extern unsigned int		randseed;
 //extern short			TargetAreaBegin,TargetAreaEnd;
-extern char				b_name[BUILDINGS][255];	
-extern char				b_localename[BUILDINGS][52];	
+extern char				b_name[BUILDINGS][255];
+extern char				b_localename[BUILDINGS][52];
 extern bool				blocksmoving,boolJobDone,boolJobSuccess;
 
 extern int				exp_needed[MAXEXPLOSIVETYPES]={0,0,0,0,0,0};
@@ -225,15 +225,15 @@ void DrawMap()
 	maxpixelx=max_x*BLOCKSIZE;// SIZE_X-260;
 	maxpixely=max_y*BLOCKSIZE; //SIZE_Y;
 
-	DrawFillRect(0,tempy,SIZE_X-260,SIZE_Y,0,0,0);	// bottom 
+	DrawFillRect(0,tempy,SIZE_X-260,SIZE_Y,0,0,0);	// bottom
 	DrawFillRect(tempx,0,SIZE_X-260,SIZE_Y,0,0,0);		// between map and sidebar, needed at least in 1024x768 resolution
 	DrawFillRect(0,0,maxpixelx,maxpixely,100,100,250);	// sky
 
 //	SDL_FillRect(screen,NULL,0);
 
 	xreduce=BLOCKSIZE*40;
-	
-	add_y=200;	
+
+	add_y=200;
 	if(BLOCKSIZE==10) add_y=440;
 
 	if(boolExplode==true)
@@ -270,7 +270,7 @@ void DrawMap()
 		}
 
 	}
-	
+
 	for(xc=0;xc<max_x;xc++)
 	for(yc=0;yc<max_y;yc++)
 	{
@@ -289,12 +289,12 @@ void DrawMap()
 				src_bx-=xreduce;
 				src_by+=BLOCKSIZE;
 			}
-			
+
 		damadd=0;
 
 		if(mapend[mapx][mapy]<block_end[map[mapx][mapy]]) damadd=BLOCKSIZE*4;
 		if(mapend[mapx][mapy]<block_end[map[mapx][mapy]]/2) damadd=BLOCKSIZE*8;
-		
+
 		ShowBMP1(src_bx,src_by+add_y+damadd,BLOCKSIZE,BLOCKSIZE,xc*BLOCKSIZE,yc*BLOCKSIZE);	// draw the block
 
 		if(damadd>0)	// draw damaged sides to blocks, if next to air
@@ -311,10 +311,10 @@ void DrawMap()
 /*		sprintf(msg,"-");
 		if(mapsupport[mapx][mapy]>0)
 			sprintf(msg,"+");
-*/			
+*/
 //		sprintf(msg,"%d",mapsupport[mapx][mapy]);
 //		sprintf(msg,"%d",map[mapbegin_x+xc][mapbegin_y+yc]);
-//		sprintf(msg,"%d",mapy);		
+//		sprintf(msg,"%d",mapy);
 //	DrawNormalText(msg,xc*BLOCKSIZE+2,yc*BLOCKSIZE+2,1);
 
 /*		if(mapv[mapx][mapy]>0)
@@ -392,8 +392,8 @@ void DrawMap()
 	DrawLine(mapx-5,mapy-5,mapx+5,mapy+5,255,255,255);
 	DrawLine(mapx-5,mapy+5,mapx+5,mapy-5,255,255,255);
 
-	
-/*	ix=maxpixelx/2;		
+
+/*	ix=maxpixelx/2;
 	iy=maxpixely/2;
 	DrawFillRect(ix-2,iy-2,ix+2,iy+2,255,255,255);
 */
@@ -408,7 +408,7 @@ if(boolExplode==true)
 	case 10:dstx=50;change=500;tempx=800;break;
 	case 20:dstx=100;change=0;tempx=700;break;
 	}
-	
+
 
 
 	if(setDustClouds==1)
@@ -446,7 +446,7 @@ if(boolExplode==true)
 		switch(BLOCKSIZE)
 		{
 		case 10:
-			if(ec_amount[xc]<20) 
+			if(ec_amount[xc]<20)
 				iframe=2;
 			else
 				iframe=1;
@@ -485,13 +485,13 @@ if(boolExplode==true)
 			yc=0;
 			while(iframe>=15) iframe-=5;
 
-			while(iframe>iframeperrow-1) 
+			while(iframe>iframeperrow-1)
 			{
 				if(iframesize>50)
 				{
 				iframe-=iframeperrow;
 				yc++;
-				if(iframesize==100 && yc>=1) 
+				if(iframesize==100 && yc>=1)
 				{
 					yc=1;
 				}
@@ -579,7 +579,7 @@ void DrawBlockData()
 
 		if(blockok==true)
 		{
-			if(maptarget[mapx][mapy]==true) 
+			if(maptarget[mapx][mapy]==true)
 				icolor=3;
 			else
 				icolor=2;
@@ -810,13 +810,13 @@ void DrawSidebar()
 		if(GameOn!=5)	// change city
 //			DrawTextRect(gametxt[81],SIZE_X-250,540,SIZE_X-130,570);
 //		else
-			DrawBMPButton(gametxt[81],SIZE_X-250,540,3);	
+			DrawBMPButton(gametxt[81],SIZE_X-250,540,3);
 
 
 		if(GameOn!=4)	//Customers
 //			DrawTextRect(gametxt[26],SIZE_X-130,540,SIZE_X-10,570);
 //		else
-			DrawBMPButton(gametxt[26],SIZE_X-130,540,3);	
+			DrawBMPButton(gametxt[26],SIZE_X-130,540,3);
 		}
 	else
 		{
@@ -849,7 +849,7 @@ void DrawSidebar()
 	DrawFillRect(SIZE_X-250,575,SIZE_X-10,595+messagelines*16,cBaseColours[0]-25,cBaseColours[1]-25,cBaseColours[2]-25);
 
 	if(bShowHelp==false)
-	{		
+	{
 		ix=0;
 		iy=1;
 		if(cBaseColours[0]+cBaseColours[1]+cBaseColours[2]<200) iy=0;
@@ -955,7 +955,7 @@ if(cDraw>0)
 {
 	cDraw--;
 
-//	if(setAccelerationMode==1) 
+//	if(setAccelerationMode==1)
 //	SDL_ShowCursor(SDL_DISABLE);
 
 	switch(GameOn)
@@ -969,7 +969,7 @@ if(cDraw>0)
 		DrawMap();
 		DrawSidebar();
 
-		if(iDrawSmallMap>0) 
+		if(iDrawSmallMap>0)
 		{
 			DrawSmallMap();
 			iDrawSmallMap--;
@@ -1010,7 +1010,7 @@ if(cDraw>0)
 	}
 
 }
-if(GameOn==1 && boolExplode==false) 
+if(GameOn==1 && boolExplode==false)
 {
 	DrawBlockData();
 }
@@ -1033,14 +1033,14 @@ if(GameOn==1 || GameOn==3 || GameOn==5) DrawTutorial();
 	{
 	case 1:
 		SDL_ShowCursor(SDL_ENABLE);
-//		if(bFlip==true) 
+//		if(bFlip==true)
 		DoFlip();
 		break;
 	case 2:Update();break;
 	}*/
 //	SDL_Delay(10);
 
-	
+
 //	SDL_ShowCursor(SDL_ENABLE);
 
 }

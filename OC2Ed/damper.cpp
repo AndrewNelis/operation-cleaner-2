@@ -1,5 +1,5 @@
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern int				m_up_x,m_up_y;
 
@@ -30,7 +30,7 @@ void AddDampers()
 
 	iDamperendx=mapbegin_x+(m_up_x/BLOCKSIZE);
 //	iDamperendy=mapbegin_y+(m_up_y/BLOCKSIZE);
-	iDamperendy=(mapbegin_y+max_y-1)-(m_up_y/BLOCKSIZE); 
+	iDamperendy=(mapbegin_y+max_y-1)-(m_up_y/BLOCKSIZE);
 
 	if(iDamperendx<iDamperbeginx)
 	{
@@ -79,7 +79,7 @@ void AddDampers()
 		AddMessage(gametxt[34],2);	// cant place on air
 	}
 
-	if(failure>0) 
+	if(failure>0)
 	{
 		sprintf(msg,"%s %u",gametxt[35],failure);	// nr of dampers not placed
 		AddMessage(msg,iTextColor);
@@ -142,7 +142,7 @@ bool CheckDampers()
 
 	for(ix=0;ix<MAPSIZE;ix++)
 	for(iy=0;iy<MAPSIZE;iy++)
-		if(map[ix][iy]==56 && mapend[ix][iy]==0) 
+		if(map[ix][iy]==56 && mapend[ix][iy]==0)
 		{
 			map[ix][iy]=0;
 			mapend[ix][iy]=block_end[0];

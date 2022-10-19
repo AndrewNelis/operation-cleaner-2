@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "OC2.h"
+#include "oc2.h"
 
 extern long				lMapnr;
 

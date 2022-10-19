@@ -1,10 +1,10 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <time.h>
 #include <limits.h>
 #include <math.h>
-#include <windows.h>
+//#include <windows.h>
 
-#include "OC2.h"
+#include "oc2.h"
 // handles map calculations and functions
 
 extern short			SIZE_Y,BLOCKSIZE;
@@ -153,7 +153,7 @@ void CrashSound(int block)
 			default:break;
 			}
 
-		if(isound>0) 
+		if(isound>0)
 		{
 			lLastSound=lTimer;
 			//printf("LTIMER %u LLASTSOUND %u\n",lTimer,lLastSound);
@@ -189,7 +189,7 @@ void HandleBlocks()
 	long ldustinterval=100,lStoppedblocks=0;	// 10
 char msg[30];
 
-//	if(lTimer%5) 
+//	if(lTimer%5)
 	Setmax_y();
 
 	lBlocksmoving=0;
@@ -343,10 +343,10 @@ char msg[30];
 						else
 						{
 							badd=false;
-							if(mapsupport[ix][iy]<0 && mapv[ix][iy]<10) badd=true;	//mapcounted[ix][iy]==0 && 
+							if(mapsupport[ix][iy]<0 && mapv[ix][iy]<10) badd=true;	//mapcounted[ix][iy]==0 &&
 							if(mapv[ix][iy]>0) badd=true;
 
-							if(badd==true) 
+							if(badd==true)
 								{
 								mapv[ix][iy]++;
 								}
@@ -356,7 +356,7 @@ char msg[30];
 						{
 							idst=3;
 //							mapsupport[ix][iy]=1;
-							if(map[ix][iy-1]>=26 && map[ix][iy-1]<=28) idst=2;	// roofs etc. slow less 
+							if(map[ix][iy-1]>=26 && map[ix][iy-1]<=28) idst=2;	// roofs etc. slow less
 							if(map[ix][iy-1]>=30 && map[ix][iy-1]<=32) idst=2;
 
 							if(map[ix][iy-1]>=33 && map[ix][iy-1]<=35) idst=2;
@@ -373,7 +373,7 @@ char msg[30];
 
 							if(mapend[ix][iy-1]<block_end[map[ix][iy]-1]) idst=2;
 
-							if(mapv[ix][iy]>=idst)//3) 
+							if(mapv[ix][iy]>=idst)//3)
 								mapv[ix][iy]-=idst; //=3;
 							else
 								mapv[ix][iy]=0;
@@ -528,7 +528,7 @@ void GenerateGround()
 		if(iRand>50) iBushGap=rand()%10;
 
 		iRand=rand()%150;
-		
+
 		iSurface=60;
 		if(iRand>=50 && iRand<55) iSurface=65;
 		if(iRand>=55 && iRand<60) iSurface=66;
@@ -545,7 +545,7 @@ void GenerateGround()
 		{
 		iLength=iLength--;
 		map[ix][iy]=iSurface;
-		if(iBushGap>0 && ix%iBushGap==0 && iSurface==88) 
+		if(iBushGap>0 && ix%iBushGap==0 && iSurface==88)
 			{
 			map[ix][iy]=92;
 			map[ix][iy+1]=rand()%3+107;
@@ -647,7 +647,7 @@ void GenerateGround()
 				mapy=iy+int(dBlocky*sin(icounter2));
 
 				if(mapx>0 && mapx<MAPSIZE && mapy>0 && mapy<MAPSIZE)
-				if(map[mapx][mapy]==71 || map[mapx][mapy]==67 || iground==0) 
+				if(map[mapx][mapy]==71 || map[mapx][mapy]==67 || iground==0)
 					map[mapx][mapy]=iGroundBlock[iground];
 			}
 		}
@@ -664,7 +664,7 @@ short LeafTree(int month)
 int ix,iy,size_x,size_y,iCounter,iObstacles,iGroundy,iBlock,iBranch,iTop,mapx,mapy,iEmpty,iLeaves,iLeavebegin;
 double dLeaves;
 char ok;
-	
+
 	month++;
 	iLeavebegin=98;
 	if(month<4 || month>11) iLeavebegin=104;	// winter
@@ -716,7 +716,7 @@ char ok;
 				for(iCounter=1;iCounter<iBranch;iCounter++) PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%3+iLeavebegin);
 				break;
 			case 96:
-				for(iCounter=1;iCounter<iBranch;iCounter++) 
+				for(iCounter=1;iCounter<iBranch;iCounter++)
 				{
 						PutMap(ix+size_x/2-iCounter,iGroundy+iy,rand()%3+iLeavebegin);
 						PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%3+iLeavebegin);
@@ -725,7 +725,7 @@ char ok;
 			}
 
 		}
-	
+
 		PutMap(ix+size_x/2,iGroundy+iy,97);
 		iTop=iGroundy+iy;
 
@@ -751,7 +751,7 @@ char ok;
 		mapx=ix-size_x/2+iCounter;
 		mapy=iGroundy-iy;
 		iEmpty=0;
-		if(map[mapx][mapy]>=98 && map[mapx][mapy]<=106)	
+		if(map[mapx][mapy]>=98 && map[mapx][mapy]<=106)
 		{
 			if(map[mapx-1][mapy]==0) iEmpty++;
 			if(map[mapx+1][mapy]==0) iEmpty++;
@@ -773,7 +773,7 @@ short PineTree()
 int ix,iy,size_x,size_y,iCounter,iObstacles,iGroundy,iBlock,iBranch,iTop,mapx,mapy,iEmpty,iLeaves;
 double dLeaves;
 char ok;
-	
+
 	size_x=rand()%10+3;
 	ix=rand()%(MAPSIZE-size_x-4)+size_x/2+2;
 	size_y=rand()%30+10;
@@ -821,7 +821,7 @@ char ok;
 				for(iCounter=1;iCounter<iBranch;iCounter++) PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%2+112);
 				break;
 			case 96:
-				for(iCounter=1;iCounter<iBranch;iCounter++) 
+				for(iCounter=1;iCounter<iBranch;iCounter++)
 				{
 						PutMap(ix+size_x/2-iCounter,iGroundy+iy,rand()%2+112);
 						PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%2+112);
@@ -830,7 +830,7 @@ char ok;
 			}
 
 		}
-	
+
 		PutMap(ix+size_x/2,iGroundy+iy,97);
 		iTop=iGroundy+iy;
 
@@ -856,7 +856,7 @@ char ok;
 		mapx=ix-size_x/2+iCounter;
 		mapy=iGroundy-iy;
 		iEmpty=0;
-		if(map[mapx][mapy]>=112 && map[mapx][mapy]<=113)	
+		if(map[mapx][mapy]>=112 && map[mapx][mapy]<=113)
 		{
 			if(map[mapx-1][mapy]==0) iEmpty++;
 			if(map[mapx+1][mapy]==0) iEmpty++;
@@ -911,7 +911,7 @@ void GenerateTrees()
 	struct tm *newtime;
 	time_t aclock;
 
-	time( &aclock );                 
+	time( &aclock );
 	newtime = localtime( &aclock );
 
 	do
@@ -940,7 +940,7 @@ void SeedGenerator(char *cText)
 	bool			bNumber;
 	int				ifold,i,max;
 	unsigned char 	cTemp[50];
-	
+
 	dResult=0;
 	bNumber=true;
 	ifold=1;
@@ -952,16 +952,16 @@ void SeedGenerator(char *cText)
 		ch=*cText;
 		dResult+=i*ifold*int(ch-32);
 		ifold*=10;
-		
-		if(ch<48 || ch>57) 
+
+		if(ch<48 || ch>57)
 		{
 			bNumber=false;
 		}
 		else
-//			if(ch!=204) 
+//			if(ch!=204)
 			cTemp[i]=ch-48;
 
-		cText++;		
+		cText++;
 		i++;
 	}
 
@@ -975,7 +975,7 @@ void SeedGenerator(char *cText)
 		if(cTemp[i]>=0 && cTemp[i]<=9) max=i;
 
 		ifold=1;
-		for(i=max;i>=0;i--) 
+		for(i=max;i>=0;i--)
 		{
 			dResult+=cTemp[i]*ifold;
 			ifold*=10;
@@ -1132,11 +1132,11 @@ void GenerateMap()			// changed in version 1.1
 		lbuilding=randseed;
 	else
 		lbuilding=rand()%lb_freq;
-	
+
 //	sprintf(msg,"rs %u %u",randseed,lb_freq);
 //	AddMessage(msg,1);
 
-	
+
 	//	printf("lbuilding: %d/%d\n",lbuilding,lb_freq);
 	xc=0;
 	while(lbuilding>0) // && b_freq[xc]>0)
@@ -1170,7 +1170,7 @@ void GenerateMap()			// changed in version 1.1
 
 //	ShowParseProgress("SmoothGround");
 //	SmoothGround();
-	
+
 	ShowParseProgress("GenerateTrees");
 	GenerateTrees();
 
@@ -1271,20 +1271,19 @@ lOtherValue=OtherValue();
 
 iDrawSmallMap=1;
 
-if(iCode!=0) 
+if(iCode!=0)
 	{
 	MapNrMessage();
-	
 
-//	sprintf(msg,"map %u",randseed);	
+
+//	sprintf(msg,"map %u",randseed);
 //	AddMessage(msg,1);
-	
-/*	sprintf(msg,"T:%u O:%u",lTargetValue,lOtherValue);	
+
+/*	sprintf(msg,"T:%u O:%u",lTargetValue,lOtherValue);
 	AddMessage(msg,1);
-	sprintf(msg,"P %u",lPayment);	
+	sprintf(msg,"P %u",lPayment);
 	AddMessage(msg,1);
 	*/
 	}
 
 }
-

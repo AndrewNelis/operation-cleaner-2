@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern short			SIZE_X,SIZE_Y,xmiddle,ymiddle;
 extern char				plr_name[40];
@@ -104,7 +104,7 @@ void About()
 
 	if(iCreditbegin>0) DrawBMPButton("",xmiddle+220,ymiddle-75,10);		// up
 	if(strlen(gametxt[386+iCreditbegin])>0) DrawBMPButton("",xmiddle+220,ymiddle+140,11);		// down
-	
+
 	DrawBMPButton(gametxt[3],xmiddle-150,ymiddle+160,5);	// ok
 
 }
@@ -166,7 +166,7 @@ short picy[5]={268,197,197,197,197};
 char msg[200];
 double dTemp;
 
-	srand(5515);		
+	srand(5515);
 
 	DrawFillRect(0,0,SIZE_X,SIZE_Y,220,220,220);
 //	DrawFillRect(10,80,SIZE_X-20,SIZE_Y-20,200,200,200);
@@ -203,20 +203,20 @@ double dTemp;
 		DrawNormalText(gametxt[350],xmiddle-240,ymiddle-240,1);	// demolition business news
 
 		sprintf(msg,"%s %s",plr_name,gametxt[351]);	// goes bankrupt
-		DrawNormalText(strupr(msg),xmiddle-240,ymiddle-220,1);	
+		DrawNormalText(strupr(msg),xmiddle-240,ymiddle-220,1);
 
 		sprintf(msg,"%s %d",gametxt[352],plr_daysinbusiness);	// A well-known demolition firm for
-		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);
 
 		DrawNormalText(gametxt[353],xmiddle-240,ymiddle-180,1);	// has gone bankrupt.
 
 		if(lDamageInflicted>1000)	// ruined other buildings (bigtime)
 		{
-		DrawNormalText(gametxt[354],xmiddle-240,ymiddle-160,1);	//  The reason was disaster in the demolition job. 
+		DrawNormalText(gametxt[354],xmiddle-240,ymiddle-160,1);	//  The reason was disaster in the demolition job.
 		DrawNormalText(gametxt[355],xmiddle-240,ymiddle-140,1);	//  Buildings surrounding the site were ruined.
 
 		sprintf(msg,"%s%u",gametxt[356],lDamageInflicted);			//The repairing cost will be as high as $
-		DrawNormalText(msg,xmiddle-240,ymiddle-120,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-120,1);
 
 		DrawNormalText(gametxt[357],xmiddle-240,ymiddle-100,1);	//  and the firm has no money for that.
 		}
@@ -224,7 +224,7 @@ double dTemp;
 			DrawNormalText(gametxt[358],xmiddle-240,ymiddle-160,1);	// The firm had already some monetary problems.
 
 		sprintf(msg,"%s %d",gametxt[361],iHiscorerank);				// Rank in the high score list:
-		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-80,1);	
+		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-80,1);
 
 		break;
 
@@ -237,19 +237,19 @@ double dTemp;
 		DrawNormalText(gametxt[360],xmiddle-240,ymiddle-240,1);	//You finished all the tasks!
 
 		sprintf(msg,"%s $%u",gametxt[37],plr_money);			// money
-		DrawNormalText(msg,xmiddle-240,ymiddle-220,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-220,1);
 
 		sprintf(msg,"%s %.f (%s)",gametxt[39],dTemp,gametxt[40+crep]);			// reputation
-		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);
 
 		sprintf(msg,"%s %d",gametxt[53],plr_daysinbusiness);
-		DrawNormalText(msg,xmiddle-240,ymiddle-180,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-180,1);
 
 		sprintf(msg,"%s %d",gametxt[52],plr_jobsdone);				// jobs done
-		DrawNormalText(msg,xmiddle-240,ymiddle-160,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-160,1);
 
 		sprintf(msg,"%s %d",gametxt[361],iHiscorerank);				// Rank in the high score list:
-		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-140,1);	
+		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-140,1);
 
 		break;
 	case 4:	// retire
@@ -260,19 +260,19 @@ double dTemp;
 		DrawNormalText(gametxt[363],xmiddle-240,ymiddle-240,1);	//You have finished your career succesfully.
 
 		sprintf(msg,"%s $%u",gametxt[37],plr_money);			// money
-		DrawNormalText(msg,xmiddle-240,ymiddle-220,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-220,1);
 
 		sprintf(msg,"%s %.f (%s)",gametxt[39],dTemp,gametxt[40+crep]);			// reputation
-		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-200,1);
 
 		sprintf(msg,"%s %d",gametxt[53],plr_daysinbusiness);
-		DrawNormalText(msg,xmiddle-240,ymiddle-180,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-180,1);
 
 		sprintf(msg,"%s %d",gametxt[52],plr_jobsdone);				// jobs done
-		DrawNormalText(msg,xmiddle-240,ymiddle-160,1);	
+		DrawNormalText(msg,xmiddle-240,ymiddle-160,1);
 
 		sprintf(msg,"%s %d",gametxt[361],iHiscorerank);				// Rank in the high score list:
-		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-140,1);	
+		if(iHiscorerank<100) DrawNormalText(msg,xmiddle-240,ymiddle-140,1);
 
 		break;
 
@@ -323,7 +323,7 @@ void Statistics()
 	lTmp/=1000;
 
 	lTmp+=(lMax/10000)+1;
-		
+
 	lTmp*=1000;
 
 	lMax=lTmp;
@@ -331,7 +331,7 @@ void Statistics()
 	lTmp=lMin;
 	lTmp/=1000;
 
-	if(lTmp>(lMax/10000)+1) 
+	if(lTmp>(lMax/10000)+1)
 		lTmp-=(lMax/10000)+1;
 	else
 		lTmp=0;
@@ -370,7 +370,7 @@ void Statistics()
 		}
 
 		if(i%imc==0) DrawNormalText(msg,90+(short) dsz*i,SIZE_Y-95,1);	// month nr (x)
-	} 
+	}
 
 	DrawNormalText(gametxt[37],10,SIZE_Y-80,1);
 	DrawNormalText(gametxt[544],SIZE_X-200,SIZE_Y-80,1);
@@ -388,7 +388,7 @@ void Statistics()
 
 		DrawNormalText(msg,10,(short) dy,1);	// money amount (y)
 	}
-	
+
 	for(j=0;j<MAXPLAYERS-1;j++)
 	{
 		i=plrs_statshow[j]*25-50;
@@ -443,7 +443,7 @@ void Statistics()
 //		DrawNormalText(msg,i*100+50,50+j*20,1);
 	}
 
-	if(iStatScale==60) 
+	if(iStatScale==60)
 		DrawBMPButton(gametxt[78],SIZE_X-240,SIZE_Y-30,3);
 	else
 		DrawBMPButton(gametxt[79],SIZE_X-240,SIZE_Y-30,3);
@@ -460,7 +460,7 @@ void HighScores()
 	short i;
 	char msg[200];
 
-	if(hs_reputation[0]==0) 
+	if(hs_reputation[0]==0)
 	{
 		GetHiscores();
 //		SaveHiscores();	// only for testing hiscores
@@ -562,7 +562,7 @@ char msg[110];
 			DrawBMPButton(gametxt[90],xmiddle-150,ymiddle,5);			// begin career
 			DrawBMPButton(gametxt[93],xmiddle-150,ymiddle+40,5);			//Load game
 		}
-		
+
 		if(GameOn==2)
 		{
 			DrawBMPButton(gametxt[91],xmiddle-150,ymiddle-120,5);	//Return to game
@@ -581,7 +581,7 @@ char msg[110];
 		DrawBMPButton(gametxt[99],xmiddle-150,ymiddle-80,5);				//Change name
 
 		sprintf(msg,"%s %u",gametxt[545],plr_difficulty);	// difficulty level
-		DrawNormalText(msg,xmiddle-150,ymiddle-30,iTextColor);	
+		DrawNormalText(msg,xmiddle-150,ymiddle-30,iTextColor);
 		DrawRect(xmiddle-140,ymiddle-10,xmiddle+140,ymiddle,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
 		DrawBMPButton("",(xmiddle-173)+plr_difficulty*31,ymiddle-13,9);
 
@@ -640,9 +640,9 @@ char msg[110];
 	case 5:	// settings
 
 		DrawNormalText(gametxt[80],xmiddle-200,ymiddle-110,iTextColor);		//Sounds
-		DrawNormalText(gametxt[104],xmiddle+40,ymiddle-110,iTextColor);		//Show explosions 
+		DrawNormalText(gametxt[104],xmiddle+40,ymiddle-110,iTextColor);		//Show explosions
 		DrawNormalText(gametxt[103],xmiddle-200,ymiddle-80,iTextColor);		//Show dust
-//		DrawNormalText(gametxt[105],xmiddle+40,ymiddle-80,iTextColor);//Save all done maps 
+//		DrawNormalText(gametxt[105],xmiddle+40,ymiddle-80,iTextColor);//Save all done maps
 
 		if(setSoundEffects==0)
 			DrawBMPButton("",xmiddle-240,ymiddle-120,7);
@@ -679,9 +679,9 @@ char msg[110];
 		if(sResolutionX[sResolutionBegin+ix]>0)
 		{
 			if(sResolutionX[sResolutionBegin+ix]==SIZE_X && sResolutionY[sResolutionBegin+ix]==SIZE_Y)
-				sprintf(msg,"* %4dx%4d",sResolutionX[ix+sResolutionBegin],sResolutionY[ix+sResolutionBegin]);	
+				sprintf(msg,"* %4dx%4d",sResolutionX[ix+sResolutionBegin],sResolutionY[ix+sResolutionBegin]);
 			else
-				sprintf(msg,"%4dx%4d",sResolutionX[ix+sResolutionBegin],sResolutionY[ix+sResolutionBegin]);	
+				sprintf(msg,"%4dx%4d",sResolutionX[ix+sResolutionBegin],sResolutionY[ix+sResolutionBegin]);
 
 			if(sResolutionSelected==ix+sResolutionBegin)
 				DrawTextWBack(msg,xmiddle-95,ymiddle-50+ix*16,1,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
@@ -723,9 +723,9 @@ char msg[110];
 		for(ix=0;ix<4;ix++)
 		{
 			if(strcmp(cLangfile,cLanglist[ix+sLangBegin])==0)
-				sprintf(msg,"* %s",cLanglist[ix+sLangBegin]);	
+				sprintf(msg,"* %s",cLanglist[ix+sLangBegin]);
 			else
-				sprintf(msg,"%s",cLanglist[ix+sLangBegin]);	
+				sprintf(msg,"%s",cLanglist[ix+sLangBegin]);
 
 			if(sLangSelected==ix+sLangBegin)
 				DrawTextWBack(msg,xmiddle-90,ymiddle+40+ix*16,1,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
@@ -733,9 +733,9 @@ char msg[110];
 				DrawNormalText(msg,xmiddle-90,ymiddle+40+ix*16,iTextColor);
 		}
 
-		if(sLangBegin>0) 
+		if(sLangBegin>0)
 			DrawBMPButton("",xmiddle+10,ymiddle+40,10);			// up
-		if(sLangBegin<95 && cLanglist[sLangBegin+4][0]>0) 
+		if(sLangBegin<95 && cLanglist[sLangBegin+4][0]>0)
 			DrawBMPButton("",xmiddle+10,ymiddle+90,11);			// down
 
 
@@ -794,7 +794,7 @@ char msg[110];
 		if(ed_filebegin<MAXMAPFILES-15 && ed_mapfile[ed_filebegin+14][0]!=0)
 		{
 			DrawBMPButton("",xmiddle+210,ymiddle+90,11);		// down
-		
+
 			DrawBMPButton("",xmiddle+210,ymiddle+40,11);
 			DrawBMPButton("",xmiddle+210,ymiddle+60,11);
 		}

@@ -1,6 +1,6 @@
-#include <windows.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+//#include <windows.h>
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern char				GameOn;
 
@@ -10,7 +10,7 @@ char					b_name[BUILDINGS][255];
 short					b_freq[BUILDINGS];		// frequency
 unsigned long			lb_freq;
 
-/*char					b_name[BUILDINGS][50];	
+/*char					b_name[BUILDINGS][50];
 unsigned char			b_element[BUILDINGS];
 unsigned char			b_size_min[BUILDINGS];
 unsigned char			b_size_max[BUILDINGS];
@@ -57,7 +57,7 @@ ix=1;
 itries=0;
 
 
-do 
+do
 {
 	iy=MAPSIZE-1;
 
@@ -125,7 +125,7 @@ if(iasphalt>0)
 			i++;
 			}
 
-			break;	
+			break;
 		case 13:	// chain fence
 			i=asphaltx[ix];
 			while(i>0 && MapBlock(i,asphalty[ix]-1)==60 && MapBlock(i,asphalty[ix])==0 && i<MAPSIZE-2)
@@ -246,16 +246,16 @@ void BuildPipes()
 
 		if(j==1)
 		{
-			
+
 //			i=0;
 
 			PutMap(ipx,ipy,43);	// down
-			
+
 			do
 			{
 				i=0;
-				for(j1=0;j1<5;j1++) 
-				for(j2=0;j2<3;j2++) 
+				for(j1=0;j1<5;j1++)
+				for(j2=0;j2<3;j2++)
 				{
 					if(MapBlock(ipx+j1,ipy+j2)<40) i=1;
 					if(MapBlock(ipx+j1,ipy+j2)>=114 && MapBlock(ipx+j1,ipy+j2)<=126) i=1;
@@ -313,9 +313,9 @@ void BuildPipes()
 
 			} while(iOk==6);
 
-			PutMap(ipx,ipy,42);		// bend 
+			PutMap(ipx,ipy,42);		// bend
 		}
-		
+
 		ipx++;
 	}
 }

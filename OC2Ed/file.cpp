@@ -1,8 +1,7 @@
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 #include <string.h>
 #include <time.h>
-#include "windows.h"
 /*
 extern char						b_name[BUILDINGS][50];
 extern unsigned char			b_element[BUILDINGS];
@@ -108,7 +107,7 @@ int OpenFile(char *s,char *mode, short iErrors)
 {
 char msg[500];
 if( (stream  = fopen( s, mode )) == NULL )
-	{	
+	{
 	sprintf(msg,"%s %s (%s)",gametxt[202],s,mode);
 	if(iErrors==1) OKBox(msg,40);
 //	printf("Error opening file %s\n",s);
@@ -172,7 +171,7 @@ if(iCode==0)
 
 	  if (hFindB == INVALID_HANDLE_VALUE) {
 		printf ("Invalid File Handle. Get Last Error reports %d\n", GetLastError ());
-	  } else 
+	  } else
 		{
 	//    printf ("The first file found is %s\n", FindFileDataB.cFileName);
 
@@ -220,7 +219,7 @@ if(iCode==0)
 // load language names for buildings
 
 	iCounter=0;
-	
+
 	sprintf(fn,"languages\\%s\\buildings.txt",cLangfile);
 	OpenFile(fn,"rb",1);
 
@@ -229,7 +228,7 @@ if(iCode==0)
 	fgets(b_localename[iCounter],52,stream);
 	b_localename[iCounter][strlen(b_localename[iCounter])-1]=0;
 	iCounter++;
-	} 
+	}
 
 	CloseFile();
 }
@@ -253,7 +252,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 
 	// load block names from language file
 	iCounter=0;
-	
+
 	sprintf(cBfile,"languages\\%s\\blocks.txt",cLangfile);
 	OpenFile(cBfile,"rb",1);
 
@@ -263,7 +262,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	fgets(block_name[iCounter],30,stream);
 	block_name[iCounter][strlen(block_name[iCounter])-1]=0;
 	iCounter++;
-	} 
+	}
 
 	CloseFile();
 
@@ -280,7 +279,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 
 		fscanf(stream,"%d %d %d ",&block_penres[iCounter],&block_end[iCounter],&block_cost[iCounter]);
 		iCounter++;
-		} 
+		}
 
 		CloseFile();
 	}
@@ -313,7 +312,7 @@ void GetMapData()
 		fscanf(stream,"%u ",&map_city[iCounter]);
 		fgets(map_nrc[iCounter],50,stream);
 //		map_nrc[iCounter][strlen(map_nrc[iCounter])]=0;
-		for(ix=strlen(map_nrc[iCounter])-1;ix<52;ix++) map_nrc[iCounter][ix]=0;		
+		for(ix=strlen(map_nrc[iCounter])-1;ix<52;ix++) map_nrc[iCounter][ix]=0;
 		iCounter++;
 	}
 
@@ -409,8 +408,8 @@ void SaveGame()
 	time_t aclock;
 
 //	_strdate(cdate);
-	time( &aclock );                 
-	newtime = localtime( &aclock );  	
+	time( &aclock );
+	newtime = localtime( &aclock );
 	strftime(cdate,20,"%y-%m-%d %H:%M",newtime);
 
 	sprintf(sfile,"save\\plr%02d.txt",plr_slot);
@@ -562,14 +561,14 @@ if(cButtonFileList[0][0]==0)
 
   if (hFind == INVALID_HANDLE_VALUE) {
     printf ("Invalid File Handle. Get Last Error reports %d\n", GetLastError ());
-  } else 
+  } else
 	{
 //    printf ("The first file found is %s\n", FindFileData.cFileName);
 
 	while(GetLastError()!=ERROR_NO_MORE_FILES)
 	{
 		l=strlen(FindFileData.cFileName);
-		for(c=0;c<l-4;c++) 
+		for(c=0;c<l-4;c++)
 			cButtonFileList[i][c]= FindFileData.cFileName[c];
 
 		sprintf(msg,"%s",cButtonFileList[i]);
@@ -612,7 +611,7 @@ if(cLanglist[0][0]==0)
 
   if (hFind == INVALID_HANDLE_VALUE) {
     printf ("Invalid File Handle. Get Last Error reports %d\n", GetLastError ());
-  } else 
+  } else
 	{
 //    printf ("The first file found is %s\n", FindFileData.cFileName);
 
@@ -622,7 +621,7 @@ if(cLanglist[0][0]==0)
 
 		if(FindFileData.cFileName[0]!='.')
 		{
-			for(c=0;c<l;c++) 
+			for(c=0;c<l;c++)
 				cLanglist[i][c]= FindFileData.cFileName[c];
 
 			if(strcmp(cLanglist[i],cLangfile)==0)
@@ -676,7 +675,7 @@ void LoadTheme(char *file)
 	iTextColor=0;			// normally white text
 	iColOffset=50;
 
-	if(i>500) 
+	if(i>500)
 		{
 		iTextColor=1;	// if bright colors -> black text
 		iColOffset=-50;
@@ -698,7 +697,7 @@ void LoadSettings()
 	if(OpenFile("settings.txt","r",1)==0)
 	{
 	fscanf(stream,"%u %u %u %u %u %u %u %u %u ",&SIZE_X,&SIZE_Y,&setBits,&setSoundEffects,&setExplosions,&setDustClouds, &setScroll, &setMaxFramerate, &iTmp);
-	
+
 //	setSounds=soundtemp;
 	fgets(cButtonFile,50,stream);
 	cButtonFile[strlen(cButtonFile)-1]=0;
@@ -767,7 +766,7 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 		while(!feof(stream))
 		{
 			if(i>MAXMAPCODE-2)
-			{	
+			{
 				sprintf(msg,"%s %s",gametxt[202],file);
 				OKBox(msg,40);
 
@@ -867,7 +866,7 @@ void GetHiscores()
 		fgets(tmp,35,stream);
 		strcpy(hs_player[iCounter],tmp);
 		il=strlen(hs_player[iCounter])-1;
-		while(hs_player[iCounter][il]<32) 
+		while(hs_player[iCounter][il]<32)
 		{
 			hs_player[iCounter][il]=0;
 			il--;
@@ -944,13 +943,13 @@ void GetCustomers()
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)
 	{
 	fgets(customer_name[iCounter],12,stream);
-	} 
+	}
 
 	CloseFile();
 }
 
 /* save & compress map file */
-short SaveMap(char *s)
+short SaveMap(char const* s)
 {// illegal chars: \/:*?"<>|
 	short ix,iy;
 	char *s2="";
@@ -970,12 +969,12 @@ short SaveMap(char *s)
 
 		fprintf(stream," %u %u %u ", p_buildbegin, p_buildwidth,ed_currentcity);
 		fprintf(stream,"%s\n%s\n", ed_customer,ed_building);
-		for(ix=0;ix<10;ix++) 
+		for(ix=0;ix<10;ix++)
 		{
 //			ed_message[ix][strlen(ed_message[ix])-1]=0;
 			fprintf(stream,"%s\n", ed_message[ix]);
 		}
-	
+
 		CloseFile();
 
 		sprintf(s2,"maps/%s.c2m",s);
@@ -1021,16 +1020,16 @@ short LoadMap(char *s, short iCode)	// icode 0=no zunpack
 		fscanf(stream," %u %u %u ", &p_buildbegin, &p_buildwidth, &ed_currentcity);
 //		p_buildwidth=ix-p_buildbegin;
 
-		fgets(ed_customer,50,stream); 
+		fgets(ed_customer,50,stream);
 		ed_customer[strlen(ed_customer)-1]=0;
-		fgets(ed_building,50,stream); 
+		fgets(ed_building,50,stream);
 		ed_building[strlen(ed_building)-1]=0;
 		for(ix=0;ix<10;ix++)
 		{
 			fgets(ed_message[ix],50,stream);
 			ed_message[ix][strlen(ed_message[ix])-1]=0;
 		}
-		
+
 		CloseFile();
 
 //		printf("%s\n%s\n",ed_building,ed_customer);
@@ -1076,15 +1075,15 @@ short LoadMapTemp(char *s)
 		fscanf(stream," %u %u %u ", &itmp, &itmp, &itmp);
 //		p_buildwidth=ix-p_buildbegin;
 
-		fgets(tmpc,50,stream); 
-		fgets(temp_ed_building,50,stream); 
+		fgets(tmpc,50,stream);
+		fgets(temp_ed_building,50,stream);
 		temp_ed_building[strlen(temp_ed_building)-1]=0;
 		for(ix=0;ix<10;ix++)
 		{
 			fgets(temp_ed_message[ix],50,stream);
 			temp_ed_message[ix][strlen(temp_ed_message[ix])-1]=0;
 		}
-		
+
 		CloseFile();
 
 		if(DeleteFile("maptemp.tmp")==0)
@@ -1120,7 +1119,7 @@ if(ed_mapfile[0][0]==0 || iCode==1)
 
   if (hFind == INVALID_HANDLE_VALUE) {
     printf ("Invalid File Handle. Get Last Error reports %d\n", GetLastError ());
-  } else 
+  } else
 	{
 	  ed_mapfilenr=0;
 //    printf ("The first file found is %s\n", FindFileData.cFileName);
@@ -1133,7 +1132,7 @@ if(ed_mapfile[0][0]==0 || iCode==1)
 		{
 			if(i<MAXMAPFILES)
 			{
-			for(c=0;c<l;c++) 
+			for(c=0;c<l;c++)
 				ed_mapfile[i][c]= FindFileData.cFileName[c];
 
 			i++;
@@ -1145,7 +1144,7 @@ if(ed_mapfile[0][0]==0 || iCode==1)
     FindClose(hFind);
 	FlushFileBuffers(hFind);
 	}
-	
+
 }
 
 fflush(stream);

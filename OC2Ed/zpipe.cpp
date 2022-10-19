@@ -21,7 +21,7 @@
 #include <assert.h>
 #include "zlib.h"
 
-//#include "OC2.h"
+//#include "oc2.h"
 
 #if defined(MSDOS) || defined(OS2) || defined(WIN32) || defined(__CYGWIN__)
 #  include <fcntl.h>

@@ -2,7 +2,7 @@
 
 short			GenerateMap();
 int				LoadNeededFiles();
-short			SaveMap(char *s);
+short			SaveMap(char const* s);
 
 short			MapBlock(short mapx, short mapy);
 short			PutMap(short mapx,short mapy,short material);

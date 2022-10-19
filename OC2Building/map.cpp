@@ -1,9 +1,9 @@
-//#include "SDL.h"   /* All SDL App's need this */
+//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <stdio.h>
 #include <time.h>
 #include <limits.h>
 #include <math.h>
-// #include <windows.h>
+// //#include <windows.h>
 
 #include "OC2b.h"
 // handles map calculations and functions
@@ -813,7 +813,8 @@ void SeedGenerator(char *cText)
 		dResult=0;
 		i=0;
 
-		randseed=int (cTemp);
+		// Fails: "error: cast from ‘unsigned char*’ to ‘int’ loses precision"
+		randseed=int(cTemp);
 		for(i=0;i<50;i++)
 		if(cTemp[i]>=0 && cTemp[i]<=9) max=i;
 

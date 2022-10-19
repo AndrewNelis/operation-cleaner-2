@@ -1,4 +1,4 @@
-//#include "SDL.h"   /* All SDL App's need this */
+//#include "SDL/SDL.h"   /* All SDL App's need this */
 // #include <conio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -129,7 +129,7 @@ void WriteInfo(char *txt)	// precaution for crash and stdout.txt doesn't get wri
 }
 
 
-short Compare(char * find, char * str, int begin, int len)
+short Compare(char const * find, char * str, int begin, int len)
 {
 	short i,match=0,retval=0;
 
@@ -287,12 +287,12 @@ parsedcode[line][parsedx]=-1;
 return 0;
 }
 
-void Errormsg(short line,char * msg)
+void Errormsg(short line, char const * msg)
 {
 //	printf("PARSE ERROR ON LINE %d: %s\n",(line+2)/2,msg);
 }
 
-void ValueErrormsg(short line,char * msg)
+void ValueErrormsg(short line, char const * msg)
 {
 //	printf("INVALID VALUE ON LINE %d: %s\n",(line+2)/2,msg);
 }

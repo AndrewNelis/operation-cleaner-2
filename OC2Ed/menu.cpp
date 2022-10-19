@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern short			SIZE_X,SIZE_Y,xmiddle,ymiddle;
 extern char				plr_name[40];
@@ -95,7 +95,7 @@ void About()
 
 //	if(iCreditbegin>0) DrawBMPButton("",xmiddle+220,ymiddle-75,10);		// up
 //	if(strlen(gametxt[386+iCreditbegin])>0) DrawBMPButton("",xmiddle+220,ymiddle+140,11);		// down
-	
+
 	DrawBMPButton(gametxt[3],xmiddle-150,ymiddle+160,5);	// ok
 
 }
@@ -192,13 +192,13 @@ short ix;
 
 
 		DrawNormalText(gametxt[29],xmiddle-240,ymiddle+225,iTextColor); // Building name
-		
+
 		DrawFillRect(xmiddle-55,ymiddle+223,xmiddle+245,ymiddle+240,cBaseColours[0]-50,cBaseColours[1]-50,cBaseColours[2]-50);
 		DrawNormalText(temp_ed_building,xmiddle-50,ymiddle+225,iTextColor);
 
 
 /*		DrawNormalText(gametxt[27],xmiddle-240,ymiddle+205,iTextColor); // customer name
-		
+
 		DrawFillRect(xmiddle-55,ymiddle+203,xmiddle+245,ymiddle+220,cBaseColours[0]-50,cBaseColours[1]-50,cBaseColours[2]-50);
 		DrawNormalText(ed_customer,xmiddle-50,ymiddle+205,iTextColor);
 */
@@ -223,23 +223,23 @@ short ix;
 		if(ed_filebegin<MAXMAPFILES-15 && ed_mapfile[ed_filebegin+14][0]!=0)
 		{
 			DrawBMPButton("",xmiddle+210,ymiddle+90,11);		// down
-		
+
 			DrawBMPButton("",xmiddle+210,ymiddle+40,11);
 			DrawBMPButton("",xmiddle+210,ymiddle+60,11);
 		}
 
 
-		if(ed_filebegin>=0 && ed_mapfile[ed_mapfilenr][0]!=0) DrawBMPButton(gametxt[533],xmiddle-120,ymiddle+120,4);	// load	
+		if(ed_filebegin>=0 && ed_mapfile[ed_mapfilenr][0]!=0) DrawBMPButton(gametxt[533],xmiddle-120,ymiddle+120,4);	// load
 
 		if(GameOn==0)
 			DrawBMPButton(gametxt[85],xmiddle-120,ymiddle+180,4);		// main menu
 		else
 		{
 			if(ed_bsaveok==true)
-				DrawBMPButton(gametxt[535],xmiddle-120,ymiddle+150,4);	// save as... 
+				DrawBMPButton(gametxt[535],xmiddle-120,ymiddle+150,4);	// save as...
 			else
 				DrawNormalText(gametxt[540],xmiddle-120,ymiddle+155,iTextColor);	//Map test must be succesfull before saving
-			DrawBMPButton(gametxt[541],xmiddle-120,ymiddle+180,4);		// Back to editor 
+			DrawBMPButton(gametxt[541],xmiddle-120,ymiddle+180,4);		// Back to editor
 		}
 
 		break;

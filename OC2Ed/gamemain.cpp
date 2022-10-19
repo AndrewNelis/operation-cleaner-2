@@ -1,11 +1,11 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
-#include "OC2.h"
+//#include <windows.h>
+#include "oc2.h"
 
 extern int				m_x,m_y;
 extern char				iDrawSmallMap;
@@ -141,9 +141,9 @@ void ZeroPlayer()
 	setSaveAllDoneMaps=1;*/
 }
 
-int FilterEvents(const SDL_Event *event) 
+int FilterEvents(const SDL_Event *event)
 {
-    if ( event->type == SDL_MOUSEMOTION ) 
+    if ( event->type == SDL_MOUSEMOTION )
 	{
 		m_x=event->motion.x;
 		m_y=event->motion.y;
@@ -162,8 +162,8 @@ short CheckHiscores()
 
 	if(hs_reputation[0]==0) GetHiscores();
 
-	time( &aclock );                 
-	newtime = localtime( &aclock );  	
+	time( &aclock );
+	newtime = localtime( &aclock );
 	strftime(cdate,20,"%Y-%m-%d",newtime);
 
 	for(i=0;i<MAXHISCORE;i++)
@@ -262,7 +262,7 @@ do
 	}
 */
 //	LongRandom();
-	
+
 
 	DrawAll();
 /*
@@ -270,7 +270,7 @@ do
 	{
 	sprintf(msg,"%3.f",dFps);// REMOVE FROM FINAL (?), FPS
 	DrawTextWBack(msg,10,30,1,255,255,255);
-//	if(ccounter%10==0) 
+//	if(ccounter%10==0)
 //	SDL_UpdateRect(screen, 10,30,48,15);
 //	Update();
 	}
@@ -370,4 +370,3 @@ int LoadNeededFiles()
 	return 0;
 
 }
-

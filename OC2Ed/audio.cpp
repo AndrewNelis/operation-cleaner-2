@@ -1,7 +1,7 @@
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 #include "SDL_audio.h"
-#include <windows.h>
+//#include <windows.h>
 
 extern short	setSoundEffects;
 extern long		lTimer;
@@ -106,4 +106,3 @@ void PlayClick()
 {
 	PlayWav("media\\click.wav");
 }
-

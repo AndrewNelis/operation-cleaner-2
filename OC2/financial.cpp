@@ -1,6 +1,6 @@
 #include <math.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 char					cAdvFinancial=0;
 
@@ -109,7 +109,7 @@ void StandardMenu()
 
 //	sprintf(msg,"%u",plr_taxpaid);
 //	DrawNormalText(msg,xmiddle,ymiddle+90,iTextColor);
-	
+
 	/*
   DrawNormalText("Window penalty",xmiddle-240,ymiddle+90,0);
 	sprintf(msg,"0");
@@ -177,7 +177,7 @@ void AdvancedMenu()
 		else
 			sprintf(msg,"%s",gametxt[112+ix*5+sdesc]);	// description
 
-		DrawNormalText(msg,xmiddle-230,yc+20,iTextColor);	
+		DrawNormalText(msg,xmiddle-230,yc+20,iTextColor);
 	}
 
 //	DrawNormalText(gametxt[57],xmiddle-50,ymiddle-120,iTextColor);	// cost/month
@@ -195,7 +195,7 @@ void AdvancedMenu()
 	DrawNormalText(msg,xmiddle-50,ymiddle+20,iTextColor);
 
 
-	if(plr_advdecisions[3]==0) 
+	if(plr_advdecisions[3]==0)
 	{
 		DrawRect(xmiddle-242,ymiddle+45,xmiddle+242,ymiddle+150,cBaseColours[0]+25,cBaseColours[1]+25,cBaseColours[2]+25);
 		DrawNormalText(gametxt[126],xmiddle-240,ymiddle+50,iTextColor);	// competitors
@@ -205,7 +205,7 @@ void AdvancedMenu()
 		if(iSTarget<2) DrawBMPButton("",xmiddle-30,ymiddle+70,10);
 		sprintf(msg,"%s",gametxt[plrs_name[iSTarget+1]]);	// competitor firm's name
 		DrawNormalText(msg,xmiddle,ymiddle+70,iTextColor);
-		
+
 		DrawNormalText(gametxt[167],xmiddle-230,ymiddle+90,iTextColor);	//	action
 		if(iSAction>0) DrawBMPButton("",xmiddle-50,ymiddle+90,11);
 		if(iSAction<3) DrawBMPButton("",xmiddle-30,ymiddle+90,10);
@@ -216,7 +216,7 @@ void AdvancedMenu()
 		sprintf(msg,"%s $%u",gametxt[517],cost);	// cost
 		DrawNormalText(msg,xmiddle-230,ymiddle+110,iTextColor);
 
-		if(cost<plr_money && plrs_money[iSTarget+1][plr_monthcounter]>0) DrawBMPButton(gametxt[168],xmiddle+110,ymiddle+110,3);	// proceed	
+		if(cost<plr_money && plrs_money[iSTarget+1][plr_monthcounter]>0) DrawBMPButton(gametxt[168],xmiddle+110,ymiddle+110,3);	// proceed
 	}
 
 	DrawBMPButton(gametxt[7],xmiddle-150,ymiddle+190,5);		// back
@@ -232,4 +232,3 @@ void DrawFinancialMenu()
 	}
 
 }
-

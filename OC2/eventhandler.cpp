@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+//#include <windows.h>
 
-#include "OC2.h"
+#include "oc2.h"
 
 extern short			SIZE_X,SIZE_Y,BLOCKSIZE;
 
@@ -70,9 +70,9 @@ if(bInputBox==true)
 }
 
 
-int CheckEvents() 
+int CheckEvents()
 {
-	
+
 SDL_Event event;
 Uint8 *keys;
 short half_x,half_y,iquit,ix,iy;
@@ -80,7 +80,7 @@ short half_x,half_y,iquit,ix,iy;
 half_x=(SIZE_X-250)/BLOCKSIZE/2;
 half_y=SIZE_Y/BLOCKSIZE/2;
 
-	
+
 	while(SDL_PollEvent(&event))
 //SDL_WaitEvent(&event);
 
@@ -89,10 +89,10 @@ half_y=SIZE_Y/BLOCKSIZE/2;
 
 		keys = SDL_GetKeyState(NULL);
 
-        switch (event.type) 
+        switch (event.type)
 		{
 
-            case SDL_MOUSEBUTTONDOWN: 
+            case SDL_MOUSEBUTTONDOWN:
 
 				m_down_x=event.motion.x;
 				m_down_y=event.motion.y;
@@ -107,7 +107,7 @@ half_y=SIZE_Y/BLOCKSIZE/2;
 				return 0;
 	            break;
 
-			case SDL_MOUSEBUTTONUP: 
+			case SDL_MOUSEBUTTONUP:
 
 				m_up_x=event.motion.x;
 				m_up_y=event.motion.y;
@@ -124,25 +124,25 @@ half_y=SIZE_Y/BLOCKSIZE/2;
 				cDraw=1;
 				GetKeys(&event.key);
 
-                if ( keys[SDLK_ESCAPE] == SDL_PRESSED ) 
+                if ( keys[SDLK_ESCAPE] == SDL_PRESSED )
 					{
-//						bAddRandseed=false;	
+//						bAddRandseed=false;
 						iquit=1;
 
-						if(bInputBox==true) 
+						if(bInputBox==true)
 						{
 							FinishInput(0);	// cancel input
 							iquit=0;
 						}
 
-						if(GameOn==1) 
+						if(GameOn==1)
 							{
 								iMenulevel=0;
 								GameOn=2;
 								iquit=0;
 							}
 
-						if(GameOn==6) 
+						if(GameOn==6)
 						{
 							iquit=0;
 							GameOn=1;
@@ -176,7 +176,7 @@ half_y=SIZE_Y/BLOCKSIZE/2;
 					return 0;
 				}
 
-				if(GameOn==1) 
+				if(GameOn==1)
 				{
 
 				if(keys[SDLK_KP_PLUS]==SDL_PRESSED || keys[SDLK_PLUS]==SDL_PRESSED )
@@ -245,7 +245,7 @@ half_y=SIZE_Y/BLOCKSIZE/2;
 					AddDays(25);
 				}
 */
-				
+
 				}	// gameon==1
 
 				break;
@@ -262,4 +262,3 @@ if(intRunning==0) return 1;
 return 0;
 
 }
-

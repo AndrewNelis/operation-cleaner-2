@@ -1,10 +1,9 @@
-//#include "SDL.h"   /* All SDL App's need this */
+//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include "OC2b.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <glob.h>
-// #include "windows.h"
 #include <ctype.h>
 /*
 extern char						b_name[BUILDINGS][50];
@@ -113,7 +112,7 @@ extern long						lTargetValue,lOtherValue;
 
 //static							FILE *stream;
 
-int OpenFile(char *s,char *mode, short iErrors)
+int OpenFile(char const* s, char const* mode, short iErrors)
 {
 //char msg[500];
 if( (stream  = fopen( s, mode )) == NULL )
@@ -251,7 +250,7 @@ void LoadSettings()
 void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 {
 	int iCounter;
-	char * cBfile="";
+	char* cBfile;
 
 	for(iCounter=0;iCounter<MAXBLOCKS;iCounter++)
 	{
@@ -361,7 +360,7 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 void GetCustomers()
 {
 	int iCounter,ix;
-	char * cBfile="";
+	char* cBfile;
 
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)
 	{
@@ -384,10 +383,10 @@ void GetCustomers()
 }
 
 /* save & compress map file */
-short SaveMap(char *s)		// char *s NOT USED
+short SaveMap(char const* s)		// char *s NOT USED
 {// illegal chars: \/:*?"<>|
 	short ix,iy;
-	char *s2="";
+	// char *s2="";
 /*
 	for(ix=0;ix<(short) strlen(s);ix++)		// illegal chars -> _
 		if(s[ix]==34 || s[ix]==42 || s[ix]==47 || s[ix]==58 || s[ix]==60 || s[ix]==62 || s[ix]==63 || s[ix]==92 || s[ix]==124) s[ix]=95;

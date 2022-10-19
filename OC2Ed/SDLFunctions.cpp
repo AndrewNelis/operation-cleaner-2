@@ -1,10 +1,10 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
-#include "OC2.h"
+//#include <windows.h>
+#include "oc2.h"
 
 short			SIZE_X,SIZE_Y,BLOCKSIZE,xmiddle,ymiddle;
 short			sResolutionX[100],sResolutionY[100];
@@ -44,7 +44,7 @@ for(i=0;modes[i];++i)
 
 		if(sResolutionX[i2]==SIZE_X && sResolutionY[i2]==SIZE_Y)
 		{
-//			if(i2>2) 
+//			if(i2>2)
 			sResolutionBegin=i2;
 			sResolutionSelected=i2;
 		}
@@ -71,8 +71,8 @@ int InitSDL()
 //    printf("Initializing SDL.\n");
 
     /* Initialize defaults, Video and Audio */
-    if((SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1)) 
-	{ 
+    if((SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1))
+	{
         printf ("Could not initialize SDL: %s.\n", SDL_GetError());
         return -1;
     }
@@ -83,12 +83,12 @@ int InitSDL()
 
 	BLOCKSIZE=20;
 
-//	if(setAccelerationMode==2)	
+//	if(setAccelerationMode==2)
 	screen = SDL_SetVideoMode(SIZE_X, SIZE_Y, setBits, SDL_SWSURFACE|SDL_ASYNCBLIT|SDL_FULLSCREEN); //|SDL_FULLSCREEN|SDL_DOUBLEBUF
 //	else	// precaution, all other cases use hardware acceleration
 //		screen = SDL_SetVideoMode(SIZE_X, SIZE_Y, 32, SDL_HWSURFACE|SDL_DOUBLEBUF|SDL_ASYNCBLIT|SDL_FULLSCREEN); //|SDL_FULLSCREEN|SDL_DOUBLEBUF
 
-    if ( screen == NULL ) 
+    if ( screen == NULL )
 	{
         fprintf(stderr, "Couldn't set %dx%dx%d (software acceleration) video mode: %s\n",SIZE_X,SIZE_Y,setBits,SDL_GetError());
 		return -1;
@@ -303,7 +303,7 @@ if(dx>=dy)
                         flag-=dx;
                         y+=y_sign;
                         }
-//                if(x>0 && x<X && y>0 && y<Y) 
+//                if(x>0 && x<X && y>0 && y<Y)
 					Putpixel(x,y,r,g,b);
                 }
         }
@@ -316,7 +316,7 @@ if(dx>=dy)
                         flag-=dy;
                         x+=x_sign;
                         }
-//                if(x>0 && x<X && y>0 && y<Y) 
+//                if(x>0 && x<X && y>0 && y<Y)
 					Putpixel(x,y,r,g,b);
                 }
         }
@@ -346,7 +346,7 @@ void DrawFillRect(int left_top_x, int left_top_y, int right_bottom_x, int right_
 {
 
 	SDL_Rect rect;
-	
+
 	rect.x=left_top_x;
 	rect.y=left_top_y;
 	rect.w=right_bottom_x-left_top_x;
@@ -362,7 +362,7 @@ void DrawFillRect(int left_top_x, int left_top_y, int right_bottom_x, int right_
 void DrawTextRect(char * text,short left,short top,short right,short bottom)
 {
 	SDL_Rect rect;
-	
+
 	rect.x=left;
 	rect.y=top;
 	rect.w=right-left;
@@ -383,7 +383,7 @@ void DrawButton(int left_top_x, int left_top_y, int right_bottom_x, int right_bo
 
 	SDL_Rect rect;
 	int x,y,t;
-	
+
 	rect.x=left_top_x;
 	rect.y=left_top_y;
 	rect.w=right_bottom_x-left_top_x;
@@ -397,13 +397,13 @@ void DrawButton(int left_top_x, int left_top_y, int right_bottom_x, int right_bo
 
 	for(t=0;t<5;t++)
 	{
-		for(x=left_top_x+t;x<right_bottom_x-t;x++) 
+		for(x=left_top_x+t;x<right_bottom_x-t;x++)
 		{
 			Putpixel(x,left_top_y+t,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
 			Putpixel(x,right_bottom_y-t,cBaseColours[0]-50,cBaseColours[1]-50,cBaseColours[2]-50);
 		}
 
-		for(y=left_top_y+t;y<right_bottom_y-t+1;y++) 
+		for(y=left_top_y+t;y<right_bottom_y-t+1;y++)
 		{
 			Putpixel(left_top_x+t,y,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
 			Putpixel(right_bottom_x-t,y,cBaseColours[0]-50,cBaseColours[1]-50,cBaseColours[2]-50);
@@ -432,7 +432,7 @@ for(i=0;i<rc;i++)
 	dx+=radius*cos(i);
 	dy=y;
 	dy+=radius*sin(i);
-	
+
 	if(dx>0 && dx<SIZE_X-260 && dy>0 && dy<SIZE_Y)
 	{
 

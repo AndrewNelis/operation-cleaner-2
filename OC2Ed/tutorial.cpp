@@ -1,6 +1,6 @@
 #include <string.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern char				GameOn;
 
@@ -23,7 +23,7 @@ extern char				iTextColor;
 
 void DrawTutorial()
 {
-	
+
 	short ihlpx[MAXTUTORIALS]={SIZE_X-240,SIZE_X-240,SIZE_X-100,SIZE_X-240,SIZE_X-30,SIZE_X-240,SIZE_X-240};
 	short ihlpy[MAXTUTORIALS]={550,490,25,240,460,460,550};
 	short i;
@@ -46,9 +46,9 @@ void DrawTutorial()
 
 	if(cTutorial<6)
 	{
-		if(GameOn!=3 && GameOn!=5) DrawBMPButton("",ihlpx[cTutorial],ihlpy[cTutorial],12);		
+		if(GameOn!=3 && GameOn!=5) DrawBMPButton("",ihlpx[cTutorial],ihlpy[cTutorial],12);
 	}
-	if(cTutorial==6 && lTimer==0) DrawBMPButton("",ihlpx[cTutorial],ihlpy[cTutorial],12);		
+	if(cTutorial==6 && lTimer==0) DrawBMPButton("",ihlpx[cTutorial],ihlpy[cTutorial],12);
 }
 
 
@@ -60,7 +60,7 @@ void MoveToNextTutorial(short iDone)
 	if(bTutorial==true)
 	{
 
-	if(iDone>=0) 
+	if(iDone>=0)
 	{
 		cTutorialsdone[iDone]=3;
 	}

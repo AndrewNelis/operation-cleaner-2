@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
-#include "OC2.h"
+#include "oc2.h"
 
 // OPERATION CLEANER 2
 // JAN NYMAN
@@ -30,5 +30,5 @@ int main(int argc, char *argv[])
 	QuitSDL();
 	exit(0);
 
-return 0;    
+return 0;
 }

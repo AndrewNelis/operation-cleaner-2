@@ -4,8 +4,8 @@
 #include <string.h>
 #include <time.h>
 #include <sys/timeb.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern short			block_penres[MAXBLOCKS];
 extern short			block_end[MAXBLOCKS];
@@ -131,7 +131,7 @@ bool CountOverload()
 
 	nta=0;
 
-	for(ix=0;ix<MAXCHARGES;ix++) 
+	for(ix=0;ix<MAXCHARGES;ix++)
 		if(ec_amount[ix]>0)
 		{
 			ltemp+=ec_amount[ix]*exp_velocity[ec_type[ix]];
@@ -203,7 +203,7 @@ short CountNeeded(short icode)
 	if(ec_dir[ic]>=0)
 		{
 		lcost+=(ec_amount[ic]*exp_cost[ec_type[ic]]);	// directed explosions are 4x price		// in 1.1 x1
-		lhours++;	
+		lhours++;
 		itemp=ec_amount[ic]/5;
 		lhours+=itemp/2;			// larger explosives take longer time	; in 1.1 /2
 		if(ec_amount[ic]>20) lhours+=itemp/2;	// in 1.1 /2
@@ -225,7 +225,7 @@ short CountNeeded(short icode)
 		{
 
 		do 	{
-			if(mapend[ix][iy]<block_end[map[ix][iy]]) 
+			if(mapend[ix][iy]<block_end[map[ix][iy]])
 			{
 				lcost+=20;	// damaged blocks bring more cost
 				lhours++;
@@ -237,7 +237,7 @@ short CountNeeded(short icode)
 			if(iy%5==0) lhours++;
 
 			} while(map[ix][iy]<57); // && iy>=MAPSIZE-2);
-	
+
 		}
 	}
 
@@ -303,7 +303,7 @@ void DefineTargetArea()
 	tmpbuildwidth=p_buildwidth;
 
 	for(ix=0;ix<p_buildwidth;ix++)
-	for(iy=0;iy<MAPSIZE;iy++)	
+	for(iy=0;iy<MAPSIZE;iy++)
 	{
 		ok=false;
 		if(map[p_buildbegin+ix][iy]>0 && map[p_buildbegin+ix][iy]<40) ok=true;	// pipes are not normally targetarea
@@ -347,7 +347,7 @@ void DefineTargetArea()
 	lPayment*=long (dp_payment);	// for difficulty
 	lPayment/=100;
 
-//	sprintf(msg,"P %u",lPayment);	
+//	sprintf(msg,"P %u",lPayment);
 //	AddMessage(msg,1);
 
 	// center x
@@ -450,7 +450,7 @@ void CheckIfGameEnds(long lAllCosts, long lDamage, short icode)
 			else
 			{		// game continues normally
 
-			if(lAllCosts>0)	
+			if(lAllCosts>0)
 				{
 				ix=rand()%8+1;
 				sprintf(msg,"media\\endjob%d.wav",ix);
@@ -471,7 +471,7 @@ void StoreStats()
 	lDiff=0;
 	lMin=4294967295;
 	lMax=0;
-	
+
 	if(plr_monthcounter>=MAXSTATS-1)
 		{
 		for(ip=0;ip<MAXPLAYERS;ip++)
@@ -481,7 +481,7 @@ void StoreStats()
 				plrs_money[ip][i]=plrs_money[ip][i+1];
 			}
 
-			plrs_money[ip][MAXSTATS-1]=0; 
+			plrs_money[ip][MAXSTATS-1]=0;
 		}
 
 //		plrs_money[0][MAXSTATS-1]=plr_money;
@@ -526,7 +526,7 @@ void AddDays(long lAddDays)
 	do
 	{
 
-	
+
 	if(plr_daysinbusiness%30==0 && plr_daysinbusiness>0)	// monthly costs
 	{
 		cost=plr_advdecisions[1]*city_price[plr_currentcity]/4;				// accountant
@@ -557,7 +557,7 @@ void AddDays(long lAddDays)
 	lAddDays--;
 	} while(lAddDays>0 && plr_money>0);
 
-/*	
+/*
 	cost=plr_advdecisions[1]*city_price[plr_currentcity]/4;
 	sprintf(msg,"$%d",cost);
 	DrawNormalText(msg,xmiddle-50,ymiddle-30,0);
@@ -604,7 +604,7 @@ void CountExpenses(char cCode)	// 0=count expenses, 1=count exp & payment
 
 	if(cCode==1)	// end map (completed)
 	{
-//			sprintf(msg,"temp %u tv%u",lTempTargetValue,lTargetValue);	
+//			sprintf(msg,"temp %u tv%u",lTempTargetValue,lTargetValue);
 			//AddMessage(msg,1);
 //		lTempTargetValue=TargetValue();
 		if(lTempTargetValue<=long (dTemp2))	//lTargetValue)	// demolished
@@ -622,7 +622,7 @@ void CountExpenses(char cCode)	// 0=count expenses, 1=count exp & payment
 				dTemp=plr_money;
 				dTemp+=dPayment;
 
-				if(dTemp>ULONG_MAX) 
+				if(dTemp>ULONG_MAX)
 					plr_money=ULONG_MAX;
 				else
 					plr_money+=long(dPayment);
@@ -769,16 +769,16 @@ double AttachWeight(short bx,short by, short iCounted)
 
 		for(ix=1;ix<MAPSIZE-1;ix++)
 		for(iy=1;iy<MAPSIZE-1;iy++)
-		if(mapcounted[ix][iy]==0) // && map[ix][iy]>0) // && mapsupport[ix][iy]<0)	//  && mapv[ix][iy]==0 // && 
+		if(mapcounted[ix][iy]==0) // && map[ix][iy]>0) // && mapsupport[ix][iy]<0)	//  && mapv[ix][iy]==0 // &&
 		{
 			iOk=0;
 
-			if(ix<MAPSIZE-2 && mapcounted[ix+1][iy]==iCounted && mapsupport[ix+1][iy]<0) iOk=1;	//  MapBlock(ix+1,iy)>0 && && mapv[ix+1][iy]==0 
+			if(ix<MAPSIZE-2 && mapcounted[ix+1][iy]==iCounted && mapsupport[ix+1][iy]<0) iOk=1;	//  MapBlock(ix+1,iy)>0 && && mapv[ix+1][iy]==0
 			if(ix>2 && mapcounted[ix-1][iy]==iCounted && mapsupport[ix-1][iy]<0) iOk=1;// mapv[ix-1][iy]==0 &&
-			if(iy<MAPSIZE-2 && mapcounted[ix][iy+1]==iCounted && mapsupport[ix][iy+1]<0) iOk=1;// MapBlock(ix,iy+1)>0 &&mapv[ix][iy+1]==0 && 
-			if(iy>2 && mapcounted[ix][iy-1]==iCounted && mapsupport[ix][iy-1]<0) iOk=1;// MapBlock(ix,iy-1)>0 && mapv[ix][iy-1]==0 && 
+			if(iy<MAPSIZE-2 && mapcounted[ix][iy+1]==iCounted && mapsupport[ix][iy+1]<0) iOk=1;// MapBlock(ix,iy+1)>0 &&mapv[ix][iy+1]==0 &&
+			if(iy>2 && mapcounted[ix][iy-1]==iCounted && mapsupport[ix][iy-1]<0) iOk=1;// MapBlock(ix,iy-1)>0 && mapv[ix][iy-1]==0 &&
 
-			if(iOk==1) 
+			if(iOk==1)
 			{
 				iDone=1;
 				dSum+=mapsupport[ix][iy];
@@ -816,7 +816,7 @@ double CountSupportRight(short iCounted)
 		if(MapBlock(ix,iy+1)==17 || MapBlock(ix,iy+1)==2) iSteelSupport++;
 		}
 
-		if(iOk==1) 
+		if(iOk==1)
 		{
 			dSum+=dTemp; //mapsupport[ix][iy];
 		}
@@ -849,7 +849,7 @@ double CountSupportLeft(short iCounted)
 		if(MapBlock(ix,iy+1)==17 || MapBlock(ix,iy+1)==2) iSteelSupport++;
 		}
 
-		if(iOk==1) 
+		if(iOk==1)
 		{
 			if(map[ix][iy]>0) dSum+=dTemp; //mapsupport[ix][iy];
 		}
@@ -872,16 +872,16 @@ double AttachSupport(short bx,short by, short iCounted)
 		for(ix2=1;ix2<MAPSIZE-1;ix2++)
 		for(iy2=1;iy2<MAPSIZE-1;iy2++)
 
-		if(mapcounted[ix2][iy2]==0 && mapsupport[ix2][iy2]<0)	//  && mapv[ix2][iy2]==0 // && 
+		if(mapcounted[ix2][iy2]==0 && mapsupport[ix2][iy2]<0)	//  && mapv[ix2][iy2]==0 // &&
 		{
 			iOk=0;
 
-			if(ix2<MAPSIZE-2 && mapcounted[ix2+1][iy2]==iCounted && mapsupport[ix2+1][iy2]<0) iOk=1;	//  MapBlock(ix2+1,iy2)>0 && && mapv[ix2+1][iy2]==0 
+			if(ix2<MAPSIZE-2 && mapcounted[ix2+1][iy2]==iCounted && mapsupport[ix2+1][iy2]<0) iOk=1;	//  MapBlock(ix2+1,iy2)>0 && && mapv[ix2+1][iy2]==0
 			if(ix2>2 && mapcounted[ix2-1][iy2]==iCounted && mapsupport[ix2-1][iy2]<0) iOk=1;// mapv[ix2-1][iy2]==0 &&
-			if(iy2<MAPSIZE-2 && mapcounted[ix2][iy2+1]==iCounted && mapsupport[ix2][iy2+1]<0) iOk=1;// MapBlock(ix2,iy2+1)>0 &&mapv[ix2][iy2+1]==0 && 
-			if(iy2>2 && mapcounted[ix2][iy2-1]==iCounted && mapsupport[ix2][iy2-1]<0) iOk=1;// MapBlock(ix2,iy2-1)>0 && mapv[ix2][iy2-1]==0 && 
+			if(iy2<MAPSIZE-2 && mapcounted[ix2][iy2+1]==iCounted && mapsupport[ix2][iy2+1]<0) iOk=1;// MapBlock(ix2,iy2+1)>0 &&mapv[ix2][iy2+1]==0 &&
+			if(iy2>2 && mapcounted[ix2][iy2-1]==iCounted && mapsupport[ix2][iy2-1]<0) iOk=1;// MapBlock(ix2,iy2-1)>0 && mapv[ix2][iy2-1]==0 &&
 
-			if(iOk==1) 
+			if(iOk==1)
 			{
 				iDone=1;
 
@@ -941,7 +941,7 @@ void MapCount()	// version 1.2
 	}
 
 // phase 1
-	for(ix=0;ix<MAPSIZE;ix++)	
+	for(ix=0;ix<MAPSIZE;ix++)
 	{
 		iy=1;
 
@@ -980,7 +980,7 @@ void MapCount()	// version 1.2
 
 					if(MapBlock(ix,iy)<=17 && mapend[ix][iy]<block_end[map[ix][iy]])
 						if(MapBlock(ix-1,iy)>17 || MapBlock(ix+1,iy)>17) iok=50;	// ground doesn't support well either
-						//MapBlock(ix-1,iy)==0 || MapBlock(ix+1,iy)==0 || 
+						//MapBlock(ix-1,iy)==0 || MapBlock(ix+1,iy)==0 ||
 
 					if(MapBlock(ix,iy)>=92 && MapBlock(ix,iy)<=113)	// trees etc.
 					{
@@ -1016,7 +1016,7 @@ void MapCount()	// version 1.2
 				dWeight+=AttachSupport(ix,iy,iCount);
 //				sprintf(msg,"%d",iCount);
 //				AddMessage(msg,1);
-				dSupport=CountSupportRight(iCount)+CountSupportLeft(iCount);		
+				dSupport=CountSupportRight(iCount)+CountSupportLeft(iCount);
 
 				if(iGroundSupport<5 && iSteelSupport==0) dSupport/=(5-iGroundSupport); // version 1.2
 //				sprintf(msg,"C%d S%.f W%.f G%u S%u",iCount,dSupport,dWeight,iGroundSupport, iSteelSupport);
@@ -1082,12 +1082,12 @@ unsigned long LongRandom()	// 0-4294967295
 	time_t aclock;
 
 //	printf("Longrandom begins\n");
-	time( &aclock );                 
-	newtime = localtime( &aclock );  	
+	time( &aclock );
+	newtime = localtime( &aclock );
 
 	maxtimes=GetRandValue();
 
-	if(dLastActionTime>dPrevActionTime) 
+	if(dLastActionTime>dPrevActionTime)
 	ddifference=dLastActionTime-dPrevActionTime;
 //	printf("ddifference %f ",ddifference);
 

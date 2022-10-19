@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern int				intRunning;
 extern char				GameOn;
@@ -24,7 +23,7 @@ extern char				iDrawSmallMap;
 extern unsigned char	map[MAPSIZE][MAPSIZE];
 
 bool					bInputBox;
-char					cInputText[55];	
+char					cInputText[55];
 char					cInputBoxHeader[50];
 unsigned char			cInputCursor;
 unsigned char			cInputLimit;
@@ -67,7 +66,7 @@ extern unsigned char	ec_type[MAXCHARGES];
 extern short			ec_dir[MAXCHARGES];
 extern bool				ec_primed[MAXCHARGES];
 extern short			ec_amount[MAXCHARGES];
-extern long				ec_timer[MAXCHARGES];					
+extern long				ec_timer[MAXCHARGES];
 
 extern bool				bAddDamper;
 extern short			iDampermode,iDamperbeginx,iDamperbeginy;
@@ -182,7 +181,7 @@ void MoveMap()
 	{
 		mapdestx=mapbegin_x+m_x/BLOCKSIZE-max_x/2;
 		mapdesty=mapbegin_y+(max_y-1)-m_y/BLOCKSIZE-max_y/2;
-		
+
 		iDrawSmallMap=1;
 		cDraw=1;
 
@@ -211,7 +210,7 @@ void MoveMap()
 		cDraw=1;
 	}
 
-	
+
 	if(mapbegin_y>mapdesty)
 	{
 		if(mapbegin_y-mapdesty>setScroll)
@@ -268,7 +267,7 @@ void YesNoBox(char *sHeader,char *sText,char cCode)
 
 	bYesNoBox=true;
 }
- 
+
 void ShowYesNoBox()
 {
 	short x=strlen(cYesNoBoxText)*4+10;
@@ -293,9 +292,9 @@ void CheckYesNoBoxActions()
 			cYesNoAnswer=1;
 			if(cYesNoCode==1)		// cancel job
 			{
-			CountExpenses(1);		
-			boolJobSuccess=false;	
-			boolJobDone=true;		
+			CountExpenses(1);
+			boolJobSuccess=false;
+			boolJobDone=true;
 
 				boolMapgenerated=false;
 
@@ -330,13 +329,13 @@ void CheckYesNoBoxActions()
 	m_event=0;
 }
 
-void pastetext() 
+void pastetext()
 {
 	char * strFromClipboard;
 	short i;
 	char tmp[50];
 
-	if (OpenClipboard(NULL)) 
+	if (OpenClipboard(NULL))
 	{
 	HANDLE hClipboardData = GetClipboardData(CF_TEXT);
 	char *pchData = (char*)GlobalLock(hClipboardData);
@@ -345,11 +344,11 @@ void pastetext()
 	CloseClipboard();
 //	printf("from clipboard: %s\n",strFromClipboard);
 	sprintf(tmp,"%.10s",strFromClipboard);
-	
+
 	if(strcmp(tmp,"(null)")!=0)
 	if(strlen(strFromClipboard)>0)
 	{
-		if(strlen(strFromClipboard)<unsigned int (cInputLimit-1)) 
+		if(strlen(strFromClipboard)<unsigned int (cInputLimit-1))
 			strcpy(cInputText,strFromClipboard);
 		else
 			for(i=0;i<cInputLimit-1;i++) cInputText[i]=strFromClipboard[i];
@@ -388,7 +387,7 @@ void ShowInputBox()
 		if(b_localename[ix][0]!=0)
 		{
 			sprintf(msg,"%.30s",b_localename[ix]);
-			
+
 			if(ed_buildsel==ix)
 				DrawTextWBack(msg,10,ymiddle-360+ix*15,iTextColor,cBaseColours[0]+20,cBaseColours[1]+20,cBaseColours[2]+20);
 			else
@@ -406,7 +405,7 @@ void ShowInputBox()
 	DrawBMPButton(gametxt[3],SIZE_X/2-200,SIZE_Y/2+10,2);	// ok
 	DrawBMPButton(gametxt[4],SIZE_X/2-100,SIZE_Y/2+10,2);		// cancel
 	DrawBMPButton(gametxt[546],SIZE_X/2,SIZE_Y/2+10,2);	// paste
-	
+
 	DrawNormalText("Abc",SIZE_X/2+110,SIZE_Y/2+10,iTextColor);
 	DrawBMPButton("",SIZE_X/2+90,SIZE_Y/2+10,9);		// yes, show extra characters
 
@@ -424,7 +423,7 @@ void InputBox(char *sHeader,unsigned char cLimit,unsigned char cType)
 
 	for(ix=0;ix<cLimit;ix++) cInputText[ix]=0;
 
-	if(cType==3 || cType==4) 
+	if(cType==3 || cType==4)
 	{
 		strcpy(cInputText,plr_name); //sprintf(cInputText,"%-s\0",plr_name);
 		cInputCursor=strlen(cInputText);
@@ -495,9 +494,9 @@ void FindCharge()
 	if(ec_x[ix]>0)
 	{
 		icx=ec_x[ix]-mapbegin_x*20;
-		icy=(mapbegin_y+max_y)*20-(ec_y[ix]); 
+		icy=(mapbegin_y+max_y)*20-(ec_y[ix]);
 
-		if(abs((m_x*20/BLOCKSIZE)-icx)<BLOCKSIZE && abs((m_y*20/BLOCKSIZE)-icy)<BLOCKSIZE) 
+		if(abs((m_x*20/BLOCKSIZE)-icx)<BLOCKSIZE && abs((m_y*20/BLOCKSIZE)-icy)<BLOCKSIZE)
 		{
 			ec_selected=ix;
 			exp_selected=ec_type[ix];
@@ -512,12 +511,12 @@ void PrimeCharges(int code)
 {
 	int ix;
 
-	for(ix=0;ix<MAXCHARGES;ix++) 
+	for(ix=0;ix<MAXCHARGES;ix++)
 	if(ec_amount[ix]>0)
 	{
 		ec_primed[ix]=false;
 
-		if(code==1000) 
+		if(code==1000)
 		{
 			if(ec_x[ix]>0) ec_primed[ix]=true;
 		}
@@ -553,7 +552,7 @@ void CheckActions()
 					cDraw=1;
 					break;
 				case false:
-					FindCharge();			
+					FindCharge();
 					cDraw=1;
 					break;
 				}
@@ -562,17 +561,17 @@ void CheckActions()
 
 		if(bAddDamper==true)
 		{
-			if(m_event==1 && m_button==1)  
+			if(m_event==1 && m_button==1)
 			{
 				cDraw=1;
 				iDampermode=1;
 
 				iDamperbeginx=mapbegin_x+(m_down_x/BLOCKSIZE);
 //				iDamperbeginy= MAPSIZE-mapbegin_y+(m_down_y/BLOCKSIZE);
-				iDamperbeginy=(mapbegin_y+max_y-1)-(m_down_y/BLOCKSIZE); 
+				iDamperbeginy=(mapbegin_y+max_y-1)-(m_down_y/BLOCKSIZE);
 //				mapy=mapbegin_y+(max_y-1)-m_y/BLOCKSIZE;
 
-				if(CheckDampers()==true) 
+				if(CheckDampers()==true)
 				{
 					m_button=0;
 					iDampermode=0;
@@ -618,10 +617,10 @@ void CheckActions()
 						EmptyHelp();
 						iex=exp_selected;
 						if(iex<3) iex=0; else iex-=2;
-						bShowHelp=true;	
+						bShowHelp=true;
 						iex*=20;
 						iex+=210;
-						
+
 						for(ix=0;ix<20;ix++)
 							if(iex<MAXGAMETXT) AddHelp(gametxt[iex+ix],iTextColor);
 					}
@@ -643,7 +642,7 @@ void CheckActions()
 						}
 						else
 						{
-						switch(bAddCharge)	
+						switch(bAddCharge)
 						{
 						case true:bAddCharge=false;break;
 						case false:bAddCharge=true;break;
@@ -653,13 +652,13 @@ void CheckActions()
 
 					if(bTutorial==true && cTutorial==3)
 					{
-						MoveToNextTutorial(3);	// for tutorial 
+						MoveToNextTutorial(3);	// for tutorial
 					}
 
 					}
 					if(m_x>=SIZE_X-170 && m_x<SIZE_X-90)		// remove charge
 					{
-						if(ec_x[ec_selected]==0 && ec_selected>0)  
+						if(ec_x[ec_selected]==0 && ec_selected>0)
 						{
 							do
 							{
@@ -673,7 +672,7 @@ void CheckActions()
 						ec_y[ec_selected]=0;
 //						ec_selected--;
 
-						if(ec_x[ec_selected]==0) 
+						if(ec_x[ec_selected]==0)
 						{
 							while(ec_x[ec_selected]==0 && ec_selected>0) ec_selected--;
 						}
@@ -735,7 +734,7 @@ void CheckActions()
 				if(m_x>SIZE_X-30 && m_y>355 && m_y<406)
 				{
 					EmptyHelp();
-					bShowHelp=true;	
+					bShowHelp=true;
 
 					if(m_y>355 && m_y<370) {AddHelp(gametxt[177],iTextColor);AddHelp(gametxt[178],iTextColor);}	// blast caps help
 					if(m_y>370 && m_y<382) {AddHelp(gametxt[179],iTextColor);AddHelp(gametxt[180],iTextColor);}	// detonator help
@@ -831,7 +830,7 @@ void CheckActions()
 				{
 						InputBox(gametxt[12],50,1);		// map nr/text
 				}
-				if(m_y>390 && m_y<420)	//load map file 
+				if(m_y>390 && m_y<420)	//load map file
 				{
 					LoadMaplist(1);
 					iMenulevel=9;
@@ -848,7 +847,7 @@ void CheckActions()
 						{
 //							ix=sel_customer;
 							ix=1;
-							if(plr_usedmaps[sel_customer]==1) ix=FindFirstCustomer(); 
+							if(plr_usedmaps[sel_customer]==1) ix=FindFirstCustomer();
 
 							if(ix>=0)
 							{
@@ -879,9 +878,9 @@ void CheckActions()
 						}*/
 					}
 
-					if(m_x>SIZE_X-120 && m_x<SIZE_X-10) 
+					if(m_x>SIZE_X-120 && m_x<SIZE_X-10)
 					{
-						if(plr_gametype==0)	
+						if(plr_gametype==0)
 						{// change city
 							sel_city=char(plr_currentcity);
 							GameOn=4;
@@ -903,11 +902,11 @@ void CheckActions()
 		if(plr_money>0 && bTutorial==true) MoveToNextTutorial(6);
 		}
 	}
-		
+
 
 	}		// lTimer=0
 
-	if(m_y>510 && m_y<540) 
+	if(m_y>510 && m_y<540)
 	{
 		if(m_x>SIZE_X-250 && m_x<SIZE_X-120)		// zoom
 		{
@@ -940,7 +939,7 @@ void CheckActions()
 		if(m_x>=SIZE_X-110) bShowHelp=true;
 
 		// scroll messages
-			if(m_x>SIZE_X-150 && m_x<SIZE_X-130) 
+			if(m_x>SIZE_X-150 && m_x<SIZE_X-130)
 				{
 				if(bShowHelp==false)
 				{
@@ -950,7 +949,7 @@ void CheckActions()
 					if(helpbegin>0 && helpwindow[helpbegin][0]>0) {helpbegin--;SDL_Delay(10);}
 				m_button=1;
 				}
-			if(m_x>SIZE_X-130 && m_x<SIZE_X-110) 
+			if(m_x>SIZE_X-130 && m_x<SIZE_X-110)
 				{
 				if(bShowHelp==false)
 				{
@@ -961,7 +960,7 @@ void CheckActions()
 					if(helpbegin<MAXMESSAGES-messagelines) {helpbegin++;SDL_Delay(10);}
 				m_button=1;
 				}
-		
+
 	}
 
 
@@ -974,7 +973,7 @@ void CheckActions()
 		}
 
 		if(m_y>=SIZE_Y-70 && m_y<=SIZE_Y-40 && lTimer==0)	// save & load
-		{	
+		{
 			GameOn=2;
 
 			LoadSaveGameHeaders();
@@ -997,13 +996,13 @@ void CheckActions()
 	if(m_button==3)		// clear
 	if(m_y>=575 && m_y<=595)	// messages/help
 	{
-		if(m_x>=SIZE_X-250 && m_x<SIZE_X-130) 
+		if(m_x>=SIZE_X-250 && m_x<SIZE_X-130)
 			{
 			if(messagewindow[MAXMESSAGES-1][0]>0) PlayClick();
 			bShowHelp=false;
 			EmptyMessages();
 			}
-		if(m_x>=SIZE_X-130) 
+		if(m_x>=SIZE_X-130)
 			{
 			if(helpwindow[MAXMESSAGES-1][0]>0) PlayClick();
 			bShowHelp=true;
@@ -1015,7 +1014,7 @@ void CheckActions()
 void StatisticsBegin()
 {
 	iStatScale=12;
-	if(iStatBeginMonth==0 && plr_month>11) 
+	if(iStatBeginMonth==0 && plr_month>11)
 		iStatBeginMonth=short (plr_monthcounter-11);
 }
 
@@ -1076,7 +1075,7 @@ void CheckMenuActions()
 					GameOn=1;
 					cDraw=1;
 					iDrawSmallMap=1;
-					break;	
+					break;
 				case 2:						// seed
 					if(GameOn==2)	// cancel game
 					{
@@ -1127,13 +1126,13 @@ void CheckMenuActions()
 					m_up_x=0;
 					m_up_y=0;
 					}
-					break;	
+					break;
 				case 5:	// load & save
 					m_button_up=0;
 					m_event=0;
 					LoadSaveGameHeaders();
 					iMenulevel=4;
-					break;	
+					break;
 				case 6:	// high scores
 					iMenulevel=8;
 					break;
@@ -1149,7 +1148,7 @@ void CheckMenuActions()
 					m_button_up=0;
 					m_up_y=0;
 					m_up_x=0;
-				break;	
+				break;
 
 				case 8:
 					iCreditbegin=0;
@@ -1158,7 +1157,7 @@ void CheckMenuActions()
 				case 9:						// quit
 					intRunning=0;
 					ShowQuitProgress();
-				break;	
+				break;
 				default:break;
 				}
 
@@ -1203,7 +1202,7 @@ void CheckMenuActions()
 					MoveToNextTutorial(-1);
 					iMenulevel=10;
 			}
-			if(m_up_y>ymiddle+160 && m_up_y<ymiddle+200) 
+			if(m_up_y>ymiddle+160 && m_up_y<ymiddle+200)
 			{
 				iMenulevel=0;
 			}
@@ -1230,7 +1229,7 @@ void CheckMenuActions()
 					InitSDL();
 					SetAudioFormat();
 					SDL_SetEventFilter(FilterEvents);
-	
+
 					messagelines=0;		// empty & redefine message lines because height might change
 					EmptyMessages();
 					}
@@ -1275,7 +1274,7 @@ void CheckMenuActions()
 			break;
 
 		case 6: // about
-			if(m_up_y>ymiddle+160 && m_up_y<ymiddle+200) 
+			if(m_up_y>ymiddle+160 && m_up_y<ymiddle+200)
 			{
 				iMenulevel=0;
 			}
@@ -1286,7 +1285,7 @@ void CheckMenuActions()
 			{
 				if(m_up_y>ymiddle-100 && m_up_y<ymiddle-80 && sButtonBegin>0) sButtonBegin--;
 
-				if(m_up_y>ymiddle-20 && m_up_y<ymiddle) 
+				if(m_up_y>ymiddle-20 && m_up_y<ymiddle)
 				if(sButtonBegin<94)
 					if(cButtonFileList[sButtonBegin+5][0]>0) sButtonBegin++;
 
@@ -1357,12 +1356,12 @@ void CheckMenuActions()
 				iDrawSmallMap=1;
 				cDraw=1;
 			}
-			
-			break;	
+
+			break;
 		case 11:		// game over, money ends
 			if(m_up_y>ymiddle+260 && m_up_y<ymiddle+300)
 			{
-				if(iHiscorerank<100) 
+				if(iHiscorerank<100)
 				{
 					DeleteCurrentSaveFile();
 					iMenulevel=8;
@@ -1376,7 +1375,7 @@ void CheckMenuActions()
 		case 12:		// victorious game over
 			if(m_up_y>ymiddle+260 && m_up_y<ymiddle+300)
 			{
-				if(iHiscorerank<100) 
+				if(iHiscorerank<100)
 				{
 					iMenulevel=8;
 					DeleteCurrentSaveFile();
@@ -1390,7 +1389,7 @@ void CheckMenuActions()
 		case 13:		// retirement
 			if(m_up_y>ymiddle+260 && m_up_y<ymiddle+300)
 			{
-				if(iHiscorerank<100) 
+				if(iHiscorerank<100)
 				{
 					DeleteCurrentSaveFile();
 					iMenulevel=8;
@@ -1489,7 +1488,7 @@ void CheckMenuActions()
 
 			if(m_up_y>ymiddle+200 && m_up_y<ymiddle+240)
 			{
-				if(GameOn==2) 
+				if(GameOn==2)
 				{
 					GameOn=1;
 					cDraw=1;
@@ -1584,10 +1583,10 @@ void CheckMenuActions()
 			}
 		}
 
-		
+
 /*		if(m_up_y>ymiddle+20 && m_up_y<ymiddle+50)	// acceleration
 		{
-			if(m_up_x>xmiddle-240 && m_up_x<xmiddle) 
+			if(m_up_x>xmiddle-240 && m_up_x<xmiddle)
 			{
 				iAccelerationTemp=1;
 				bSettingsChanged=true;
@@ -1654,7 +1653,7 @@ void CheckMenuActions()
 				if(sLangBegin<95)
 					if(cLanglist[sLangBegin+4][0]>0) sLangBegin++;
 		}
-	
+
 	}
 
 	if(iMenulevel==6 && m_button_up==1 && m_event==2)		// credit list scroll
@@ -1669,7 +1668,7 @@ void CheckMenuActions()
 	if(iMenulevel==9 && m_button_up==1 && m_event==2)		// // load map file, version 1.1
 	{
 /*		DrawFillRect(xmiddle-200,ymiddle-110,xmiddle+200,ymiddle+114,100,100,100);
-		if(ed_filebegin>=0 && ed_filename[ed_mapfilenr][0]!=0) DrawBMPButton(gametxt[93],xmiddle-150,ymiddle+160,5);	// load	
+		if(ed_filebegin>=0 && ed_filename[ed_mapfilenr][0]!=0) DrawBMPButton(gametxt[93],xmiddle-150,ymiddle+160,5);	// load
 		DrawBMPButton(gametxt[7],xmiddle-150,ymiddle+200,5);		// back
 */
 			if(m_up_x>xmiddle-200 && m_up_x<xmiddle+200 && m_up_y>ymiddle-110 && m_up_y<ymiddle+114)
@@ -1679,7 +1678,7 @@ void CheckMenuActions()
 				{
 					ed_mapfilenr=i;
 					if(LoadMapTemp(ed_mapfile[ed_mapfilenr])!=0)
-						OKBox(gametxt[202],40);	// error loading file 
+						OKBox(gametxt[202],40);	// error loading file
 				}
 				cDraw=1;
 			}
@@ -1721,8 +1720,8 @@ void CheckMenuActions()
 						LoadMapMessage(ed_mapfile[ed_mapfilenr]);
 
 						boolcustomercounted=true;
-						
-						boolJobDone=false;	
+
+						boolJobDone=false;
 						boolJobSuccess=false;
 						boolMapgenerated=true;
 
@@ -1893,14 +1892,14 @@ void FinishInput(char finishtype)
 		GenerateMap(1);
 //		sprintf(msg,"%s %u",gametxt[28],randseed);
 //		AddMessage(msg,iTextColor);
-		
+
 		iDrawSmallMap=1;
 
 		boolJobDone=false;
 		boolMapgenerated=true;
 		boolJobSuccess=false;
 	}
-	if(cSearchType==2) 
+	if(cSearchType==2)
 	{
 //		SearchBuilding(cInputText);
 
@@ -1968,7 +1967,7 @@ void CheckInputBoxActions()
 			y1=(m_up_y-(SIZE_Y/2+70))/16*95;
 			sc=32+x1+y1;
 //			printf("SC: %d x%d y%d\n",sc,x1,y1);
-			if(sc>=32 && sc<=255 && cInputCursor<cInputLimit-1)	
+			if(sc>=32 && sc<=255 && cInputCursor<cInputLimit-1)
 			{
 				cInputText[cInputCursor]=unsigned char(sc);
 				cInputCursor++;
@@ -1976,14 +1975,14 @@ void CheckInputBoxActions()
 		}
 
 	}
-	
+
 
 	if(cSearchType==1 && m_button_up==1 && m_event==2)	// building list
 	{
 		if(m_up_x>10 && m_up_x<250 && m_up_y>ymiddle-360 && m_up_y<ymiddle+360)
 		{
 			y1=(m_up_y-(ymiddle-360))/15;
-			if(strlen(b_localename[y1])>0) 
+			if(strlen(b_localename[y1])>0)
 			{
 				ed_buildsel=y1;
 				if(ed_bBuildingList==false) ed_bBuildingList=true;
@@ -2094,7 +2093,7 @@ void CheckFinancialActions()
 				m_event=0;
 				if(bTutorial==true) MoveToNextTutorial(1);
 				}
-			
+
 		break;
 
 		case 1:
@@ -2110,7 +2109,7 @@ void CheckFinancialActions()
 				{
 					plr_advdecisions[advtemp]=(char) advvalue;
 				}
-				
+
 				m_button=1;
 			}
 
@@ -2129,20 +2128,20 @@ void CheckFinancialActions()
 			if(m_y>ymiddle+110 && m_y<ymiddle+140 && m_x>xmiddle+110 && m_x<xmiddle+230)
 			{
 				// proceed!
-				if(plr_advdecisions[3]==0 && plrs_money[iSTarget+1][plr_monthcounter]>0) 
+				if(plr_advdecisions[3]==0 && plrs_money[iSTarget+1][plr_monthcounter]>0)
 				{
 //					AddMessage("Sabotaged!",1);
 					Sabotage(iSTarget+1,iSAction,SabotageCost());
 				}
 			}
 
-			
+
 			/*
 	DrawBMPButton("",xmiddle-50,ymiddle+70,10);
 	DrawBMPButton("",xmiddle-30,ymiddle+70,11);
 	sprintf(msg,"%s",gametxt[plrs_name[iSTarget+1]]);	// competitor firm's name
 	DrawNormalText(msg,xmiddle,ymiddle+70,iTextColor);
-	
+
 	DrawNormalText(gametxt[167],xmiddle-230,ymiddle+90,iTextColor);	//	action
 	DrawBMPButton("",xmiddle-50,ymiddle+90,10);
 	DrawBMPButton("",xmiddle-30,ymiddle+90,11);
@@ -2237,7 +2236,7 @@ void CheckCustomerActions()
 			}
 		}
 */
-		if(m_up_x>xmiddle-200 && m_up_x<xmiddle+200) 
+		if(m_up_x>xmiddle-200 && m_up_x<xmiddle+200)
 		{
 			if(m_up_y>ymiddle+40 && m_up_y<ymiddle+115)
 			{
@@ -2253,7 +2252,7 @@ void CheckCustomerActions()
 			}
 		}
 
-		if(m_up_x>xmiddle-150 && m_up_x<xmiddle+150) 
+		if(m_up_x>xmiddle-150 && m_up_x<xmiddle+150)
 		{
 
 /*			if(m_up_y>ymiddle && m_up_y<ymiddle+40 && boolnext==true)	// next
@@ -2360,7 +2359,7 @@ void CheckStatisticsActions()
 
 		if(m_up_y>SIZE_Y-30 && m_up_y<SIZE_Y)
 		{
-			if(m_up_x>SIZE_X-240 && m_up_x<SIZE_X-120) 
+			if(m_up_x>SIZE_X-240 && m_up_x<SIZE_X-120)
 			{
 				switch(iStatScale)
 				{
@@ -2370,7 +2369,7 @@ void CheckStatisticsActions()
 				}
 			}
 
-			if(m_up_x>SIZE_X-120 && m_up_x<SIZE_X) 
+			if(m_up_x>SIZE_X-120 && m_up_x<SIZE_X)
 			{
 				iDrawSmallMap=2;
 				GameOn=3;
@@ -2390,7 +2389,7 @@ void Actions()
 
 	bBox=false;
 
-	if(bInputBox==true) 
+	if(bInputBox==true)
 	{
 		ShowInputBox();
 		CheckInputBoxActions();

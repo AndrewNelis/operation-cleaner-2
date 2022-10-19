@@ -1,8 +1,8 @@
-//#include "SDL.h"   /* All SDL App's need this */
+//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <stdio.h>
 //#include <stdlib.h>
 //#include <time.h>
-// #include <windows.h>
+// //#include <windows.h>
 #include "OC2b.h"
 
 unsigned int 		lMapnr;

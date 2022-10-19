@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-#include "OC2.h"
+//#include <windows.h>
+#include "oc2.h"
 
 // handles almost all graphics in the game
 
@@ -40,8 +40,8 @@ extern int				m_button,m_x,m_y,m_down_x,m_down_y,m_up_x,m_up_y,m_event;
 
 extern unsigned int		randseed;
 //extern short			TargetAreaBegin,TargetAreaEnd;
-extern char				b_name[BUILDINGS][255];	
-extern char				b_localename[BUILDINGS][52];	
+extern char				b_name[BUILDINGS][255];
+extern char				b_localename[BUILDINGS][52];
 extern bool				blocksmoving,boolJobDone,boolJobSuccess;
 
 extern int				exp_needed[MAXEXPLOSIVETYPES]={0,0,0,0,0,0};
@@ -111,7 +111,7 @@ void DrawMap()
 	short src_bx,src_by; //,iframe,iframesize,iframeybegin,iframeperrow,chargex,chargey;
 	short max_x,max_y,maxpixelx,maxpixely,xreduce,add_y,mapx,mapy,maskx,masky,tempx,tempy,damadd;
 	char msg[100];
-/*	
+/*
 	short max_x,max_y,,mapx,mapy,ix,iy,ixend,iyend,,chargesize,,dstx;
 	double tempdir,temprad;
 	unsigned char r,g,b;
@@ -134,15 +134,15 @@ void DrawMap()
 	maxpixelx=max_x*BLOCKSIZE;// SIZE_X-260;
 	maxpixely=max_y*BLOCKSIZE; //SIZE_Y;
 
-	DrawFillRect(0,tempy,SIZE_X-260,SIZE_Y,0,0,0);	// bottom 
+	DrawFillRect(0,tempy,SIZE_X-260,SIZE_Y,0,0,0);	// bottom
 	DrawFillRect(tempx,0,SIZE_X-260,SIZE_Y,0,0,0);		// between map and sidebar, needed at least in 1024x768 resolution
 	DrawFillRect(0,0,maxpixelx,maxpixely,100,100,250);	// sky
 
 //	SDL_FillRect(screen,NULL,0);
 
 	xreduce=BLOCKSIZE*40;
-	
-	add_y=200;	
+
+	add_y=200;
 	if(BLOCKSIZE==10) add_y=440;
 
 	for(xc=0;xc<max_x;xc++)
@@ -164,12 +164,12 @@ void DrawMap()
 				src_bx-=xreduce;
 				src_by+=BLOCKSIZE;
 			}
-			
+
 		damadd=0;
 
 		if(mapend[mapx][mapy]<block_end[map[mapx][mapy]]) damadd=BLOCKSIZE*4;
 		if(mapend[mapx][mapy]<block_end[map[mapx][mapy]]/2) damadd=BLOCKSIZE*8;
-		
+
 		ShowBMP1(src_bx,src_by+add_y+damadd,BLOCKSIZE,BLOCKSIZE,xc*BLOCKSIZE,yc*BLOCKSIZE);	// draw the block
 
 		if(damadd>0)	// draw damaged sides to blocks, if next to air
@@ -197,7 +197,7 @@ void DrawMap()
 //		if(mapsupport[mapx][mapy]>0)
 //		sprintf(msg,"%d",mapsupport[mapx][mapy]);
 //		sprintf(msg,"%d",map[mapbegin_x+xc][mapbegin_y+yc]);
-//		sprintf(msg,"%d",mapy);		
+//		sprintf(msg,"%d",mapy);
 //		DrawNormalText(msg,xc*BLOCKSIZE+2,yc*BLOCKSIZE+2,1);
 //	//	DrawFillRect(xc*BLOCKSIZE+7,yc*BLOCKSIZE+7,xc*BLOCKSIZE+7+3,yc*BLOCKSIZE+7+3,255,255,255);
 
@@ -213,8 +213,8 @@ void DrawMap()
 	DrawLine(mapx-5,mapy-5,mapx+5,mapy+5,255,255,255);
 	DrawLine(mapx-5,mapy+5,mapx+5,mapy-5,255,255,255);
 
-	
-/*	ix=maxpixelx/2;		
+
+/*	ix=maxpixelx/2;
 	iy=maxpixely/2;
 	DrawFillRect(ix-2,iy-2,ix+2,iy+2,255,255,255);
 */
@@ -230,7 +230,7 @@ void DrawMap()
 			ixend=m_x;
 			iyend=m_y;
 
-*/		
+*/
 		bx=(ed_beginx-mapbegin_x)*BLOCKSIZE;
 		by=(max_y-(ed_beginy-mapbegin_y)-1)*BLOCKSIZE;
 
@@ -295,7 +295,7 @@ void DrawMap()
 //	sprintf(msg,"Rand %u TargetX %d  %s Time %u",randseed,iTargetx,b_name[iTarget],lTimer);
 //	sprintf(msg,"Rand %u %s (%d) Time %u ",randseed,b_localename[iTargetbuilding],iTargetbuilding, lTimer);
 	sprintf(msg,"%s",b_localename[iTargetbuilding]) ;//, city_name[plr_currentcity]);
-//	if(ed_building[0]!=0) 
+//	if(ed_building[0]!=0)
 		sprintf(msg,"%s",ed_building);
 	DrawNormalText(msg,10,10,0);
 }
@@ -325,7 +325,7 @@ void DrawBlockData()
 
 		if(blockok==true)
 		{
-			if(maptarget[mapx][mapy]==true) 
+			if(maptarget[mapx][mapy]==true)
 				icolor=3;
 			else
 				icolor=2;
@@ -404,7 +404,7 @@ void DrawSidebar()
 		if(block_penres[ix]>0)
 		{
 			ShowBMP1(ibx,iby,20,20,SIZE_X-250+itx,140+ity);
-			if(ed_block==ix) 
+			if(ed_block==ix)
 			{
 				/*
 		sprintf(msg,"%.15s",block_name[map[mapx][mapy]]);
@@ -471,7 +471,7 @@ void DrawSidebar()
 	if(ed_bfill==true)
 	{
 		DrawRect(SIZE_X-225,405,SIZE_X-196,434,cBaseColours[0]+50,cBaseColours[1]+50,cBaseColours[2]+50);
-		sprintf(msg,gametxt[521]);	
+		sprintf(msg,gametxt[521]);
 	}
 	else
 	{
@@ -599,8 +599,8 @@ void DrawSidebar()
 	DrawBMPButton(gametxt[528],SIZE_X-130,510,3);		// map settings
 
 
-	DrawBMPButton(gametxt[536],SIZE_X-250,540,3);	// remake pipes 
-	if(ed_bsaveok==false) DrawBMPButton(gametxt[527],SIZE_X-130,540,3);	// test map 
+	DrawBMPButton(gametxt[536],SIZE_X-250,540,3);	// remake pipes
+	if(ed_bsaveok==false) DrawBMPButton(gametxt[527],SIZE_X-130,540,3);	// test map
 
 /*	if(lTimer==0)	// finish/cancel buttons only visible when not exploding
 	{
@@ -617,7 +617,7 @@ void DrawSidebar()
 	DrawFillRect(SIZE_X-250,575,SIZE_X-10,595+messagelines*16,cBaseColours[0]-25,cBaseColours[1]-25,cBaseColours[2]-25);
 
 	if(bShowHelp==false)
-	{		
+	{
 		ix=0;
 		iy=1;
 		if(cBaseColours[0]+cBaseColours[1]+cBaseColours[2]<200) iy=0;
@@ -704,8 +704,8 @@ void DrawMapSettings()
 		DrawNormalText(ed_message[i],xmiddle-200,ymiddle-160+i*15,iTextColor);
 	}
 
-	DrawBMPButton(gametxt[539],xmiddle-150,ymiddle+100,5);	// clear messages 
-	DrawBMPButton(gametxt[530],xmiddle-150,ymiddle+140,5);	// clear all 
+	DrawBMPButton(gametxt[539],xmiddle-150,ymiddle+100,5);	// clear messages
+	DrawBMPButton(gametxt[530],xmiddle-150,ymiddle+140,5);	// clear all
 
 	DrawBMPButton(gametxt[3],xmiddle-150,ymiddle+180,5);	// ok
 }
@@ -726,7 +726,7 @@ void DrawBuildSel()
 		else
 			DrawNormalText(b_localename[ix],xmiddle-230,ymiddle-360+ix*15,iTextColor);
 	}
-	
+
 //	sprintf(msg,"%s %s %d",b_name[ed_buildsel],b_localename[ed_buildsel],ed_buildsel);
 //	DrawNormalText(msg,xmiddle,ymiddle-400,iTextColor);
 
@@ -787,7 +787,7 @@ if(cDraw>0)
 {
 	cDraw--;
 
-//	if(setAccelerationMode==1) 
+//	if(setAccelerationMode==1)
 //	SDL_ShowCursor(SDL_DISABLE);
 
 	switch(GameOn)
@@ -801,7 +801,7 @@ if(cDraw>0)
 		DrawMap();
 		DrawSidebar();
 
-		if(iDrawSmallMap>0) 
+		if(iDrawSmallMap>0)
 		{
 			DrawSmallMap();
 			iDrawSmallMap--;
@@ -820,7 +820,7 @@ if(cDraw>0)
 		DrawMap();
 		DrawBuildSel();
 		DrawSmallMap();
-		
+
 		break;
 	default:break;
 	}
@@ -828,7 +828,7 @@ if(cDraw>0)
 }
 
 /*
-if(GameOn==1) 
+if(GameOn==1)
 {
 	DrawBlockData();		// not needed???!
 }
@@ -849,14 +849,14 @@ if(GameOn==1)
 	{
 	case 1:
 		SDL_ShowCursor(SDL_ENABLE);
-//		if(bFlip==true) 
+//		if(bFlip==true)
 		DoFlip();
 		break;
 	case 2:Update();break;
 	}*/
 //	SDL_Delay(10);
 
-	
+
 //	SDL_ShowCursor(SDL_ENABLE);
 
 }
@@ -892,7 +892,7 @@ void ShowQuitProgress()
 	SDL_Delay(10);
 }
 
-void ShowParseProgress(char * msg)	
+void ShowParseProgress(char * msg)
 {
 	double dProg;
 

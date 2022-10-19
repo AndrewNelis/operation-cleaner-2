@@ -1,5 +1,5 @@
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 char					cAdvFinancial=0;
 
@@ -90,7 +90,7 @@ void StandardMenu()
 
 //	sprintf(msg,"%u",plr_taxpaid);
 //	DrawNormalText(msg,xmiddle,ymiddle+90,iTextColor);
-	
+
 	/*
   DrawNormalText("Window penalty",xmiddle-240,ymiddle+90,0);
 	sprintf(msg,"0");
@@ -139,7 +139,7 @@ void AdvancedMenu()
 		else
 			sprintf(msg,"%s",gametxt[112+ix*5+sdesc]);	// description
 
-		DrawNormalText(msg,xmiddle-230,yc+20,iTextColor);	
+		DrawNormalText(msg,xmiddle-230,yc+20,iTextColor);
 	}
 
 //	DrawNormalText(gametxt[57],xmiddle-50,ymiddle-120,iTextColor);	// cost/month
@@ -175,4 +175,3 @@ void DrawFinancialMenu()
 	}
 
 }
-

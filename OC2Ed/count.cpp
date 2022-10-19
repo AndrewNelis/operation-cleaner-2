@@ -4,8 +4,8 @@
 #include <string.h>
 #include <time.h>
 #include <sys/timeb.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern short			block_penres[MAXBLOCKS];
 extern short			block_end[MAXBLOCKS];
@@ -120,7 +120,7 @@ void DefineTargetArea()
 //	tmpbuildwidth=p_buildwidth;
 
 	for(ix=0;ix<p_buildwidth;ix++)
-	for(iy=0;iy<MAPSIZE;iy++)	
+	for(iy=0;iy<MAPSIZE;iy++)
 	{
 		ok=false;
 		if(map[p_buildbegin+ix][iy]>0 && map[p_buildbegin+ix][iy]<40) ok=true;	// pipes are not normally targetarea
@@ -189,7 +189,7 @@ void DefineTargetArea()
 //	AddMessage(msg,1);
 
 	for(ix=0;ix<p_buildwidth;ix++)
-	for(iy=0;iy<MAPSIZE;iy++)	
+	for(iy=0;iy<MAPSIZE;iy++)
 	{
 		ok=false;
 		if(map[p_buildbegin+ix][iy]>0 && map[p_buildbegin+ix][iy]<40) ok=true;	// pipes are not normally targetarea
@@ -339,7 +339,7 @@ void AddDays(long lAddDays)
 	do
 	{
 
-	
+
 	if(plr_daysinbusiness%30==0 && plr_daysinbusiness>0)	// monthly costs
 	{
 		cost=plr_advdecisions[1]*city_price[plr_currentcity]/4;				// accountant
@@ -366,7 +366,7 @@ void AddDays(long lAddDays)
 	lAddDays--;
 	} while(lAddDays>0);
 
-/*	
+/*
 	cost=plr_advdecisions[1]*city_price[plr_currentcity]/4;
 	sprintf(msg,"$%d",cost);
 	DrawNormalText(msg,xmiddle-50,ymiddle-30,0);
@@ -424,7 +424,7 @@ void CountExpenses(char cCode)	// 0=count expenses, 1=count exp & payment
 				dTemp=plr_money;
 				dTemp+=dPayment;
 
-				if(dTemp>ULONG_MAX) 
+				if(dTemp>ULONG_MAX)
 					plr_money=ULONG_MAX;
 				else
 					plr_money+=long(dPayment);
@@ -565,7 +565,7 @@ bool IsTarget(short bx, short by, short iCounted)
 
 double CountSupport(short bx, short by, short iCounted)
 {
-	short ix,idist, icont,tx,ty;	//iy, 
+	short ix,idist, icont,tx,ty;	//iy,
 	double dSum;
 
 	idist=1;
@@ -632,7 +632,7 @@ double CountSupportRight(short iCounted)
 		if(MapBlock(ix,iy+1)==17 || MapBlock(ix,iy+1)==2) iSteelSupport++;
 		}
 
-		if(iOk==1) 
+		if(iOk==1)
 		{
 			dSum+=dTemp; //mapsupport[ix][iy];
 		}
@@ -665,7 +665,7 @@ double CountSupportLeft(short iCounted)
 		if(MapBlock(ix,iy+1)==17 || MapBlock(ix,iy+1)==2) iSteelSupport++;
 		}
 
-		if(iOk==1) 
+		if(iOk==1)
 		{
 			if(map[ix][iy]>0) dSum+=dTemp; //mapsupport[ix][iy];
 		}
@@ -688,16 +688,16 @@ double AttachSupport(short bx,short by, short iCounted)
 		for(ix2=1;ix2<MAPSIZE-1;ix2++)
 		for(iy2=1;iy2<MAPSIZE-1;iy2++)
 
-		if(mapcounted[ix2][iy2]==0 && mapsupport[ix2][iy2]<0)	//  && mapv[ix2][iy2]==0 // && 
+		if(mapcounted[ix2][iy2]==0 && mapsupport[ix2][iy2]<0)	//  && mapv[ix2][iy2]==0 // &&
 		{
 			iOk=0;
 
-			if(ix2<MAPSIZE-2 && mapcounted[ix2+1][iy2]==iCounted && mapsupport[ix2+1][iy2]<0) iOk=1;	//  MapBlock(ix2+1,iy2)>0 && && mapv[ix2+1][iy2]==0 
+			if(ix2<MAPSIZE-2 && mapcounted[ix2+1][iy2]==iCounted && mapsupport[ix2+1][iy2]<0) iOk=1;	//  MapBlock(ix2+1,iy2)>0 && && mapv[ix2+1][iy2]==0
 			if(ix2>2 && mapcounted[ix2-1][iy2]==iCounted && mapsupport[ix2-1][iy2]<0) iOk=1;// mapv[ix2-1][iy2]==0 &&
-			if(iy2<MAPSIZE-2 && mapcounted[ix2][iy2+1]==iCounted && mapsupport[ix2][iy2+1]<0) iOk=1;// MapBlock(ix2,iy2+1)>0 &&mapv[ix2][iy2+1]==0 && 
-			if(iy2>2 && mapcounted[ix2][iy2-1]==iCounted && mapsupport[ix2][iy2-1]<0) iOk=1;// MapBlock(ix2,iy2-1)>0 && mapv[ix2][iy2-1]==0 && 
+			if(iy2<MAPSIZE-2 && mapcounted[ix2][iy2+1]==iCounted && mapsupport[ix2][iy2+1]<0) iOk=1;// MapBlock(ix2,iy2+1)>0 &&mapv[ix2][iy2+1]==0 &&
+			if(iy2>2 && mapcounted[ix2][iy2-1]==iCounted && mapsupport[ix2][iy2-1]<0) iOk=1;// MapBlock(ix2,iy2-1)>0 && mapv[ix2][iy2-1]==0 &&
 
-			if(iOk==1) 
+			if(iOk==1)
 			{
 				iDone=1;
 
@@ -752,7 +752,7 @@ void MapCount()	// from version 1.0.3
 	}
 
 // phase 1
-	for(ix=0;ix<MAPSIZE;ix++)	
+	for(ix=0;ix<MAPSIZE;ix++)
 	{
 		iy=1;
 
@@ -794,7 +794,7 @@ void MapCount()	// from version 1.0.3
 
 					if(MapBlock(ix,iy)<=17 && mapend[ix][iy]<block_end[map[ix][iy]])
 						if(MapBlock(ix-1,iy)>17 || MapBlock(ix+1,iy)>17) iok=50;	// ground doesn't support well either
-						//MapBlock(ix-1,iy)==0 || MapBlock(ix+1,iy)==0 || 
+						//MapBlock(ix-1,iy)==0 || MapBlock(ix+1,iy)==0 ||
 
 					if(MapBlock(ix,iy)>=92 && MapBlock(ix,iy)<=113)	// trees etc.
 					{
@@ -830,7 +830,7 @@ void MapCount()	// from version 1.0.3
 				dWeight+=AttachSupport(ix,iy,iCount);
 //				sprintf(msg,"%d",iCount);
 //				AddMessage(msg,1);
-				dSupport=CountSupportRight(iCount)+CountSupportLeft(iCount);		
+				dSupport=CountSupportRight(iCount)+CountSupportLeft(iCount);
 
 				if(iGroundSupport<5 && iSteelSupport==0) dSupport/=(5-iGroundSupport); // version 1.2
 //				sprintf(msg,"C%d S%.f W%.f G%u",iCount,dSupport,dWeight,iGroundSupport);
@@ -903,12 +903,12 @@ unsigned long LongRandom()	// 0-4294967295
 	time_t aclock;
 
 //	printf("Longrandom begins\n");
-	time( &aclock );                 
-	newtime = localtime( &aclock );  	
+	time( &aclock );
+	newtime = localtime( &aclock );
 
 	maxtimes=GetRandValue();
 
-	if(dLastActionTime>dPrevActionTime) 
+	if(dLastActionTime>dPrevActionTime)
 	ddifference=dLastActionTime-dPrevActionTime;
 //	printf("ddifference %f ",ddifference);
 

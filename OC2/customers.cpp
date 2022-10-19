@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 #include <math.h>
 #include <stdlib.h>
 //#include <stdio.h>
-#include <windows.h>
+//#include <windows.h>
 
 extern short			SIZE_X,SIZE_Y,xmiddle,ymiddle;
 
@@ -11,7 +11,7 @@ extern unsigned int		randseed;
 extern long				lPayment;
 //extern int				iTarget;
 
-extern char				b_name[BUILDINGS][255];	
+extern char				b_name[BUILDINGS][255];
 extern char				b_localename[BUILDINGS][52];
 
 char					map_nrc[MAXCAREERMAPS][52];
@@ -94,7 +94,7 @@ void FindFirstCustomerInCity()
 	iFirstMapInCity=1;
 	while(map_city[iFirstMapInCity]!=plr_currentcity && iFirstMapInCity<MAXCAREERMAPS) iFirstMapInCity++; // && plr_usedmaps[iFirstMapInCity]!=0 ) iFirstMapInCity++;
 	sel_customer=iFirstMapInCity;
-	while(plr_usedmaps[sel_customer]==1 && map_nrc[sel_customer+1][0]!=0) sel_customer++; 
+	while(plr_usedmaps[sel_customer]==1 && map_nrc[sel_customer+1][0]!=0) sel_customer++;
 }
 
 long MovingCosts(bool bmoving)
@@ -128,7 +128,7 @@ char msg[50];
 		AddDays(5+lmoving/500);
 		plr_currentcity=sel_city;
 //		FindFirstCustomer();
-		sprintf(msg,"*** %s",gametxt[24]);	// moving to 
+		sprintf(msg,"*** %s",gametxt[24]);	// moving to
 		AddMessage(msg,3);
 
 		sprintf(msg,"*** %s ($%u)",city_name[plr_currentcity],lcost);
@@ -150,7 +150,7 @@ long tmpCost;
 	ShowBMP1(450,450,300,100,xmiddle-150,ymiddle-240);
 
 	DrawFillRect(xmiddle-150,ymiddle-125,xmiddle+150,ymiddle+45,100,100,100);	// list's background
-	
+
 	for(ix=0;ix<10;ix++)
 	{
 		inr=0;
@@ -181,7 +181,7 @@ long tmpCost;
 
 	tmpCost=MovingCosts(false);
 //	tmpCost*=long (dp_movingcost);	// for difficulty
-//	tmpCost/=100;	
+//	tmpCost/=100;
 
 	ic=iTextColor;
 
@@ -198,7 +198,7 @@ long tmpCost;
 	sprintf(msg,"%s: %d",gametxt[81],inr);
 	DrawNormalText(msg,xmiddle-150,ymiddle+140,iTextColor);	// number of customers left
 
-	if(plr_money>MovingCosts(false) && sel_city!=plr_currentcity && inr>0) 
+	if(plr_money>MovingCosts(false) && sel_city!=plr_currentcity && inr>0)
 		DrawBMPButton(gametxt[26],xmiddle-150,ymiddle+160,5);	// change city
 
 	DrawBMPButton(gametxt[4],xmiddle-150,ymiddle+200,5);	// cancel
@@ -297,7 +297,7 @@ bool bOk=false;
 
 		if(bOk==true)
 		{
-		DrawNormalText(gametxt[542],xmiddle-240,ymiddle-200,iTextColor);	// map file 
+		DrawNormalText(gametxt[542],xmiddle-240,ymiddle-200,iTextColor);	// map file
 
 		for(ix=2;ix<52;ix++)
 		if(map_nrc[sel_customer][ix]>31)
@@ -333,7 +333,7 @@ bool bOk=false;
 		if(ed_message[ix][iy]!=0) iy=1;
 	}
 
-	if(iy==1) DrawNormalText(gametxt[200],xmiddle-240,ymiddle-140,iTextColor);	// messages 
+	if(iy==1) DrawNormalText(gametxt[200],xmiddle-240,ymiddle-140,iTextColor);	// messages
 	*/
 //	DrawFillRect(xmiddle-220,ymiddle-120,xmiddle+220,ymiddle,cBaseColours[0],cBaseColours[1],cBaseColours[2]);
 
@@ -366,7 +366,7 @@ bool bOk=false;
 //	if(boolnext==true) DrawBMPButton(gametxt[5],xmiddle-150,ymiddle,5);	// next
 //	if(boolprev==true) DrawBMPButton(gametxt[6],xmiddle-150,ymiddle+40,5);	// prev
 
-	if(plr_usedmaps[sel_customer]==0 && map_city[sel_customer]==plr_currentcity)// sel_customer!=plr_currentcustomer) 
+	if(plr_usedmaps[sel_customer]==0 && map_city[sel_customer]==plr_currentcity)// sel_customer!=plr_currentcustomer)
 	{
 		DrawBMPButton(gametxt[32],xmiddle-150,ymiddle+160,5);	// preview
 		DrawBMPButton(gametxt[33],xmiddle-150,ymiddle+200,5);	// accept
@@ -389,4 +389,3 @@ void RandomCity()
 		plr_currentcity=char(dtemp);
 	}
 }
-

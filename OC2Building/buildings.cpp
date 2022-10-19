@@ -1,5 +1,5 @@
 #include <stdlib.h>
-//#include "SDL.h"   /* All SDL App's need this */
+//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include "OC2b.h"
 
 extern char				GameOn;

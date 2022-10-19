@@ -1,8 +1,8 @@
 #include <math.h>
 #include <time.h>
-#include <windows.h>
-#include "SDL.h"   /* All SDL App's need this */
-#include "OC2.h"
+//#include <windows.h>
+#include "SDL/SDL.h"   /* All SDL App's need this */
+#include "oc2.h"
 
 extern short			SIZE_X,SIZE_Y;
 extern unsigned char	map[MAPSIZE][MAPSIZE];
@@ -120,7 +120,7 @@ void AddExplosion(short charge)
 
 //	ep_e[iparticle]=(exp_velocity[ec_type[charge]]/150)+(exp_velocity[ec_type[charge]]*ec_amount[charge]/100);	// working
 	ep_e[iparticle]=(exp_velocity[ec_type[charge]]/iveldiv)+(exp_velocity[ec_type[charge]]*ec_amount[charge]/iamdiv);	// testing
-	
+
 	if(ec_amount[charge]>20) //ep_e[iparticle]=(exp_velocity[ec_type[charge]]/5)+(exp_velocity[ec_type[charge]]*(20+(ec_amount[charge]/5))/100);
 	{
 //		ep_e[iparticle]=(exp_velocity[ec_type[charge]]/25)+(exp_velocity[ec_type[charge]]*(20+(ec_amount[charge]/5))/500);	// original
@@ -184,7 +184,7 @@ long MoveDustParticles(long iparticleamount)
 			}
 			else
 			{
-				if(dp_v[iparticle]>100) 
+				if(dp_v[iparticle]>100)
 				{
 					if(dp_v[iparticle]>300)
 						dp_v[iparticle]-=rand()%5;
@@ -201,7 +201,7 @@ long MoveDustParticles(long iparticleamount)
 					{
 					dp_dirlc[iparticle]=0;
 
-					if(ddir<180) 
+					if(ddir<180)
 						ddir-=(rand()%15+5);
 					else
 						ddir+=(rand()%15+5);
@@ -324,10 +324,10 @@ long MoveParticles()
 					ep_e[iparticle]=0;
 					ep_v[iparticle]=0;
 				}
-			
+
 			if(map[mapx][mapy]>0 && mapend[mapx][mapy]<=0)
 				{
-					if(block_end[map[mapx][mapy]]>200) 
+					if(block_end[map[mapx][mapy]]>200)
 					{
 //						ddirtemp+=rand()%40-20;
 						if(ddirtemp<0) ddirtemp+=360;
@@ -394,7 +394,7 @@ void AddExplosive()
 	{
 		ec_counter=ec_selected;
 	x=mapbegin_x*20+(m_down_x*20/BLOCKSIZE);
-	y=(mapbegin_y+max_y)*20-(m_down_y*20/BLOCKSIZE); 
+	y=(mapbegin_y+max_y)*20-(m_down_y*20/BLOCKSIZE);
 
 //	printf("EXPL %d %d X %d Y %d\n",mapbegin_x,mapbegin_y,x,y);
 
@@ -420,7 +420,7 @@ void AddExplosive()
 			lastAddedy=m_down_y;
 			prevamount=ec_amount[ec_selected];
 			ec_counter++;
-//			if(ec_counter<MAXCHARGES) 
+//			if(ec_counter<MAXCHARGES)
 				ec_selected=int(ec_counter);
 			PlayClick();
 
@@ -435,7 +435,7 @@ void AddExplosive()
 				ec_type[ec_counter]=exp_selected;
 
 				ec_counter++;
-	//			if(ec_counter<MAXCHARGES) 
+	//			if(ec_counter<MAXCHARGES)
 					ec_selected=int(ec_counter);
 				ec_amount[ec_counter]=ec_amount[ec_counter-1];
 				ec_timer[ec_counter]=ec_timer[ec_counter-1];
@@ -536,10 +536,10 @@ void HandleExplosives()
 	else
 		idustp=0;
 
-//if(idustp<40 && idustp>10) if(lLastSound>0 && lTimer>0) PlayWav("media\\crash7.wav");	//if(lLastSound>0) 
+//if(idustp<40 && idustp>10) if(lLastSound>0 && lTimer>0) PlayWav("media\\crash7.wav");	//if(lLastSound>0)
 
 //	if(idustp>0 && cDraw==0) cDraw=1;
-	
+
 /*	char msg[30];
 
 	sprintf(msg,"p %d dp %d",iparticleamount,idustp);// temp
@@ -555,7 +555,7 @@ void HandleExplosives()
 	idelay=2;
 	if(dFps<25) idelay=10;
 
-	if(lTimer%idelay==0) 
+	if(lTimer%idelay==0)
 	{
 		iDrawSmallMap=1;
 	}
@@ -571,7 +571,7 @@ void HandleExplosives()
 		boolExplode=false;
 		lLastSound=0;
 
-		for(i_charge=0;i_charge<MAXCHARGES;i_charge++) 
+		for(i_charge=0;i_charge<MAXCHARGES;i_charge++)
 		if(ec_type[i_charge]==0 && ec_amount[i_charge]==0)
 		{
 			ec_x[i_charge]=0;
@@ -686,4 +686,3 @@ void ZeroExplosives()
 //charge x2646 y1163 0
 
 }
-

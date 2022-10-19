@@ -1,9 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 
 #include <math.h>
 #include <stdlib.h>
 
-#include "OC2.h"
+#include "oc2.h"
 
 extern unsigned char			city_price[MAXCITIES];
 
@@ -31,7 +31,7 @@ short SpecialOccasions()
 	}
 
 
-	if(plr_daysinbusiness>plr_lastspecial+20+rand()%10)	//plr_daysinbusiness>0 && 
+	if(plr_daysinbusiness>plr_lastspecial+20+rand()%10)	//plr_daysinbusiness>0 &&
 	{
 
 		for(ix=0;ix<10;ix++) sprintf(cOKBoxText[ix],"");
@@ -52,7 +52,7 @@ short SpecialOccasions()
 			ixbegin=300;
 			irows=5;
 		}
-	
+
 		if(ix>9920 && ix<=9930)		// tenants didn't leave
 		{
 			idelay=rand()%5-plr_crew[3];
@@ -120,7 +120,7 @@ short SpecialOccasions()
 		if(repay>lCostperday*idelay) repay=lCostperday*idelay;
 
 		// insurance ends
-		
+
 		lExtraCosts+=lCostperday*idelay;
 /*		if(plr_money>=lCostperday*idelay)
 			plr_money-=lCostperday*idelay;
@@ -137,7 +137,7 @@ short SpecialOccasions()
 				sprintf(cOKBoxText[8],"%s%u",gametxt[333],long(repay));	// your insurance repays $
 			}
 
-//		if(plr_money>lExtraCosts) 
+//		if(plr_money>lExtraCosts)
 		OKBox(gametxt[107],50+irows*15);	// delay in job
 		bOkBoxShown=true;
 		}
@@ -155,7 +155,7 @@ short SpecialOccasions()
 			dOthercost/=400;
 			dOthercost+=1000;
 			dOthercost-=plr_taxpaid;
-			
+
 			if(dOthercost>10000)
 				{
 				if(plr_money>100000) dOthercost+=9000;
@@ -165,7 +165,7 @@ short SpecialOccasions()
 
 			plr_taxpaid+=long(dOthercost);
 
-			sprintf(cOKBoxText[0],"%s",gametxt[335]);					//You haven't paid enough tax. 
+			sprintf(cOKBoxText[0],"%s",gametxt[335]);					//You haven't paid enough tax.
 			sprintf(cOKBoxText[1],"%s",gametxt[336]);		//Additional taxes are
 			sprintf(cOKBoxText[2],"$%u.",long(dOthercost));
 //			AddMessage(cOKBoxText[1],2);
@@ -187,9 +187,9 @@ short SpecialOccasions()
 			dOthercost+=plr_money/100*(rand()%5+1);
 
 			sprintf(cOKBoxText[0],"%s",gametxt[338]);		//Because of poor bookkeeping you have
-			sprintf(cOKBoxText[1],"%s",gametxt[339]);	//to pay additional 
+			sprintf(cOKBoxText[1],"%s",gametxt[339]);	//to pay additional
 			sprintf(cOKBoxText[2],"%s",gametxt[340]);	//Fixing the bookkeeping costs $
-			sprintf(cOKBoxText[3],"$%u.",long(dOthercost));	
+			sprintf(cOKBoxText[3],"$%u.",long(dOthercost));
 //			AddMessage(cOKBoxText[2],2);
 //			AddMessage(cOKBoxText[3],2);
 			irows=6;
@@ -209,7 +209,7 @@ short SpecialOccasions()
 				sprintf(cOKBoxText[0],"%s",gametxt[342]);		//You sabotaged your competitors:
 
 				if(ix<30)
-				{	// money 
+				{	// money
 					dOtherIncome=(plr_advdecisions[3]*city_price[plr_currentcity])*(rand()%5+1);
 					sprintf(cOKBoxText[1],"%s",gametxt[343]);	// The sabotage brought you
 					sprintf(cOKBoxText[2],"$%u.",long(dOtherIncome));	// The sabotage brought you $
@@ -261,7 +261,7 @@ short SpecialOccasions()
 		else
 			plr_money=0;
 */
-//		if(plr_money>lExtraCosts) 
+//		if(plr_money>lExtraCosts)
 		OKBox("",50+irows*15);
 		bOkBoxShown=true;
 		plr_lastspecial=plr_daysinbusiness;
@@ -269,7 +269,7 @@ short SpecialOccasions()
 
 		idelay=1;
 		}
-		
+
 	}
 
 	if(lExtraCosts>0 || idelay>0)
@@ -282,7 +282,7 @@ short SpecialOccasions()
 		AddMessage(msg,2);
 
 		if(plr_money>=lExtraCosts)
-			plr_money-=lExtraCosts;	
+			plr_money-=lExtraCosts;
 		else
 			plr_money=0;
 
