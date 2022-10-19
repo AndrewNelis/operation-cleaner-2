@@ -1,6 +1,7 @@
 #include "SDL/SDL.h"   /* All SDL App's need this */
 #include "oc2.h"
 #include <string.h>
+#include <stdio.h>
 #include <time.h>
 
 short save_version=2;		// save file version number
@@ -151,7 +152,7 @@ void DeleteCurrentSaveFile()
 	{
 	sprintf(sfile,"save\\plr%02d.txt",cSaveLoadFile);
 
-	if(DeleteFile(sfile)==0)
+	if(remove(sfile) != 0)
 	{
 //		printf("Error deleting file %s!\n",sfile);
 		sprintf(msg,"%s %s",gametxt[513],sfile);	//Can't delete file:
