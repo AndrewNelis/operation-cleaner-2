@@ -1,6 +1,6 @@
 #include "SDL/SDL.h"   /* All SDL App's need this */
 #include "oc2.h"
-#include "SDL_audio.h"
+#include "SDL/SDL_audio.h"
 
 extern short	setSoundEffects;
 extern long		lTimer;
