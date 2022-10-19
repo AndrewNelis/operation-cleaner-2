@@ -3,7 +3,7 @@
 #include <time.h>
 #include <limits.h>
 #include <math.h>
-#include <windows.h>
+// #include <windows.h>
 
 #include "OC2b.h"
 // handles map calculations and functions
@@ -101,7 +101,7 @@ short PutMap(short mapx,short mapy,short material)
 	{
 		if(mapy>=0 && mapy<MAPSIZE)
 		{
-			map[mapx][mapy]=unsigned char(material);
+			map[mapx][mapy]=(unsigned char) material;
 			mapv[mapx][mapy]=0;
 			mapend[mapx][mapy]=block_end[map[mapx][mapy]];
 			return 0;
@@ -155,7 +155,7 @@ void DefineTargetArea()
 	tmpbuildwidth=p_buildwidth;
 
 	for(ix=0;ix<p_buildwidth;ix++)
-	for(iy=0;iy<MAPSIZE;iy++)	
+	for(iy=0;iy<MAPSIZE;iy++)
 	{
 		ok=false;
 		if(map[p_buildbegin+ix][iy]>0 && map[p_buildbegin+ix][iy]<40) ok=true;	// pipes are not normally targetarea
@@ -371,7 +371,7 @@ void GenerateGround()
 		if(iRand>50) iBushGap=rand()%10;
 
 		iRand=rand()%150;
-		
+
 		iSurface=60;
 		if(iRand>=50 && iRand<55) iSurface=65;
 		if(iRand>=55 && iRand<60) iSurface=66;
@@ -388,7 +388,7 @@ void GenerateGround()
 		{
 		iLength=iLength--;
 		map[ix][iy]=iSurface;
-		if(iBushGap>0 && ix%iBushGap==0 && iSurface==88) 
+		if(iBushGap>0 && ix%iBushGap==0 && iSurface==88)
 			{
 			map[ix][iy]=92;
 			map[ix][iy+1]=rand()%3+107;
@@ -490,7 +490,7 @@ void GenerateGround()
 				mapy=iy+int(dBlocky*sin(icounter2));
 
 				if(mapx>0 && mapx<MAPSIZE && mapy>0 && mapy<MAPSIZE)
-				if(map[mapx][mapy]==71 || map[mapx][mapy]==67 || iground==0) 
+				if(map[mapx][mapy]==71 || map[mapx][mapy]==67 || iground==0)
 					map[mapx][mapy]=iGroundBlock[iground];
 			}
 		}
@@ -507,7 +507,7 @@ short LeafTree(int month)
 int ix,iy,size_x,size_y,iCounter,iObstacles,iGroundy,iBlock,iBranch,iTop,mapx,mapy,iEmpty,iLeaves,iLeavebegin;
 double dLeaves;
 char ok;
-	
+
 	month++;
 	iLeavebegin=98;
 	if(month<4 || month>11) iLeavebegin=104;	// winter
@@ -559,7 +559,7 @@ char ok;
 				for(iCounter=1;iCounter<iBranch;iCounter++) PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%3+iLeavebegin);
 				break;
 			case 96:
-				for(iCounter=1;iCounter<iBranch;iCounter++) 
+				for(iCounter=1;iCounter<iBranch;iCounter++)
 				{
 						PutMap(ix+size_x/2-iCounter,iGroundy+iy,rand()%3+iLeavebegin);
 						PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%3+iLeavebegin);
@@ -568,7 +568,7 @@ char ok;
 			}
 
 		}
-	
+
 		PutMap(ix+size_x/2,iGroundy+iy,97);
 		iTop=iGroundy+iy;
 
@@ -594,7 +594,7 @@ char ok;
 		mapx=ix-size_x/2+iCounter;
 		mapy=iGroundy-iy;
 		iEmpty=0;
-		if(map[mapx][mapy]>=98 && map[mapx][mapy]<=106)	
+		if(map[mapx][mapy]>=98 && map[mapx][mapy]<=106)
 		{
 			if(map[mapx-1][mapy]==0) iEmpty++;
 			if(map[mapx+1][mapy]==0) iEmpty++;
@@ -616,7 +616,7 @@ short PineTree()
 int ix,iy,size_x,size_y,iCounter,iObstacles,iGroundy,iBlock,iBranch,iTop,mapx,mapy,iEmpty,iLeaves;
 double dLeaves;
 char ok;
-	
+
 	size_x=rand()%10+3;
 	ix=rand()%(MAPSIZE-size_x-4)+size_x/2+2;
 	size_y=rand()%30+10;
@@ -664,7 +664,7 @@ char ok;
 				for(iCounter=1;iCounter<iBranch;iCounter++) PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%2+112);
 				break;
 			case 96:
-				for(iCounter=1;iCounter<iBranch;iCounter++) 
+				for(iCounter=1;iCounter<iBranch;iCounter++)
 				{
 						PutMap(ix+size_x/2-iCounter,iGroundy+iy,rand()%2+112);
 						PutMap(ix+size_x/2+iCounter,iGroundy+iy,rand()%2+112);
@@ -673,7 +673,7 @@ char ok;
 			}
 
 		}
-	
+
 		PutMap(ix+size_x/2,iGroundy+iy,97);
 		iTop=iGroundy+iy;
 
@@ -699,7 +699,7 @@ char ok;
 		mapx=ix-size_x/2+iCounter;
 		mapy=iGroundy-iy;
 		iEmpty=0;
-		if(map[mapx][mapy]>=112 && map[mapx][mapy]<=113)	
+		if(map[mapx][mapy]>=112 && map[mapx][mapy]<=113)
 		{
 			if(map[mapx-1][mapy]==0) iEmpty++;
 			if(map[mapx+1][mapy]==0) iEmpty++;
@@ -754,7 +754,7 @@ void GenerateTrees()
 	struct tm *newtime;
 	time_t aclock;
 
-	time( &aclock );                 
+	time( &aclock );
 	newtime = localtime( &aclock );
 
 	do
@@ -783,7 +783,7 @@ void SeedGenerator(char *cText)
 	bool			bNumber;
 	int				ifold,i,max;
 	unsigned char 	cTemp[50];
-	
+
 	dResult=0;
 	bNumber=true;
 	ifold=1;
@@ -795,16 +795,16 @@ void SeedGenerator(char *cText)
 		ch=*cText;
 		dResult+=i*ifold*int(ch-32);
 		ifold*=10;
-		
-		if(ch<48 || ch>57) 
+
+		if(ch<48 || ch>57)
 		{
 			bNumber=false;
 		}
 		else
-//			if(ch!=204) 
+//			if(ch!=204)
 			cTemp[i]=ch-48;
 
-		cText++;		
+		cText++;
 		i++;
 	}
 
@@ -818,7 +818,7 @@ void SeedGenerator(char *cText)
 		if(cTemp[i]>=0 && cTemp[i]<=9) max=i;
 
 		ifold=1;
-		for(i=max;i>=0;i--) 
+		for(i=max;i>=0;i--)
 		{
 			dResult+=cTemp[i]*ifold;
 			ifold*=10;
@@ -826,7 +826,7 @@ void SeedGenerator(char *cText)
 	}
 
 	while(dResult>UINT_MAX) dResult-=UINT_MAX;
-	randseed=unsigned int(dResult);
+	randseed = (unsigned int) dResult;
 
 	GenerateMap();
 //	MapNrMessage();
@@ -948,14 +948,14 @@ short GenerateMap()			// changed in version 1.1
 	i++;
 
 	if(bfirst==true)
-		lbuilding=abs(randseed);
+		lbuilding=abs(int(randseed));
 	else
 		lbuilding=rand()%lb_freq;
-	
+
 //	sprintf(msg,"rs %u %u",randseed,lb_freq);
 //	AddMessage(msg,1);
 
-	
+
 	//	printf("lbuilding: %d/%d\n",lbuilding,lb_freq);
 /*	xc=1;
 	while(lbuilding>0) // && b_freq[xc]>0)
@@ -1027,7 +1027,7 @@ short GenerateMap()			// changed in version 1.1
 
 //	ShowParseProgress("SmoothGround");
 //	SmoothGround();
-	
+
 //	ShowParseProgress("GenerateTrees");
 	GenerateTrees();
 
@@ -1116,4 +1116,3 @@ short GenerateMap()			// changed in version 1.1
 
 	return iret;
 }
-

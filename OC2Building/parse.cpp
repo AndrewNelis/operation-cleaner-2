@@ -1,5 +1,5 @@
 //#include "SDL.h"   /* All SDL App's need this */
-#include <conio.h>
+// #include <conio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -113,7 +113,7 @@ char command[MAXCOMMANDS][15]={
 "SUBV",
 "UP(",
 "UPLEFT(",
-"UPRIGHT(",	
+"UPRIGHT(",
 "SETFREQUENCY=",	//45
 "ENDIF",
 "IFBLOCK(",
@@ -133,11 +133,11 @@ short Compare(char * find, char * str, int begin, int len)
 {
 	short i,match=0,retval=0;
 
-	if(strlen(str)<(unsigned int) begin+len) 
+	if(strlen(str)<(unsigned int) begin+len)
 	{
 		retval=1;
 	}
-	if(strlen(find)<(unsigned int) len) 
+	if(strlen(find)<(unsigned int) len)
 	{
 		retval=1;
 	}
@@ -203,7 +203,7 @@ while(i<linelen)
 
 	if(realnr>=0 && multiply>1)									// found a number
 	{
-	parsedcode[line][parsedx]=realnr;		
+	parsedcode[line][parsedx]=realnr;
 //	printf("{%d %d} ",parsedx,realnr);
 	parsedx++;
 	}
@@ -223,7 +223,7 @@ while(i<linelen)
 		{
 			tmpnr1=mapcode[line][i+1]-48;
 			tmpnr2=mapcode[line][i+2]-48;
-			if(tmpnr1>=0 && tmpnr1<=9) 
+			if(tmpnr1>=0 && tmpnr1<=9)
 			{
 			if(tmpnr2>=0 && tmpnr2<=9)
 			{
@@ -259,7 +259,7 @@ while(i<linelen)
 		{
 			tmpnr1=mapcode[line][i+1]-48;
 			tmpnr2=mapcode[line][i+2]-48;
-			if(tmpnr1>=0 && tmpnr1<=9) 
+			if(tmpnr1>=0 && tmpnr1<=9)
 			{
 			if(tmpnr2>=0 && tmpnr2<=9)
 			{
@@ -279,7 +279,7 @@ while(i<linelen)
 		i+=variablelen[j];
 		}
 	}
-	
+
 	i++;
 }
 parsedcode[line][parsedx]=-1;
@@ -312,7 +312,7 @@ short GetVariable(short code)
 	case 31006:realnr=p_floorheight;break;	//FLOORHEIGHT
 	case 31007:realnr=p_groundfix;break;	//GROUNDFIX
 	case 31008:realnr=p_material;break;		//MATERIAL
-	case 31009:realnr=p_outside;break;		//OUTSIDE 
+	case 31009:realnr=p_outside;break;		//OUTSIDE
 	case 31011:realnr=p_x;break;			//X
 	case 31012:realnr=p_y;break;			//Y
 	case 31013:realnr=p_doortype;break;	//DOORTYPE
@@ -341,7 +341,7 @@ char CheckValue(int value, int min, int max)
 		value=GetVariable(value);
 	}
 
-	if(value>=min && value<=max) 
+	if(value>=min && value<=max)
 		return 0;
 	else
 		return -1;
@@ -349,14 +349,14 @@ char CheckValue(int value, int min, int max)
 
 short IsGround(short mapcode)
 {
-	if(mapcode>=57 && mapcode<=63) return 1;	
+	if(mapcode>=57 && mapcode<=63) return 1;
 	if(mapcode>=65 && mapcode<=91) return 1;
 	return 0;
 }
 
 void ParseIntoMap()		// puts blocks to the map
 {
-	short i,ix,iy,ok,iwindow,miny,ibegin,iwidth,iblock,iwater,ideepness,itmp,idoorbegin,ielevbegin,ielevx,ielevy,ielevwidth,ielevheight,ielevdoor; 
+	short i,ix,iy,ok,iwindow,miny,ibegin,iwidth,iblock,iwater,ideepness,itmp,idoorbegin,ielevbegin,ielevx,ielevy,ielevwidth,ielevheight,ielevdoor;
 	double d1,d2,d3;
 	short r1,r2,r,ipurgeok;
 	//	char msg[30];
@@ -440,7 +440,7 @@ void ParseIntoMap()		// puts blocks to the map
 					ielevdoor=GetVariable(parsedcode[parseline][i+5]);
 
 					ok=0;
-					if(MapBlock(ielevx,ielevy)==2 || MapBlock(ielevx,ielevy)==5 || MapBlock(ielevx,ielevy)==8 
+					if(MapBlock(ielevx,ielevy)==2 || MapBlock(ielevx,ielevy)==5 || MapBlock(ielevx,ielevy)==8
 						|| MapBlock(ielevx,ielevy)==11 || MapBlock(ielevx,ielevy)==14 || MapBlock(ielevx,ielevy)==17) ok=1;
 
 					if(ok==1)		// let's build an elevator!
@@ -449,7 +449,7 @@ void ParseIntoMap()		// puts blocks to the map
 						for(iy=0;iy<ielevheight;iy++)
 						{
 							// change material if needed
-						if(MapBlock(ielevx,ielevy+iy)==2 || MapBlock(ielevx,ielevy+iy)==5 || MapBlock(ielevx,ielevy+iy)==8 
+						if(MapBlock(ielevx,ielevy+iy)==2 || MapBlock(ielevx,ielevy+iy)==5 || MapBlock(ielevx,ielevy+iy)==8
 							|| MapBlock(ielevx,ielevy+iy)==11 || MapBlock(ielevx,ielevy+iy)==14 || MapBlock(ielevx,ielevy+iy)==17) iblock=MapBlock(ielevx,ielevy+iy);
 
 							if(MapBlock(ielevx,ielevy+iy)==iblock)
@@ -495,13 +495,13 @@ void ParseIntoMap()		// puts blocks to the map
 									i++;
 								}
 							}
-						
+
 						}
 					}
 					else
 					{
 						Errormsg(parseline,"BUILDELEV BEGIN COORDINATES NOT VALID");
-//						printf("Block in %d,%d is %d\n",ielevx,ielevy,MapBlock(ielevx,ielevy));	
+//						printf("Block in %d,%d is %d\n",ielevx,ielevy,MapBlock(ielevx,ielevy));
 					}
 				}
 				else
@@ -523,7 +523,7 @@ void ParseIntoMap()		// puts blocks to the map
 					iwidth-=2;
 				}
 //				printf("1: %d 2: %d 3: %d\n",GetVariable(parsedcode[parseline][i+1]),GetVariable(parsedcode[parseline][i+2]),GetVariable(parsedcode[parseline][i+3]));
-				if(p_outside==2)		
+				if(p_outside==2)
 				{
 					PutMap(ibegin-1,miny,p_material+1);// left balcony
 					PutMap(ibegin-1,miny+1,22);
@@ -541,20 +541,20 @@ void ParseIntoMap()		// puts blocks to the map
 						{
 							if(p_doortype==1)				// window door
 							{
-								if(iy==1) iblock=19;	
+								if(iy==1) iblock=19;
 								if(iy>1) iblock=18;
 							}
 
 							if(p_doortype==2)				// normal door
-								iblock=19;	
+								iblock=19;
 							if(p_doortype==3)				// steel door
-								iblock=21;	
+								iblock=21;
 						}
 
 					if(p_outside==4 && iy>1) iblock=18;
 					if(p_outside==5) iblock=18;
 
-					PutMap(ibegin,miny+iy,iblock);	
+					PutMap(ibegin,miny+iy,iblock);
 
 					iblock=p_material+1;		// right wall
 
@@ -563,20 +563,20 @@ void ParseIntoMap()		// puts blocks to the map
 						{
 							if(p_doortype==1)				// window door
 							{
-								if(iy==1) iblock=19;	
+								if(iy==1) iblock=19;
 								if(iy>1) iblock=18;
 							}
 
 							if(p_doortype==2)				// normal door
-								iblock=19;	
+								iblock=19;
 							if(p_doortype==3)				// steel door
-								iblock=21;	
+								iblock=21;
 
 						}
 					if(p_outside==4 && iy>1) iblock=18;
 					if(p_outside==5) iblock=18;
 
-					PutMap(ibegin+iwidth-2,miny+iy,iblock);	
+					PutMap(ibegin+iwidth-2,miny+iy,iblock);
 
 
 						for(ix=1;ix<iwidth-2;ix++)
@@ -598,17 +598,17 @@ void ParseIntoMap()		// puts blocks to the map
 									{
 										if(p_doortype==1)				// window door
 										{
-											if(iy==1) iblock=19;	
+											if(iy==1) iblock=19;
 											if(iy>1) iblock=18;
 										}
 
 										if(p_doortype==2)				// normal door
-											iblock=19;	
+											iblock=19;
 										if(p_doortype==3)				// steel door
-											iblock=21;	
+											iblock=21;
 									}
 								}	// ok ends
-						
+
 							}
 
 							if(p_elevinterval>0 && ix>5 && ix<iwidth-8)	// elevator shaft
@@ -674,11 +674,11 @@ void ParseIntoMap()		// puts blocks to the map
 					ValueErrormsg(parseline,"BUILDROOF");
 				break;
 			case 30011:		//BUILDWIDTH
-				if(CheckValue(parsedcode[parseline][i+1],1,MAPSIZE)==0) 
+				if(CheckValue(parsedcode[parseline][i+1],1,MAPSIZE)==0)
 					p_buildwidth=GetVariable(parsedcode[parseline][i+1]);
 				else
 					ValueErrormsg(parseline,"BUILDWIDTH");
-				
+
 				break;
 			case 30012:		//BUP
 				if(CheckValue(parsedcode[parseline][i+1],0,MAPSIZE)==0)
@@ -916,7 +916,7 @@ void ParseIntoMap()		// puts blocks to the map
 						r2=0;
 
 						while(r2==0 && r1>0) {r2=1;if(MapBlock(ix,r1)==0 || MapBlock(ix,r1)>40) r2=0;PutMap(ix,r1,71);r1--;}
-						
+
 						}
 						ix++;
 						iy--;
@@ -960,11 +960,11 @@ void ParseIntoMap()		// puts blocks to the map
 					iy=miny;
 					itmp=miny;
 
-					while(IsGround(MapBlock(ix,iy))==1 && ix>0)		// up 
+					while(IsGround(MapBlock(ix,iy))==1 && ix>0)		// up
 					{
 						ipurgeok=0;
 
-						for(i2=miny;i2<MAPSIZE;i2++) 
+						for(i2=miny;i2<MAPSIZE;i2++)
 							if(MapBlock(ix-isteepness-1,i2)>0 && MapBlock(ix-isteepness-1,i2)<40) ipurgeok=1;
 
 						if(ipurgeok==0)
@@ -978,7 +978,7 @@ void ParseIntoMap()		// puts blocks to the map
 						}
 
 
-						while(iy<MAPSIZE-2) 
+						while(iy<MAPSIZE-2)
 						{
 							iy++;
 							PutMap(ix,iy,0);
@@ -1016,7 +1016,7 @@ void ParseIntoMap()		// puts blocks to the map
 
 						itmp--;
 						iy=itmp;
-						
+
 						ok=0;
 						while(ok==0)
 						{
@@ -1041,7 +1041,7 @@ void ParseIntoMap()		// puts blocks to the map
 					{
 						ipurgeok=0;
 
-						for(i2=miny;i2<MAPSIZE;i2++) 
+						for(i2=miny;i2<MAPSIZE;i2++)
 							if(MapBlock(ix+isteepness+1,i2)>0 && MapBlock(ix+isteepness+1,i2)<40) ipurgeok=1;
 
 						if(ipurgeok==0)
@@ -1054,7 +1054,7 @@ void ParseIntoMap()		// puts blocks to the map
 							PutMap(ix+1,iy,69);
 						}
 
-						while(iy<MAPSIZE-2) 
+						while(iy<MAPSIZE-2)
 						{
 							iy++;
 							PutMap(ix,iy,0);
@@ -1088,7 +1088,7 @@ void ParseIntoMap()		// puts blocks to the map
 							}
 
 							ok=0;
-							
+
 							while(ok==0)
 							{
 								if(MapBlock(ix,iy-1)>=64 && MapBlock(ix,iy-1)<=67) ok=1;
@@ -1138,7 +1138,7 @@ void ParseIntoMap()		// puts blocks to the map
 
 //						for(ix=0;ix<=iwidth;ix++)
 						ix=0;
-						while(ix<=iwidth)	
+						while(ix<=iwidth)
 						{
 							iy=miny-ix;
 
@@ -1150,7 +1150,7 @@ void ParseIntoMap()		// puts blocks to the map
 								iblock-=2;
 							}
 
-//							if(iwater>0 && miny-iy>ideepness-iwater) iblock+=52;		// water: removed 
+//							if(iwater>0 && miny-iy>ideepness-iwater) iblock+=52;		// water: removed
 
 							if(ix>ideepness && ix<iwidth-ideepness)
 							{
@@ -1176,7 +1176,7 @@ void ParseIntoMap()		// puts blocks to the map
 							iy=itmp-2;
 
 							while(iy>0)
-							{	
+							{
 								ok=1;
 								if(MapBlock(ix+ibegin,iy)>=64 && MapBlock(ix+ibegin,iy)<=67) ok=0;
 								if(MapBlock(ix+ibegin,iy)==71 || MapBlock(ix+ibegin,iy)==81) ok=0;
@@ -1258,7 +1258,7 @@ void ParseIntoMap()		// puts blocks to the map
 							else
 								i++;
 
-							if(parsedcode[parseline][i]<0) 
+							if(parsedcode[parseline][i]<0)
 							{
 								parseline++;
 								i=0;
@@ -1301,7 +1301,7 @@ void ParseIntoMap()		// puts blocks to the map
 						p_outside=parsedcode[parseline][i+1];
 				else
 					ValueErrormsg(parseline,"OUTSIDE");
-				break;	
+				break;
 			case 30033:		//PRINT, NO VARIABLES
 				if(CheckValue(parsedcode[parseline][i+1],0,strlen(mapcode[parseline]))==0)
 				{
@@ -1319,7 +1319,7 @@ void ParseIntoMap()		// puts blocks to the map
 					ValueErrormsg(parseline,"PRINTCODE");
 				break;
 			case 30035:		//RAND, do nothing
-				
+
 			if(CheckValue(parsedcode[parseline][i+1],0,30000)==0 && CheckValue(parsedcode[parseline][i+2],0,30000)==0)
 			{
 				if(GetVariable(parsedcode[parseline][i+1])<GetVariable(parsedcode[parseline][i+2]))
@@ -1366,7 +1366,7 @@ void ParseIntoMap()		// puts blocks to the map
 //						parseline=beginloop;		// return to line next to BEGIN line
 					}
 				}
-				else 
+				else
 					ValueErrormsg(parseline,"REPEAT");
 				break;
 			case 30037:		//RIGHT
@@ -1447,7 +1447,7 @@ void ParseIntoMap()		// puts blocks to the map
 							else
 								i++;
 
-							if(parsedcode[parseline][i]<0) 
+							if(parsedcode[parseline][i]<0)
 							{
 								parseline++;
 								i=0;
@@ -1490,7 +1490,7 @@ void ParseIntoMap()		// puts blocks to the map
 
 }
 
-void ParsePhase2(short line)		
+void ParsePhase2(short line)
 // checks that random numbers are ok, IFV and ENDIFV are matched, BEGIN and REPEAT are matched
 {
 	short i,tmpline,ok,loop,original_i,r1,r2,r;
@@ -1578,7 +1578,7 @@ void ParsePhase2(short line)
 				line=tmpline+1;
 				i=0;
 //			}
-		
+
 		}			// IFV ends
 
 		if(parsedcode[line][i]==30004)	// BEGIN begins
@@ -1595,7 +1595,7 @@ void ParsePhase2(short line)
 //				printf("Searching for REPEAT %d %d/%d CMD=%d\n",i,line,mapcodelines,parsedcode[line][i]);
 				if(parsedcode[line][i]==30036)
 				{
-					if(loop==0) 
+					if(loop==0)
 					{
 						ok=2;		// repeat found
 						parsedcode[tmpline][18]=line;
@@ -1621,7 +1621,7 @@ void ParsePhase2(short line)
 			if(ok==1) Errormsg(tmpline,"REPEAT not found");
 			line=tmpline+1;
 			i=0;
-		
+
 		}	// BEGIN ends
 
 
@@ -1682,7 +1682,7 @@ short FindPlace(short istart, short iend)
 		return 1;
 	}
 
-	itries++;		
+	itries++;
 	}
 
 return 0;	// otherwise unsuccesfull
@@ -1741,7 +1741,7 @@ return 0;
 }
 
 short ParseMapCode(bool bfirst)
-{	
+{
 /*	PROBLEM MAPS
 7640	- office building cut by purge
 13168	- bunker and pipes

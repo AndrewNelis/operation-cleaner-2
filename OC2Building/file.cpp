@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "windows.h"
+#include <glob.h>
+// #include "windows.h"
+#include <ctype.h>
 /*
 extern char						b_name[BUILDINGS][50];
 extern unsigned char			b_element[BUILDINGS];
@@ -115,7 +117,7 @@ int OpenFile(char *s,char *mode, short iErrors)
 {
 //char msg[500];
 if( (stream  = fopen( s, mode )) == NULL )
-	{	
+	{
 //	sprintf(msg,"%s %s (%s)",gametxt[202],s,mode);
 //	if(iErrors==1) OKBox(msg,40);
 	printf("Error opening file %s\n",s);
@@ -149,37 +151,24 @@ char fn[255];
 
 if(iCode==0)
 {
-	if(b_name[0][0]==0)
+	if (b_name[0][0] == 0)
 	{
+		lb_freq = 0;
 
-		lb_freq=0;
+		glob_t globbuf;
 
-	  WIN32_FIND_DATA FindFileDataB;
-	  HANDLE hFindB;
+		if (glob("buildings/*.map", 0, NULL, &globbuf) == 0) {
 
-	  hFindB = FindFirstFile("buildings/*.map", &FindFileDataB);
+			for (int j=0; j<globbuf.gl_pathc; j++) {
+				l = strlen(globbuf.gl_pathv[j]);
+				// Path excluding ".map" extension
+				strncpy(b_name[j], globbuf.gl_pathv[j], l - 4);
+			}
 
-	  if (hFindB == INVALID_HANDLE_VALUE) {
-		printf ("Invalid File Handle. Get Last Error reports %d\n", GetLastError ());
-	  } else 
-		{
-//	    printf ("The first file found is %s\n", FindFileDataB.cFileName);
 
-		while(GetLastError()!=ERROR_NO_MORE_FILES)
-		{
-			l=strlen(FindFileDataB.cFileName);
+		};
 
-			for(c=0;c<l-4;c++)
-				b_name[i][c]= FindFileDataB.cFileName[c];
-
-			i++;
-//	    printf ("The found file is %s\n", FindFileDataB.cFileName);
-		FindNextFile(hFindB,&FindFileDataB);
-		}
-
-		FindClose(hFindB);
-		FlushFileBuffers(hFindB);
-		}
+		globfree(&globbuf);
 	}
 
 	for(l=0;l<i;l++)
@@ -209,7 +198,7 @@ if(iCode==0)
 // load language names for buildings
 
 	iCounter=0;
-	
+
 	sprintf(fn,"languages\\%s\\buildings.txt",cLangfile);
 	OpenFile(fn,"rb",1);
 
@@ -218,7 +207,7 @@ if(iCode==0)
 	fgets(b_localename[iCounter],52,stream);
 	b_localename[iCounter][strlen(b_localename[iCounter])-1]=0;
 	iCounter++;
-	} 
+	}
 
 	CloseFile();
 }
@@ -231,7 +220,7 @@ void LoadSettings()
 	if(OpenFile("settings.txt","r",1)==0)
 	{
 	fscanf(stream,"%u %u %u %u %u %u %u %u ",&i,&i,&i,&i,&i,&i,&i,&i);
-	
+
 //	setSounds=soundtemp;
 	fgets(cBFTemp,50,stream);
 	fgets(cLangfile,50,stream);
@@ -277,7 +266,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 
 	// load block names from language file
 	iCounter=0;
-	
+
 //	sprintf(cBfile,"languages\\%s\\blocks.txt",cLangfile);
 //	OpenFile(cBfile,"rb",1);
 
@@ -287,7 +276,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	fgets(block_name[iCounter],30,stream);
 	block_name[iCounter][strlen(block_name[iCounter])-1]=0;
 	iCounter++;
-	} 
+	}
 
 	CloseFile();
 */
@@ -304,7 +293,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 
 		fscanf(stream,"%d %d %d ",&block_penres[iCounter],&block_end[iCounter],&block_cost[iCounter]);
 		iCounter++;
-		} 
+		}
 
 		CloseFile();
 	}
@@ -330,7 +319,7 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 		while(!feof(stream))
 		{
 			if(i>MAXMAPCODE-2)
-			{	
+			{
 //				sprintf(msg,"%s %s",gametxt[202],file);
 //				OKBox(msg,40);
 
@@ -340,7 +329,12 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 			}
 
 			fgets(mapcode[i],1000,stream);
-			_strupr(mapcode[i]);		// capitalize
+			// _strupr(mapcode[i]);		// capitalize
+			int l = strlen(mapcode[i]);
+			for (int j=0; j<l; j++) {
+				mapcode[i][j] = toupper(mapcode[i][j]);
+			}
+			// /capitalise replacement
 			mapcode[i][strlen(mapcode[i])-1]=0;
 			i+=2;
 
@@ -384,7 +378,7 @@ void GetCustomers()
 	fgets(customer_name[iCounter],12,stream);
 	ix=strlen(customer_name[iCounter]);
 	customer_name[iCounter][ix-1]=0;
-	} 
+	}
 
 	CloseFile();
 }
@@ -410,12 +404,12 @@ short SaveMap(char *s)		// char *s NOT USED
 
 		fprintf(stream," %u %u %u ", tmpbuildbegin, tmpbuildwidth,ed_currentcity);
 		fprintf(stream,"%s\n%s\n", customer_name[customer_nr], ed_building);
-		for(ix=0;ix<10;ix++) 
+		for(ix=0;ix<10;ix++)
 		{
 			ed_message[ix][strlen(ed_message[ix])-1]=0;
 			fprintf(stream,"%s\n", ed_message[ix]);
 		}
-	
+
 		CloseFile();
 
 	return 0;
@@ -437,4 +431,3 @@ int LoadNeededFiles()
 	return 0;
 
 }
-

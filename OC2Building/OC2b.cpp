@@ -2,7 +2,7 @@
 #include <stdio.h>
 //#include <stdlib.h>
 //#include <time.h>
-#include <windows.h>
+// #include <windows.h>
 #include "OC2b.h"
 
 unsigned int 		lMapnr;
@@ -14,7 +14,7 @@ extern unsigned int randseed;
 // VERSION 1.2
 // 1.2.2007
 
-extern "C" __declspec(dllexport)
+// extern "C" __declspec(dllexport)
 int mainbuild(unsigned int argc)
 {
 	lMapnr=argc;
@@ -43,5 +43,5 @@ int mainbuild(unsigned int argc)
 
 //	exit(0);
 
-return 0;    
+return 0;
 }

@@ -17,6 +17,7 @@ long			OtherValue();
 void			GetCityData();
 void			GetCustomers();
 void			BeginRandomization();
+int mainbuild(unsigned int argc);
 
 /*void			Actions();
 void			AddDampers();

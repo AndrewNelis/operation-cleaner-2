@@ -1,10 +1,9 @@
-#include "SDL.h"   /* All SDL App's need this */
+#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
 #include "OC2.h"
 
 extern long				lMapnr;
@@ -38,7 +37,7 @@ double					dp_money, dp_payment, dp_extracost, dp_movingcost, dp_damperend, dp_r
 char					plr_slot;
 extern char				cSaveLoadFile;
 
-extern char				exp_selected;
+char				exp_selected;
 extern long				lTimer;
 
 char					cLangfile[50];
@@ -99,6 +98,13 @@ bool					bAddRandseed,boolFps;
 short					iStatBeginMonth,iStatScale;
 extern short			iSTarget, iSAction;
 
+
+unsigned long GetTickCount() {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return (ts.tv_sec * 1000 + ts.tv_nsec / 1000000);
+}
+
 void ZeroPlayer()
 {
 	short i,j;
@@ -151,7 +157,7 @@ void ZeroPlayer()
 	plr_month=0;
 	plr_monthcounter=0;
 
-	for(j=0;j<MAXPLAYERS;j++) 
+	for(j=0;j<MAXPLAYERS;j++)
 	{
 		plrs_money[j][0]=(long) dp_money;
 		plrs_statshow[j]=1;
@@ -225,9 +231,9 @@ void SetDifficultyVar(short iDiff)
 }
 
 
-int FilterEvents(const SDL_Event *event) 
+int FilterEvents(const SDL_Event *event)
 {
-    if ( event->type == SDL_MOUSEMOTION ) 
+    if ( event->type == SDL_MOUSEMOTION )
 	{
 		m_x=event->motion.x;
 		m_y=event->motion.y;
@@ -249,8 +255,8 @@ short CheckHiscores()
 
 	if(hs_reputation[0]==0) GetHiscores();
 
-	time( &aclock );                 
-	newtime = localtime( &aclock );  	
+	time( &aclock );
+	newtime = localtime( &aclock );
 	strftime(cdate,20,"%Y-%m-%d",newtime);
 
 	for(i=0;i<MAXHISCORE-1;i++)
@@ -283,7 +289,7 @@ short CheckHiscores()
 	return 100;
 }
 
-double CountFrameRate(double dF, DWORD t1, DWORD t2)
+double CountFrameRate(double dF, unsigned int t1, unsigned int t2)
 {
 	if(t2>t1)
 		return dF/((t2-t1))*1000;
@@ -294,7 +300,8 @@ double CountFrameRate(double dF, DWORD t1, DWORD t2)
 void Mainstructure()
 {
 unsigned char ccounter;
-DWORD time1, time2;
+// DWORD int time1, time2;
+unsigned int time1, time2;
 double dFrames;
 unsigned int iSlow;
 short idone,iFast=0;
@@ -346,9 +353,9 @@ do
 	}
 */
 //	LongRandom();
-	
 
-	if(GameOn==1 && boolExplode==true) 
+
+	if(GameOn==1 && boolExplode==true)
 	{
 		cDraw=1;
 		HandleExplosives();
@@ -357,7 +364,7 @@ do
 	DrawAll();
 	Actions();		// draws also inputboxes etc.
 
-/*	if(bAddRandseed==true)		
+/*	if(bAddRandseed==true)
 	{
 		randseed++;
 //		MapNrMessage();
@@ -466,4 +473,3 @@ int LoadNeededFiles()
 	return 0;
 
 }
-

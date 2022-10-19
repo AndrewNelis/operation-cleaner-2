@@ -1,9 +1,9 @@
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
-#include "OC2.h"
+// #include <windows.h>
+#include "../OC2Building/OC2dll.h"
 
 long lMapnr;
 extern unsigned int		randseed;
@@ -34,5 +34,5 @@ int main(int argc, char *argv[])
 	QuitSDL();
 	exit(0);
 
-return 0;    
+return 0;
 }
