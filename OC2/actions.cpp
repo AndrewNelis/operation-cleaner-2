@@ -331,32 +331,33 @@ void CheckYesNoBoxActions()
 
 void pastetext()
 {
-	char * strFromClipboard;
-	short i;
-	char tmp[50];
+	// TODO: WINDOWS ONLY
+// 	char * strFromClipboard;
+// 	short i;
+// 	char tmp[50];
 
-	if (OpenClipboard(NULL))
-	{
-	HANDLE hClipboardData = GetClipboardData(CF_TEXT);
-	char *pchData = (char*)GlobalLock(hClipboardData);
-	strFromClipboard = pchData;
-	GlobalUnlock(hClipboardData);
-	CloseClipboard();
-//	printf("from clipboard: %s\n",strFromClipboard);
-	sprintf(tmp,"%.10s",strFromClipboard);
+// 	if (OpenClipboard(NULL))
+// 	{
+// 	HANDLE hClipboardData = GetClipboardData(CF_TEXT);
+// 	char *pchData = (char*)GlobalLock(hClipboardData);
+// 	strFromClipboard = pchData;
+// 	GlobalUnlock(hClipboardData);
+// 	CloseClipboard();
+// //	printf("from clipboard: %s\n",strFromClipboard);
+// 	sprintf(tmp,"%.10s",strFromClipboard);
 
-	if(strcmp(tmp,"(null)")!=0)
-	if(strlen(strFromClipboard)>0)
-	{
-		if(strlen(strFromClipboard)<unsigned int (cInputLimit-1))
-			strcpy(cInputText,strFromClipboard);
-		else
-			for(i=0;i<cInputLimit-1;i++) cInputText[i]=strFromClipboard[i];
+// 	if(strcmp(tmp,"(null)")!=0)
+// 	if(strlen(strFromClipboard)>0)
+// 	{
+// 		if(strlen(strFromClipboard)<unsigned int (cInputLimit-1))
+// 			strcpy(cInputText,strFromClipboard);
+// 		else
+// 			for(i=0;i<cInputLimit-1;i++) cInputText[i]=strFromClipboard[i];
 
-		cInputCursor=strlen(cInputText);
-	}
+// 		cInputCursor=strlen(cInputText);
+// 	}
 
-	}
+// 	}
 
 }
 
