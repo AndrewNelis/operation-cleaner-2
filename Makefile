@@ -1,5 +1,4 @@
 CXX = g++
-# # -fpermissive: map.cpp:816 - casting (unsigned char*) to int :| Fix and remove this!
 # SDL, zlib
 # FLAGS = -Wall
 FLAGS =-lSDL -lz -fpermissive -Wno-narrowing -Wno-write-strings
@@ -10,7 +9,7 @@ SRCS=$(wildcard ./OC2/*.cpp)
 all: oc2
 
 oc2:
-	$(CXX) $(FLAGS) -fpermissive $(SRCS)
+	$(CXX) $(FLAGS) $(SRCS)
 
 clean:
 	rm -f *.out oc2building.so liboc2building.so OC2Building/*.o *.o

@@ -313,7 +313,7 @@ bool bOk=false;
 		DrawNormalText(msg,xmiddle-100,ymiddle-200,iTextColor);
 
 //	sprintf(msg,"%-s",b_name[customer_building]);
-	cBld=unsigned char (b_name[iTargetbuilding]);
+	cBld = *b_name[iTargetbuilding];
 
 			//	sprintf(msg,"%-s %d %d",b_localename[iTargetbuilding],cBld,iTargetbuilding);
 	sprintf(msg,"%-s",b_localename[iTargetbuilding]);

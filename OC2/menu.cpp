@@ -159,6 +159,14 @@ char *temp="";
 	if(strlen(msg)>0) DrawBMPButton(gametxt[88],xmiddle-150,ymiddle+200,5);		//Change theme
 }
 
+char* strupr(char* text) {
+	char* upper;
+	for (int i=0; i<strlen(text); i++) {
+		upper[i] = toupper(text[i]);
+	}
+	return upper;
+}
+
 void NewsPaper(short iCode)
 {
 short i,picnr,x,y,crep=0;;
@@ -416,7 +424,7 @@ void Statistics()
 	for(j=0;j<MAXPLAYERS-1;j++)
 	for(i=0;i<iStatScale;i++)
 	if(plrs_money[j][iStatBeginMonth+i]>0) // || j==0)
-	if(unsigned long (iStatBeginMonth+i)<=plr_month)
+	if((iStatBeginMonth+i) <= plr_month)
 	{
 		dpyold=plrs_money[j][iStatBeginMonth+i-1]-lMin;
 		dpyold/=dsy;

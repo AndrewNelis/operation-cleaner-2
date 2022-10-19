@@ -2,9 +2,8 @@
 #include <time.h>
 #include <limits.h>
 #include <math.h>
-//#include <windows.h>
-
 #include "oc2.h"
+
 // handles map calculations and functions
 
 extern short			SIZE_Y,BLOCKSIZE;
@@ -86,7 +85,7 @@ short PutMap(short mapx,short mapy,short material)
 	{
 		if(mapy>=0 && mapy<MAPSIZE)
 		{
-			map[mapx][mapy]=unsigned char(material);
+			map[mapx][mapy]=(unsigned char) material;
 			mapv[mapx][mapy]=0;
 			mapend[mapx][mapy]=block_end[map[mapx][mapy]];
 			return 0;
@@ -983,7 +982,7 @@ void SeedGenerator(char *cText)
 	}
 
 	while(dResult>UINT_MAX) dResult-=UINT_MAX;
-	randseed=unsigned int(dResult);
+	randseed=(unsigned int) dResult;
 
 //	GenerateMap(1);
 //	MapNrMessage();
@@ -1086,168 +1085,6 @@ void SaveMapNr()	// precaution for crash and stdout.txt doesn't get written
    fprintf(stream,"%u\n",randseed);
    fclose(stream);
 }
-/*
-void GenerateMap()			// changed in version 1.1
-{
-	short xc,yc,i,iTimes=0;
-	bool bfirst;
-	long lbuilding;
-	char fn[300];
-
-//	char msg[30];
-
-	while(iTimes<10)
-	{
-
-//printf("***********************************\nBegin %u\n",randseed);
-	SaveMapNr();
-	SDL_Delay(100);
-
-	iPprogress=0;
-
-//	boolJobDone=true;
-	ShowParseProgress("Begin");
-	ZeroMap(plr_gametype);
-
-	ShowParseProgress("GenerateGround");
-	GenerateGround();
-
-//	for(xc=0;xc<MAPSIZE;xc++)
-//	for(yc=0;yc<MAPSIZE;yc++)
-//		maptarget[xc][yc]=false;
-
-	ShowParseProgress("LoadMapCode");
-	yc=0;
-	i=0;		// just a counter to prevent lock-up
-	bfirst=true;
-
-//	for(xc=0;xc<43;xc++)
-//		printf("%s %u %u %s\n",b_localename[xc],xc,b_freq[xc],b_name[xc]);
-
-	do
-	{
-	i++;
-
-	if(bfirst==true)
-		lbuilding=randseed;
-	else
-		lbuilding=rand()%lb_freq;
-
-//	sprintf(msg,"rs %u %u",randseed,lb_freq);
-//	AddMessage(msg,1);
-
-
-	//	printf("lbuilding: %d/%d\n",lbuilding,lb_freq);
-	xc=0;
-	while(lbuilding>0) // && b_freq[xc]>0)
-	{
-//		printf("lbuilding: %s %d/%d\n",b_localename[xc],lbuilding,b_freq[xc]);	// AVOID USING THIS --> big stdout file if big number
-		lbuilding-=b_freq[xc];
-		xc++;
-		if(b_freq[xc]<=0) xc=0;
-	}
-	if(xc>0) xc--;
-
-//	printf("SEL lbuilding: %s (%s) %d/%d\n",b_localename[xc],b_name[xc],lbuilding,b_freq[xc]);
-
-	sprintf(fn,"buildings\\%s.map",b_name[xc]);
-	LoadMapCode(fn);
-//	printf("%s [%d] %d\n",fn,b_freq[xc],xc);
-
-//	yc=FindPlace(0,MAPSIZE);
-
-	yc=ParseMapCode(bfirst);
-	if(yc>0 && bfirst==true)
-		{
-//		SetTargetArea();
-		DefineTargetArea();
-		bfirst=false;
-		iTargetbuilding=xc;
-
-//		iTargetbuilding=xc;
-		}
-	} while(yc>0 && i<100); //FindPlace(0,MAPSIZE)==0);
-
-//	ShowParseProgress("SmoothGround");
-//	SmoothGround();
-
-	ShowParseProgress("GenerateTrees");
-	GenerateTrees();
-
-	ShowParseProgress("AddExtras");
-	AddExtras();
-	BuildPipes();
-
-	for(xc=0;xc<MAPSIZE;xc++)
-	for(yc=0;yc<MAPSIZE;yc++)
-	{
-		mapend[xc][yc]=block_end[map[xc][yc]];
-		mapv[xc][yc]=0;
-//		mapvertv[xc][yc]=0;
-	}
-
-	lTargetValue=TargetValue();
-	lOtherValue=OtherValue();
-	iDrawSmallMap=1;
-	customer_nr=rand()%MAXCUSTOMERS;
-
-	srand( (unsigned)time( NULL ));
-
-//	EmptyMessages();
-
-	m_button=0;
-	m_event=0;
-	m_button_up=0;
-
-	m_down_x=0;
-	m_down_y=0;
-	m_up_x=0;
-	m_up_y=0;
-
-	// check that there is target area
-	bfirst=false;
-	for(xc=0;xc<MAPSIZE;xc++)
-	for(yc=0;yc<MAPSIZE;yc++)
-		if(maptarget[xc][yc]==true) bfirst=true;
-
-	if(bfirst==false)
-	{
-//		printf("NO TARGETBUILDING!!!\n");
-		AddMessage("*************************",2);
-		AddMessage(gametxt[203],2);	//Error creating map.
-		sprintf(fn,"%u",randseed);
-		AddMessage(fn,2);
-		AddMessage("*************************",2);
-		iTimes++;
-		randseed=LongRandom();		// random map
-	}
-	else
-	{
-		iTimes=30000;
-	}
-
-	}
-
-	if(iTimes>=10 && iTimes!=30000)
-	{
-		sprintf(fn,"%s",gametxt[203]);	//Error creating map.
-		OKBox(fn,40);
-	}
-//	printf("End %u\n\n\n",randseed);
-
-//	FindTargetBuilding();
-
-//	// Count the checksum of the map
-	lbuilding=0;
-	for(xc=0;xc<MAPSIZE;xc++)
-	for(yc=0;yc<MAPSIZE;yc++)
-		lbuilding+=map[xc][yc];
-
-	sprintf(fn,"Sum: %u",lbuilding);
-	AddMessage(fn,1);
-	CountMapSum();
-}
-*/
 
 void GenerateMap(short iCode)			// icode 0=no message
 // changed in version 1.2

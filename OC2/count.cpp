@@ -494,8 +494,12 @@ void StoreStats()
 	for(i=1;i<MAXSTATS-2;i++)
 	if(plrs_money[ip][i]>0)
 	{
-		if(abs(plrs_money[ip][i]-plrs_money[ip][i-1])<lMin) lMin=abs(plrs_money[ip][i]-plrs_money[ip][i-1]);
-		if(abs(plrs_money[ip][i]-plrs_money[ip][i-1])>lMax) lMax=abs(plrs_money[ip][i]-plrs_money[ip][i-1]);
+		if(abs((long) (plrs_money[ip][i]-plrs_money[ip][i-1]))<lMin) {
+			lMin = abs((long) (plrs_money[ip][i]-plrs_money[ip][i-1]));
+		}
+		if(abs((long) (plrs_money[ip][i]-plrs_money[ip][i-1]))>lMax) {
+			lMax = abs((long) (plrs_money[ip][i]-plrs_money[ip][i-1]));
+		}
 	}
 
 	if(lMin<lMax)
@@ -1039,10 +1043,10 @@ unsigned int CharToInt(char * cText)
 
 void LastActionTime()
 {
-struct _timeb tstruct;
+struct timeb tstruct;
 time_t ltime;
 
-_ftime( &tstruct );
+ftime( &tstruct );
 time(&ltime);
 
 iLastActionMsec=tstruct.millitm;
@@ -1110,7 +1114,7 @@ unsigned long LongRandom()	// 0-4294967295
 				dsqrt=sqrt(oldm_x[cmouse]*oldm_y[cmouse])+dtime;
 			}
 
-			dresult+=unsigned long(dsqrt)%10*dfold;
+			dresult += (unsigned long)dsqrt % 10 * dfold;
 			dfold*=10;
 		}
 
@@ -1123,5 +1127,5 @@ unsigned long LongRandom()	// 0-4294967295
 
 //	printf("dresult %f\n",dresult);
 //	printf("Longrandom ends\n");
-	return unsigned long(dresult);
+	return (unsigned long) dresult;
 }

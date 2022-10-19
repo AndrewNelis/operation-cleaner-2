@@ -1,4 +1,5 @@
-// #include "OC2b.h"
+#include "SDL/SDL.h"
+#include <cstdio>
 
 void			Actions();
 void			AddDampers();
@@ -9,6 +10,7 @@ void			AddExplosive();
 void			AddExtras();
 void			AddHelp(char addtxt[30],char hlpcolor);	// 0 white, 1 black, 2 red, 3 green
 void			AddMessage(char addtxt[30],char msgcolor);	// 0 white, 1 black, 2 red, 3 green
+void            BeginRandomization();
 void			BuildPipes();
 unsigned int	CharToInt(char * cText);
 bool			CheckCareerCustomers();
@@ -83,6 +85,7 @@ unsigned long	LongRandom();
 void			LoadSaveGameHeaders();
 void			LoadSettings();
 void			LoadTheme(char *file);
+int             mainbuild(unsigned int argc);
 void			Mainstructure();
 short			MapBlock(short mapx, short mapy);
 void			MapCount();
