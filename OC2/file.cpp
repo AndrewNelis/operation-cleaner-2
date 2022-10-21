@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+#include <glob.h>
 
 short save_version=2;		// save file version number
 
@@ -139,7 +140,7 @@ void CloseFile()
 {
     if( fclose( stream ) )
 	{
-	printf( "The file was not closed\n");
+		printf( "The file was not closed\n");
 	}
 }
 
@@ -178,31 +179,15 @@ if(iCode==0)
 
 		lb_freq=0;
 
-	  WIN32_FIND_DATA FindFileDataB;
-	  HANDLE hFindB;
-
-	  hFindB = FindFirstFile("buildings/*.map", &FindFileDataB);
-
-	  if (hFindB == INVALID_HANDLE_VALUE) {
-		printf ("Invalid File Handle (buildings). Get Last Error reports %d\n", GetLastError ());
-	  } else
-		{
-	//    printf ("The first file found is %s\n", FindFileDataB.cFileName);
-
-		while(GetLastError()!=ERROR_NO_MORE_FILES)
-		{
-			l=strlen(FindFileDataB.cFileName);
-
-			for(c=0;c<l-4;c++)
-				b_name[i][c]= FindFileDataB.cFileName[c];
-
-			i++;
-	//    printf ("The found file is %s\n", FindFileDataB.cFileName);
-		FindNextFile(hFindB,&FindFileDataB);
+		glob_t globbuf;
+		int glob_return = glob("buildings/*.map", 0, NULL, &globbuf);
+		if (glob_return != 0) {
+			printf("Glob buildings/*.map failed with code: %d\n", glob_return);
 		}
 
-		FindClose(hFindB);
-		FlushFileBuffers(hFindB);
+		for (int i=0; i<globbuf.gl_pathc; i++) {
+			l = strlen(globbuf.gl_pathv[i]);
+			strncpy(b_name[i], globbuf.gl_pathv[i], l - 4);
 		}
 	}
 
@@ -221,11 +206,10 @@ if(iCode==0)
 
 				lb_freq+=b_freq[l];
 				CloseFile();
-
-//				printf("Building: %s %d\n",b_name[l],b_freq[l]);
 			}
-			else
+			else {
 				b_freq[l]=-1;
+			}
 	}
 
 }
@@ -423,10 +407,9 @@ void SaveGame()
 	struct tm *newtime;
 	time_t aclock;
 
-//	_strdate(cdate);
 	time( &aclock );
 	newtime = localtime( &aclock );
-	strftime(cdate,20,"%y-%m-%d %H:%M",newtime);
+	strftime(cdate, 20, "%y-%m-%d %H:%M", newtime);
 
 	sprintf(sfile,"save\\plr%02d.txt",plr_slot);
 
@@ -494,12 +477,12 @@ bool LoadGame()
 	char sfile[20];
 	short ix,i;
 	long lcheck,lcheck2,lcheckfromfile,ltemp;
-	char cdate[10];
+	// char cdate[10];
 	char tempname[40];
 	char tempdate[15];
 	char tmp[100];
 
-	_strdate(cdate);
+	// _strdate(cdate);
 
 	sprintf(sfile,"save\\plr%02d.txt",plr_slot);
 
@@ -605,104 +588,82 @@ bool LoadGame()
 
 void LoadButtonThemes()
 {
-short i=0,l;
-unsigned char c;
-char *msg="";
+	int i;
+	short l;
+	unsigned char c;
+	char *msg = "";
 
-if(cButtonFileList[0][0]==0)
-{
-  WIN32_FIND_DATA FindFileData;
-  HANDLE hFind;
-
-  hFind = FindFirstFile("themes/*.bmp", &FindFileData);
-
-  if (hFind == INVALID_HANDLE_VALUE) {
-    printf ("Invalid File Handle (themes). Get Last Error reports %d\n", GetLastError ());
-  } else
+	if (cButtonFileList[0][0] == 0)
 	{
-//    printf ("The first file found is %s\n", FindFileData.cFileName);
 
-	while(GetLastError()!=ERROR_NO_MORE_FILES)
-	{
-		l=strlen(FindFileData.cFileName);
-		for(c=0;c<l-4;c++)
-			cButtonFileList[i][c]= FindFileData.cFileName[c];
+		glob_t globbuf;
+		int glob_return = glob("themes/*.bmp", 0, NULL, &globbuf);
 
-		sprintf(msg,"%s",cButtonFileList[i]);
-		if(strcmp(msg,cButtonFile)==0)
+		if (glob_return != 0)
 		{
-			sButtonSelected=i;
-			sButtonBegin=i;
+			printf("Themes listing: Glob error: %d\n", glob_return);
 		}
-//		printf ("The next file found is %s\n", FindFileData.cFileName);
-		i++;
-		FindNextFile(hFind,&FindFileData);
+		else
+		{
+
+			for (i = 0; i < globbuf.gl_pathc; i++)
+			{
+				l = strlen(globbuf.gl_pathv[i]);
+				strncpy((char *)cButtonFileList[i], globbuf.gl_pathv[i], l - 4);
+				sprintf(msg, "%s", cButtonFileList[i]);
+				if (strcmp(msg, cButtonFile) == 0)
+				{
+					sButtonSelected = i;
+					sButtonBegin = i;
+				}
+			}
+			globfree(&globbuf);
+		}
 	}
 
-    FindClose(hFind);
-	FlushFileBuffers(hFind);
-	}
-
-//if(sButtonSelected>3) sButtonBegin=sButtonSelected-4;
-
-}
-
-if(sButtonBegin>0 && i<6) sButtonBegin=0;
-while(cButtonFileList[sButtonBegin+4][0]==0 && sButtonBegin>0) sButtonBegin--;	// scroll the list
-
+	if (sButtonBegin > 0 && i < 6)
+		sButtonBegin = 0;
+	while (cButtonFileList[sButtonBegin + 4][0] == 0 && sButtonBegin > 0)
+		sButtonBegin--; // scroll the list
 }
 
 
 void LoadLanguages()
 {
-short i=0,l;
+short i=0, j, l;
 unsigned char c;
 
 if(cLanglist[0][0]==0)
 {
 
-  WIN32_FIND_DATA FindFileData;
-  HANDLE hFind;
+	glob_t globbuf;
 
-  hFind = FindFirstFile("languages/*.", &FindFileData);
+  	int glob_result = glob("languages/*.", 0, NULL, &globbuf);
 
-  if (hFind == INVALID_HANDLE_VALUE) {
-    printf ("Invalid File Handle (languages). Get Last Error reports %d\n", GetLastError ());
-  } else
-	{
-//    printf ("The first file found is %s\n", FindFileData.cFileName);
+	if (glob_result != 0) {
+		printf("Failed to load language: glob result: %d\n", glob_result);
+	}
 
-	while(GetLastError()!=ERROR_NO_MORE_FILES)
-	{
-		l=strlen(FindFileData.cFileName);
+	for (i=0, j=0; i<globbuf.gl_pathc; i++) {
+		l = strlen(globbuf.gl_pathv[i]);
 
-		if(FindFileData.cFileName[0]!='.')
+		if(globbuf.gl_pathv[i][0] != '.')
 		{
-			for(c=0;c<l;c++)
-				cLanglist[i][c]= FindFileData.cFileName[c];
+				strncpy(cLanglist[j], globbuf.gl_pathv[i], l);
 
-			if(strcmp(cLanglist[i],cLangfile)==0)
-			{
-				sLangSelected=i;
-//				sButtonSelected=i;
-				sLangBegin=i;
-			}
-			i++;
+				if (strcmp(cLanglist[j], cLangfile)==0)
+				{
+					sLangSelected=j;
+					sLangBegin=j;
+				}
+			j++;
 		}
-		FindNextFile(hFind,&FindFileData);
+
+		if(sLangBegin>0 && j<4) sLangBegin=0;
+
+		while(cLanglist[sLangBegin+3][0]==0 && sLangBegin>0) sLangBegin--;	// scroll the list
 	}
-
-    FindClose(hFind);
-	FlushFileBuffers(hFind);
 	}
-
-if(sLangBegin>0 && i<4) sLangBegin=0;
-
-while(cLanglist[sLangBegin+3][0]==0 && sLangBegin>0) sLangBegin--;	// scroll the list
-//if(sLangSelected>2) sLangBegin=sLangSelected-3;
-
-}
-
 }
 
 
@@ -810,6 +771,12 @@ void SaveSettings()
 	}
 }
 
+void toupper(char* text) {
+	while (*text = toupper(*text)) {
+		text++;
+	}
+}
+
 void LoadMapCode(char * file)		// loads 'script' of building to memory for execution
 {
 	short i,iToolong;
@@ -835,7 +802,7 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 			}
 
 			fgets(mapcode[i],1000,stream);
-			_strupr(mapcode[i]);		// capitalize
+			toupper(mapcode[i]);		// capitalize
 			mapcode[i][strlen(mapcode[i])-1]=0;
 			i+=2;
 
@@ -1011,13 +978,15 @@ void GetCustomers()
 }
 
 /* save & compress map file */
-short SaveMap(char const* s)
+short SaveMap(char* s)
 {// illegal chars: \/:*?"<>|
-	short ix,iy;
+	int ix,iy;
 	char *s2="";
 
-	for(ix=0;ix<(short) strlen(s);ix++)		// illegal chars -> _
-		if(s[ix]==34 || s[ix]==42 || s[ix]==47 || s[ix]==58 || s[ix]==60 || s[ix]==62 || s[ix]==63 || s[ix]==92 || s[ix]==124) s[ix]=95;
+	for(ix=0; ix < strlen(s); ix++)		// illegal chars -> _
+		if(s[ix]==34 || s[ix]==42 || s[ix]==47 || s[ix]==58 || s[ix]==60 || s[ix]==62 || s[ix]==63 || s[ix]==92 || s[ix]==124) {
+			s[ix] = 95;
+		}
 
 	if(strlen(s)<1) return 1;		// no zero-lengths
 
@@ -1102,7 +1071,7 @@ short LoadMap(char *s, short iCode)
 		lTargetValue=TargetValue();
 		lOtherValue=OtherValue();
 
-		if(DeleteFile("maptemp.tmp")==0)
+		if(remove("maptemp.tmp") != 0)
 		{
 //			printf("Error deleting maptemp.tmp!\n");	///
 			sprintf(cOKBoxText[0],"maptemp.tmp");
@@ -1150,7 +1119,7 @@ short LoadMapTemp(char *s)
 
 		CloseFile();
 
-		if(DeleteFile("maptemp.tmp")==0)
+		if(remove("maptemp.tmp") != 0)
 		{
 			sprintf(tmpc,"%s maptemp.tmp",gametxt[513]);	//Can't delete file:
 			OKBox(tmpc,40);
@@ -1165,45 +1134,35 @@ short LoadMapTemp(char *s)
 
 void LoadMaplist(short iCode)
 {
-short i=0,l;
+int l;
+int i=0;
 unsigned char c;
 
 if(ed_mapfile[0][0]==0 || iCode==1)
 {
 
-  WIN32_FIND_DATA FindFileData;
-  HANDLE hFind;
+	glob_t maps;
 
-  hFind = FindFirstFile("maps/*.c2m", &FindFileData);
+	int glob_return = glob("maps/*.c2m", 0, NULL, &maps);
 
-  if (hFind == INVALID_HANDLE_VALUE) {
-    printf ("Invalid File Handle (maps). Get Last Error reports %d\n", GetLastError ());
-  } else
-	{
+  	if (glob_return != 0) {
+    	printf ("Failed to find maps: Glob errorcode: %d\n", glob_return);
+  	} else {
 	  ed_mapfilenr=0;
-//    printf ("The first file found is %s\n", FindFileData.cFileName);
 
-	while(GetLastError()!=ERROR_NO_MORE_FILES)
-	{
-		l=strlen(FindFileData.cFileName)-4;
-
-		if(FindFileData.cFileName[0]!='.')
-		{
-			if(i<MAXMAPFILES)
+		int j;
+		for (i=0; i<maps.gl_pathc; i++) {
+			if(maps.gl_pathv[i][0] != '.' && i < MAXMAPFILES)
 			{
-			for(c=0;c<l;c++)
-				ed_mapfile[i][c]= FindFileData.cFileName[c];
-
-			i++;
+				l = strlen(maps.gl_pathv[i]) - 4;
+				strncpy(ed_mapfile[j], maps.gl_pathv[i], l);
+				j++;
 			}
+
 		}
-		FindNextFile(hFind,&FindFileData);
+
 	}
 
-    FindClose(hFind);
-	FlushFileBuffers(hFind);
 	}
-
-}
 
 }
