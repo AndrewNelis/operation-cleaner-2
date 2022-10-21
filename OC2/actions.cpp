@@ -1970,7 +1970,7 @@ void CheckInputBoxActions()
 //			printf("SC: %d x%d y%d\n",sc,x1,y1);
 			if(sc>=32 && sc<=255 && cInputCursor<cInputLimit-1)
 			{
-				cInputText[cInputCursor]=unsigned char(sc);
+				cInputText[cInputCursor] = (unsigned char) sc;
 				cInputCursor++;
 			}
 		}

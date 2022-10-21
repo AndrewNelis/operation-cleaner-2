@@ -4,9 +4,6 @@
 #include <time.h>
 #include "oc2.h"
 
-long lMapnr;
-extern unsigned int		randseed;
-
 // OPERATION CLEANER 2
 // JAN NYMAN
 

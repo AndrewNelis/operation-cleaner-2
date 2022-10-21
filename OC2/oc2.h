@@ -39,7 +39,7 @@ void			DrawFillRect(int left_top_x, int left_top_y, int right_bottom_x, int righ
 void			DrawFinancialMenu();
 void			DrawLine(int left,int top,int right,int bottom,short r,short g,short b);
 void			DrawMenus();
-void			DrawNormalText(char *text,int x,int y, int color);
+void			DrawNormalText(char const* text,int x,int y, int color);
 void			DrawRect(int left_top_x, int left_top_y, int right_bottom_x, int right_bottom_y, int r, int g, int b);
 void			DrawTextButton(char * text,int left_top_x, int left_top_y, int right_bottom_x, int right_bottom_y);
 void			DrawTextRect(char * text,short left,short top,short right,short bottom);
@@ -71,7 +71,7 @@ void			HandleBlocks();
 void			HandleExplosives();
 int				InitSDL();
 void			LastActionTime();
-void			LoadBMP(char *file,unsigned char imagenr);
+void			LoadBMP(char const* file,unsigned char imagenr);
 void			LoadButtonThemes();
 bool			LoadGame();
 void			LoadGameTexts();

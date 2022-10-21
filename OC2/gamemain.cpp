@@ -37,7 +37,7 @@ double					dp_money, dp_payment, dp_extracost, dp_movingcost, dp_damperend, dp_r
 char					plr_slot;
 extern char				cSaveLoadFile;
 
-char				exp_selected;
+extern char				exp_selected;
 extern long				lTimer;
 
 char					cLangfile[50];

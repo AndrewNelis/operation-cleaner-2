@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <sys/timeb.h>
+#include <sys/time.h>
 #include "SDL/SDL.h"   /* All SDL App's need this */
 #include "oc2.h"
 
@@ -1043,16 +1043,17 @@ unsigned int CharToInt(char * cText)
 
 void LastActionTime()
 {
-struct timeb tstruct;
-time_t ltime;
+	// XXX: This is just for seeding LongRandom() - which we can likely just replace with system
+	//      rng func calls.
+	struct timeval tv;
 
-ftime( &tstruct );
-time(&ltime);
+    gettimeofday(&tv,NULL);
+    double milliseconds = (tv.tv_sec * 1000)+(tv.tv_usec/1000);
+	double seconds = tv.tv_sec;
 
-iLastActionMsec=tstruct.millitm;
-dPrevActionTime=dLastActionTime;
-dLastActionTime=ltime*1000+iLastActionMsec;
-
+	iLastActionMsec=milliseconds;
+	dPrevActionTime=dLastActionTime;
+	dLastActionTime=seconds * 1000 + iLastActionMsec;
 }
 
 void GenerateRandSeed()
