@@ -1098,7 +1098,9 @@ void GenerateMap(short iCode)			// icode 0=no message
 iPprogress=0;
 ShowParseProgress(gametxt[506]);	// please wait
 
-mainbuild(randseed);
+// This causes a recursion.
+// Made sense for external dll
+// mainbuild(randseed);
 ShowParseProgress(gametxt[506]);
 
 LoadMap("",0);
