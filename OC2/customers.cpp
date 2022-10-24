@@ -207,7 +207,7 @@ long tmpCost;
 
 void GenerateCustomerData(short iCode)
 {
-	char * fn="";
+	char fn[52];
 	unsigned int ix;
 	bool bOk=false;
 

@@ -1021,7 +1021,7 @@ void StatisticsBegin()
 
 void LoadMapMessage(char * fn)
 {
-	char *msg="";
+	char msg[30];
 	AddMessage("=========================",0);
 	AddMessage(gametxt[514],iTextColor);	//Loaded map file
 	sprintf(msg,"%.29s",fn);
@@ -1036,7 +1036,7 @@ void CheckMenuActions()
 	short selection;
 	double dTemp;
 	bool bOk;
-	char *msg="";
+	char msg[50];
 	char i,j;
 
 	if(m_button_up==1 && m_event==2 && m_up_x>xmiddle-150 && m_up_x<xmiddle+150)

@@ -323,7 +323,7 @@ void GetMapData()
 void GetCityData()
 {
 	short iCounter,iRow,i;
-	char * cCfile="";
+	char cCfile[100];
 
 	for(iCounter=0;iCounter<MAXCITIES;iCounter++)
 	{
@@ -958,7 +958,7 @@ void SaveHiscores()
 void GetCustomers()
 {
 	int iCounter;
-	char * cBfile="";
+	char cBfile[20];
 
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)
 	{
@@ -982,7 +982,7 @@ void GetCustomers()
 short SaveMap(char* s)
 {// illegal chars: \/:*?"<>|
 	int ix,iy;
-	char *s2="";
+	char s2[30];
 
 	for(ix=0; ix < strlen(s); ix++)		// illegal chars -> _
 		if(s[ix]==34 || s[ix]==42 || s[ix]==47 || s[ix]==58 || s[ix]==60 || s[ix]==62 || s[ix]==63 || s[ix]==92 || s[ix]==124) {
@@ -1034,7 +1034,7 @@ short SaveMap(char* s)
 short LoadMap(char *s, short iCode)
 {
 	short ix,iy;
-	char *s2="";
+	char s2[30];
 
 	if(iCode!=0)
 	{
@@ -1089,7 +1089,7 @@ short LoadMap(char *s, short iCode)
 short LoadMapTemp(char *s)
 {
 	short ix,iy,itmp;
-	char *s2="";
+	char s2[30];
 	char tmpc[52];
 
 	sprintf(temp_ed_building,"%c",0);

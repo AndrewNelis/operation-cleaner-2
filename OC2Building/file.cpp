@@ -250,7 +250,7 @@ void LoadSettings()
 void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 {
 	int iCounter;
-	char* cBfile;
+	char cBfile[60];
 
 	for(iCounter=0;iCounter<MAXBLOCKS;iCounter++)
 	{
@@ -360,7 +360,7 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 void GetCustomers()
 {
 	int iCounter,ix;
-	char* cBfile;
+	char cBfile[20];
 
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)
 	{

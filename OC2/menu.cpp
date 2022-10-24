@@ -113,7 +113,7 @@ void Themeselector()
 {
 short i;
 char msg[100];
-char *temp="";
+char temp[50];
 
 	DrawFillRect(xmiddle-150,ymiddle-100,xmiddle+125,ymiddle,cBaseColours[0]-50,cBaseColours[1]-50,cBaseColours[2]-50);
 
