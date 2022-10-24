@@ -160,11 +160,10 @@ char temp[50];
 }
 
 char* strupr(char* text) {
-	char* upper;
 	for (int i=0; i<strlen(text); i++) {
-		upper[i] = toupper(text[i]);
+		text[i] = toupper(text[i]);
 	}
-	return upper;
+	return text;
 }
 
 void NewsPaper(short iCode)
