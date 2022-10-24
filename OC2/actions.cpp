@@ -2221,7 +2221,7 @@ for(ix=0;ix<MAXCAREERMAPS;ix++) if(map_city[ix]==sel_city && plr_usedmaps[ix]==0
 void CheckCustomerActions()
 {
 	short ix;
-	char * fn="";
+	char fn[52] = {0};
 	if(m_event==2)
 	{
 //		cDraw=2;
@@ -2289,7 +2289,9 @@ void CheckCustomerActions()
 //					MapNrMessage();
 //				else
 				{
-					for(ix=0;ix<(short) strlen(map_nrc[sel_customer]);ix++) fn[ix]=map_nrc[sel_customer][ix];
+					for(ix=0;ix<(short) strlen(map_nrc[sel_customer]);ix++) {
+						fn[ix]=map_nrc[sel_customer][ix];
+					}
 					LoadMapMessage(fn);
 //					MapNrMessage();
 				}
