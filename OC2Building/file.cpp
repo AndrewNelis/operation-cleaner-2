@@ -1,9 +1,9 @@
-//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include "OC2b.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <glob.h>
+#include <dirent.h>
 #include <ctype.h>
 /*
 extern char						b_name[BUILDINGS][50];
@@ -154,20 +154,23 @@ if(iCode==0)
 	{
 		lb_freq = 0;
 
-		glob_t globbuf;
+		struct dirent *de;
+		DIR *dr = opendir("buildings");
+		if (dr == NULL) {
+			printf("Failed to open buildings folder");
+			exit(EXIT_FAILURE);
+		}
 
-		if (glob("buildings/*.map", 0, NULL, &globbuf) == 0) {
-
-			for (int j=0; j<globbuf.gl_pathc; j++) {
-				l = strlen(globbuf.gl_pathv[j]);
-				// Path excluding ".map" extension
-				strncpy(b_name[j], globbuf.gl_pathv[j], l - 4);
+		while ((de = readdir(dr)) != NULL) {
+			if (de->d_type != DT_REG || strstr(de->d_name, ".map") == NULL) {
+				continue;
 			}
-
-
-		};
-
-		globfree(&globbuf);
+			l = strlen(de->d_name);
+			// Path excluding ".map" extension
+			strncpy(b_name[i], de->d_name, l - 4);
+			i++;
+		}
+		closedir(dr);
 	}
 
 	for(l=0;l<i;l++)
