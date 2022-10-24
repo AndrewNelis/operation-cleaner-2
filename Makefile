@@ -1,12 +1,15 @@
 CXX = g++
 FLAGS =-lSDL -lz -fpermissive -Wno-narrowing -Wno-write-strings  # -Wall
-# libbuilding sources
 SRCS=$(wildcard ./OC2/*.cpp)
+BSRCS=$(wildcard ./OC2Building/*.cpp)
 
-all: oc2
+all: oc2 oc2b
 
-oc2:
-	$(CXX) $(FLAGS) $(SRCS) -o oc2
+oc2b: $(BSRCS)
+	$(CXX) $(FLAGS) $(BSRCS) -g -o oc2build
+
+oc2: $(SRCS)
+	$(CXX) $(FLAGS) $(SRCS) -g -o oc2
 
 clean:
-	rm -f *.out oc2building.so liboc2building.so OC2Building/*.o *.o oc2
+	rm -f oc2 oc2build

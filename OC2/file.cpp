@@ -181,7 +181,7 @@ if(iCode==0)
 		DIR *dr = opendir("buildings");
 
 		if (dr == NULL) {
-			printf("Failed to open buildings folder");
+			printf("Failed to open buildings folder\n");
 			exit(EXIT_FAILURE);
 		}
 

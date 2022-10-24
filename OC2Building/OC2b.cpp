@@ -1,11 +1,8 @@
-//#include "SDL/SDL.h"   /* All SDL App's need this */
 #include <stdio.h>
-//#include <stdlib.h>
-//#include <time.h>
-// //#include <windows.h>
+#include <stdlib.h>
 #include "OC2b.h"
 
-unsigned int 		lMapnr;
+unsigned int lMapnr;
 extern unsigned int randseed;
 
 // OPERATION CLEANER 2 BUILDING DLL
@@ -14,34 +11,35 @@ extern unsigned int randseed;
 // VERSION 1.2
 // 1.2.2007
 
-// extern "C" __declspec(dllexport)
 int mainbuild(unsigned int argc)
 {
-	lMapnr=argc;
-/*	if(argc>1)
-	{
-		printf("argc %d: %s\n",argc,argv[1]);
-		lMapnr=atoi(argv[1]);
-		printf("Number: %u\n",lMapnr);
-	}
-*/
-//	printf("argc %u %u\n",argc,lMapnr);
-
+	lMapnr = argc;
 	LoadNeededFiles();
-//	printf("LoadNeededFiles()\n");
 
-	if(lMapnr>=0)
+	if (lMapnr >= 0)
 	{
-		randseed=lMapnr;
+		randseed = lMapnr;
 		BeginRandomization();
-//		printf("BeginRandomization()\n");
 		GenerateMap();
-//		printf("GenerateMap()\n");
 		SaveMap("oc2tmp");
-//		printf("SaveMap\n");
 	}
 
-//	exit(0);
+	return 0;
+}
 
-return 0;
+int main(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		char *end;
+		int seed = strtol(argv[1], &end, 10);
+		mainbuild(seed);
+		return 0;
+	}
+	else
+	{
+		printf("Usage: %s <seed>\n", argv[0]);
+		return 1;
+	}
+	return 0;
 }

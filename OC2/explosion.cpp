@@ -465,7 +465,7 @@ CountNeeded(1);
 
 void ExplosionSound(short itype, long lMax)
 {
-	char mediafile[100];
+	char mediafile[20];
 
 	if(setSoundEffects==1)
 	{

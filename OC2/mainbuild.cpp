@@ -1,19 +1,20 @@
+#include <stdlib.h>
 #include "oc2.h"
 
 unsigned int 		lMapnr;
 extern unsigned int randseed;
 
-int mainbuild(unsigned int argc)
+// instead of a dll, we're just calling the external program
+// to generate the map for us.
+int mainbuild(unsigned int seed)
 {
-	lMapnr=argc;
-	LoadNeededFiles();
-	if(lMapnr>=0)
-	{
-		randseed=lMapnr;
-		BeginRandomization();
-		GenerateMap(1);
-		SaveMap("oc2tmp");
+	char command[30] = {0};
+	sprintf(command, "./oc2build %d", seed);
+	int ret = system(command);
+	if (ret != 0) {
+		printf("oc2build exited with %d", ret);
+		exit(EXIT_FAILURE);
 	}
 
-return 0;
+	return 0;
 }
