@@ -1,0 +1,2 @@
+1024 768 16 1 1 1 0 40 5 default
+English

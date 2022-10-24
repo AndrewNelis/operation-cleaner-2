@@ -1,0 +1,44 @@
+Pankki
+Kerrostalo
+Silta
+Riippusilta
+Bunkkeri
+Linja-autoasema
+Parkkitalo
+Linna
+Viljasiilokompleksi
+Tehdas
+Paloasema
+Valimo
+Lasinen pilvenpiirtäjä
+Sairaala
+Hotelli
+Mökki
+Ostari
+Kartano
+Elokuvateatteri
+Näkötorni
+Tähtitorni
+Toimistorakennus
+Öljynjalostamo
+Öljynporaustorni
+Öljysäiliökompleksi
+Vankila
+Omakotitalo
+Radiomasto
+Robottipilvenpiirtäjä
+Rivitalo
+Koulu
+Huoltoasema
+Ostoskeskus
+Pilvenpiirtäjä
+Pilvenpiirtäjä suurella alakerroksella
+Savupiippu
+Urheilukeskus
+Stadion
+Tommyn talo
+Juna-asema
+TV-masto
+Varastorakennus
+Vesitorni, kanttarelli
+Vesitorni, kuutio

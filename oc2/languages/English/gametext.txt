@@ -1,0 +1,560 @@
+Yes
+No
+Ok
+Cancel
+Next
+Previous
+Back
+Explosive not set in map
+No explosive charges set
+Cancel job
+Really cancel your current demolition job?
+Map nr/text:
+Insert company name
+Monthly costs:
+Explosion costs
+Damages inflicted
+Profit
+Loss
+Taxes
+Cleanup
+Transport
+Cleanup costs
+Cancel job fine
+Moving to city:
+Moving would cost
+Change city
+Customer name
+Map nr
+Building name
+Building type
+Payment
+Preview
+Accept
+Can't place on air
+Nr of dampers not placed:
+Current city
+Money
+Cost/day
+Reputation
+You stink - bigtime
+The BAD exploder
+Mountebank of detonators
+Unreliable
+No good, not bad
+Pretty good
+Reliable
+Very good
+Very reliable
+Extremely good
+Extremely reliable
+The master detonator
+Jobs done
+Days in business
+Advanced management
+Continue game
+None
+Cost/month
+Heavy damage
+Medium damage
+Slight damage
+Superficial dmg
+Undamaged
+Add
+Select
+Remove
+Det.sel.
+Unit size
+Delay
+Direction
+Not directed
+Reset
+Readying takes
+Total cost
+Detonate
+Damper mode
+Expl. mode
+Financial decisions
+Zoom in
+Zoom out
+Sounds
+Customers
+Random map
+Finish this site
+Save & Load
+Exit to main menu
+Author:
+Samples:
+Change theme
+Quick game
+Begin career game
+Return to game
+Cancel current game
+Load game
+Save game
+Game settings
+About
+Quit
+Company name
+Change name
+How careful you are?
+Not at all
+Very careful
+Show dust
+Show explosions
+Save all done maps
+Resolution
+Delay in job
+High scores
+Theme selector
+Save settings
+Pay taxes
+Almost nothing
+Little
+Almost all
+Surely enough
+Accountant
+Incompetent
+Cheap
+Mediocre
+Authenticated
+Insurances
+Almost nothing
+Minimum
+Required
+All possible
+Competitors
+Cause delays in jobs
+Hire house squatters
+Ruin reputation
+Hire saboteurs
+of incomes
+Dynamite 20 %
+Dynamite 40 %
+Dynamite 60 %
+TNT
+C-4
+RDX
+Blast caps
+Detonators
+Fuse wire
+Dampers
+Workers
+Bulldozers
+Lorries
+Guards
+Player
+Language
+Initializing...
+Parsing map...
+Days of delay:
+Cost of delay: 
+Your site foreman wants to confirm:
+This is way too large amount of explosives
+for this site. Are you absolutely sure?
+Color depth/bits
+Scroll
+Extra costs:
+Your firm ran out of money.
+Maximum amount of explosives
+exceeded.
+We don't have enough money
+for this detonation plan.
+Move
+Explosives set on non-target building!
+Do you want to proceed?
+Career
+Action
+Proceed
+
+Workers affect on preparation
+and site clearing time.
+Bulldozers and lorries affect
+on site clearing time.
+Guards affect on security and
+handle possible problem
+situations.
+Each explosive charge takes
+one blast cap for detonation.
+One detonator is used in one
+detonation.
+The higher the explosive
+charges are set the longer
+fuse wires are needed.
+Dampers absorb explosions
+power but they are not
+indestructible or cheap.
+
+
+
+United Demolishers
+Advanced Demolition Company
+BlastDem Corporation
+Dynamic Wrecking Inc.
+Nexor Team
+
+
+
+
+
+Messages
+Help
+Error opening file
+Error creating map.
+Incompatible file version:
+
+
+
+
+
+DYNAMITE
+Velocity 2500-5500 m/s
+Dynamite is based on nitro-
+glycerin, a volatile high
+explosive that is absorbed
+into diatomaceous earth.
+Dynamite scale varies usually
+from 20 to 60. These figures
+reflect the strength of the
+charge. Nowadays newer
+explosives have replaced
+dynamite but it is pretty
+inexpensive choice.
+Usage: Dynamite can be used
+in all purposes. Low-power
+dynamite is well suited for
+clearing the site with delay
+fuse when the building has
+already collapsed.
+
+TNT (trinitrotoluene)
+Velocity 6900 m/s
+Trinitrotoluene is a very
+stable high explosive and it
+can be stored for years
+unlike dynamite. TNT is
+widely used in both military
+and civil purposes. It is
+quite toxic and it can cause
+health problems if handled
+without care. The outlook of
+the explosive resembles solid
+brick of soap.
+Usage: Mainly in hard
+structures such as steel or
+concrete.
+
+
+
+
+C-4
+Velocity 8300 m/s
+C-4 is actually a plastic 
+explosive that is made of
+RDX explosive, binder and
+plasticizer. It is very
+effective and should be
+used with great care. C-4 was
+developed in the 1960s. It is
+very inert and can be shaped
+and transported without fear
+that it would detonate.
+Usage: Mainly in hard
+structures such as steel or
+concrete.
+
+
+
+
+
+RDX
+Velocity 8700 m/s
+Also known as cyclonite,
+hexogen and cyclotrimethylene
+trinitramine. It is widely
+used by the military through-
+out the world. RDX was 
+initially discovered in 1890s
+but it took almost 50 years
+until an effective production
+method was found. One of the
+most powerful explosives ever
+manufactured, it should be
+used with extreme caution.
+NOTE: Recommended mainly for
+experienced detonators!
+Usage: Mainly in hard
+structures such as steel or
+concrete.
+
+Pine Bluff Courier
+MOVES IN!
+Our humble city very proud to have a new
+demolition firm. They moved in just today and
+it begins working within few days. We look
+forward and with great enthusiasm towards
+this new brave company.
+Our city welcomes you!
+
+
+Angry conservationists have occupied the
+building and they demand that it is saved from 
+demolition. They have chained themselves to the
+building.
+
+The tenants didn't leave the building at 
+agreed time.
+
+The city wants to examine the buildings 
+surrounding the target building to check their
+condition before the detonation.
+
+A minor fault was found from detonator's electric
+system but it was quickly found and eliminated.
+
+A major fault was found by manufacturer from 
+explosive type you are using. The fault must be
+examined before detonation may be done.
+
+Some of the explosive charges were placed 
+incorrectly because of carelessness.
+
+Some of the equipment was stolen and new 
+equipment had to be bought before job could 
+go on.
+
+Some careless hot air ballooner was nearing the
+demolition zone and job had to be delayed.
+
+Your crew is on strike for one day
+because you place the explosive charges
+always to the hardest places.
+
+Your insurance repays you $
+
+You haven't paid enough tax. 
+Additional taxes are
+
+Because of poor bookkeeping you have to
+pay additional expenses to expert:
+Fixing the bookkeeping costs
+
+You sabotaged your competitor
+The sabotage caused loss of
+The sabotage failed and you get caught.
+Pay punishment of
+You didn't find out competitors' plans
+and they got a valuable contract you
+were also pursuing.
+
+Demolition business news:
+GOES BANKRUPT!
+A well-known demolition firm for
+days has gone bankrupt.
+The reason was disaster in the demolition job. 
+Buildings surrounding the site were ruined.
+The repairing cost will be as high as $
+and the firm has no money for that.
+The firm had already some monetary problems.
+
+You finished all the tasks!
+Rank in the high score list:
+
+You have finished your career succesfully.
+
+You have received a reward of excellence in
+demolition business. The reward is 
+Reward of excellence:
+
+
+Credits
+- Simple Directmedia Layer (SDL) for graphics, 
+  control and sounds: http://www.libsdl.org
+  SDL Version:
+- Source code for sound playback:
+  http://docs.mandragor.org/
+- File compression code: http://www.zlib.net/
+- Sound effects: 
+  http://www.acoustica.com/
+  http://www.koumis.com/
+  http://www.ljudo.com/
+  http://www.partnersinrhyme.com/
+- Graphics ideas: poddster@blueyonder.co.uk
+- Game icon: Andrew Munford
+- Petri Nyman for the original idea (1985)
+Beta testers:
+Darren
+fireball@mytrashmail.com
+Jaztee@gmail.com
+Jussi Pakkanen
+Andrew Munford
+_Sisu_
+ikozlov@gmail.com 
+Mikis Hanenkamp
+Michael Reed
+
+
+
+
+
+Tutorial
+Tasks to do:
+Select customer
+Check crew
+Place explosives part 1
+Place explosives part 2
+Place dampers
+Detonate
+Finish the site
+
+Click on Customers button.
+You can select next and
+previous customers with
+buttons.
+You can preview the target
+area with Preview button.
+Select 4th customer (map nr
+236553) and click Accept.
+
+Click on Financial decisions
+button.
+You can increase or decrease
+the amount of your crew and
+view your stats.
+When ready click Continue.
+
+Now to your main task:
+Place correct amount of
+explosives to the target
+building. You'll notice you
+are on target area when
+block name on top right is
+on green text. Place these
+explosives to positions:
+X140 Y53 Dynamite 40% size 8
+X153 Y53 Dynamite 40% size 8
+X143 Y41 Dynamite 40% size 12
+X152 Y41 Dynamite 40% size 12
+
+
+
+
+
+You can replace charges when
+you click on Add button so
+it shows Select, and then
+select the charge on the
+scene. Another click replaces
+the charge.
+You can also direct explosion
+to certain direction. During
+placing press mouse button
+and drag mouse to desired
+direction. Or click on Add
+button so it shows Select.
+Then change direction
+with direction dial.
+
+
+Now place protective dampers
+to the scene around the
+target building. You get into
+Damper mode when you click
+Expl. mode button. Then click
+on the map and drag area
+with mouse where you wish to
+place dampers. Notice that
+lower part of the damper area
+must be on earth.
+The red circles around the
+explosives mean approximation
+of their destruction area.
+
+Detonate the charges by
+clicking Detonate button.
+
+Note that you can place
+explosives again and detonate
+them if the first detonation
+didn't go as planned.
+It is important to reduce the
+amount of rubble so that
+clearing costs are reduced,
+but placing charges on broken
+blocks costs more.
+
+End this site with clicking
+button Finish this site.
+
+This is end of tutorial.
+You'll need some more practise.
+That was a pretty decent detonation.
+Excellent job!
+Good luck to your career!
+
+
+
+
+
+
+Assist on
+Assist off
+Loose block(s)
+Loose pipe
+Pipes remade.
+Blocks dropping:
+Please wait...
+Show dropping blocks
+
+Map test OK.
+Map test failed!
+Save error. File name:
+Insert savefile name:
+Can't delete file:
+Loaded map file:
+
+End
+Cost
+
+
+Single block
+Fill
+Rectangle
+Filled rectangle
+Building
+Target area
+Cut and move area
+Test map
+Map settings
+Select building
+Clear all
+Return to editor
+Empty map
+Load map
+Cancel map edit
+Save as...
+Remake pipes
+Cut
+Copy
+Clear messages
+Map test must be succesfull before saving.
+Back to editor
+Map file
+Statistics
+Month
+Difficulty level
+Paste
+Customer name missing
+Building name missing
+Targetarea missing
+Difficulty level effects
+Moving costs
+Start money
+Damper endurance
+Daily and damper costs
+Damage costs
+
+
+
+
+#

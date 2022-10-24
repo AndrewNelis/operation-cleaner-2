@@ -1,0 +1,44 @@
+Bank
+Block
+Bridge
+Bridge, suspension
+Bunker
+Bus station
+Car park
+Castle
+Corn silo complex
+Factory
+Fire station
+Foundry
+Glass skyscraper
+Hospital
+Hotel
+Hut
+Mall
+Mansion
+Movie theater
+Observation tower
+Observatory
+Office building
+Oil refinery
+Oil rig
+Oil storage complex
+Prison
+Private house
+Radio mast
+Robot factory skyscraper
+Row house
+School
+Service station
+Shopping centre
+Skyscraper, rectangle
+Skyscraper with large ground floor
+Smokestack
+Sports center
+Stadium
+Tommy's house
+Train station
+TV mast
+Warehouse
+Water tower, chanterelle
+Water tower, cube

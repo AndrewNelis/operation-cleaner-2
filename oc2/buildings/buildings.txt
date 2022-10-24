@@ -1,0 +1,46 @@
+* THIS FILE CONTAINS ALL BUILDINGS IN THE GAME, MAX NUMBER OF BUILDINGS IS 100 *
+* THIS FILE IS NOT USED IN ANY GAME PURPOSES, IT'S JUST A LIST *
+1	-Bank
+2	-Block
+3	-Bridge
+4	-Bridge, suspension
+5	-Bunker
+6	-Bus station
+7	-Car park
+8	-Castle
+9	-Corn silo complex
+10	-Factory
+11	-Fire station
+12	-Foundry
+13	-Glass skyscraper
+14	-Hospital
+15	-Hotel
+16	-Hut
+17	-Mall
+18	-Mansion
+19	-Movie theater
+20	-Observation tower
+21	-Observatory
+22	-Office building
+23	-Oil refinery
+24	-Oil rig
+25	-Oil storage complex
+26	-Prison
+27	-Private house
+28	-Radio mast
+29	-Robot factory skyscraper
+30	-Row house
+31	-School
+32	-Service station
+33	-Shopping centre
+34	-Skyscraper, rectangle
+35	-Skyscraper with large ground floor
+36	-Smokestack
+37	-Sports center
+38	-Stadium
+39	-Tommy's house
+40	-Train station
+41	-TV mast
+42	-Warehouse
+43	-Water tower, chanterelle
+44	-Water tower, cube

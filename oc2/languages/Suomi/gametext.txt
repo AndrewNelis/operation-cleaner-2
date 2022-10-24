@@ -1,0 +1,560 @@
+Kyllä
+Ei
+Ok
+Peruuta
+Seuraava
+Edellinen
+Takaisin
+Räjähdettä ei asetettu.
+Ei räjähteitä.
+Keskeytä työ
+Haluatko todella keskeyttää työn?
+Kartan nro/teksti:
+Kirjoita yhtiösi nimi
+Kulut kuukaudessa:
+Räjäytyksen kulut
+Vahingonkorvaukset
+Voitto
+Tappio
+Verot
+Siivous
+Kuljetukset
+Siivouskulut
+Työn keskeytyskulut
+Muutto kaupunkiin:
+Muutto maksaisi
+Muutto
+Asiakkaan nimi
+Kartan nro
+Rakennuksen nimi
+Rakennuksen tyyppi
+Palkkio
+Esikatselu
+Hyväksy
+Ei voi asettaa ilmaan
+Suojia ei asetettu:
+Nykyinen kaupunki
+Rahaa
+Kulut/päivä
+Maine
+Tosi surkea
+PAHA räjäyttäjä
+Räjäyttäjien Auervaara
+Epäluotettava
+Ei hyvä, ei huono
+Melko hyvä
+Luotettava
+Todella hyvä
+Erittäin luotettava
+Äärimmäisen hyvä
+Ehdottoman luotettava
+Mestariräjäyttäjä
+Töitä tehty
+Päiviä alalla
+Jatkovalinnat
+Jatka peliä
+Ei mitään
+Kulut/kk
+Pahat vauriot
+Vaurioitunut
+Pienet vauriot
+Pintavaurio
+Ei vaurioita
+Lisää
+Valitse
+Poista
+Räj.val.
+Yksikön koko
+Viive
+Suunta
+Ei suunnattu
+Poista
+Valmisteluihin kuluu
+Kulut yhteensä
+Räjäytä
+Suojien asetus
+Räj. asetus
+Taloudelliset päätökset
+Suurempi
+Pienempi
+Äänet
+Asiakkaat
+Satunn. kartta
+Päätä työmaa
+Tallennus & Lataus
+Päävalikkoon
+Tekijä:
+Esimerkkejä:
+Vaihda ulkoasua
+Pikapeli
+Aloita ura
+Palaa peliin
+Keskeytä peli
+Lataa peli
+Tallenna peli
+Asetukset
+Tietoja
+Lopeta
+Yhtiön nimi
+Vaihda nimeä
+Kuinka varovainen olet?
+Ei yhtään
+Todella varovainen
+Näytä pöly
+Näytä räjähdykset
+Tallenna kaikki kartat
+Erottelukyky
+Viive työssä
+Huipputulokset
+Ulkoasun valinta
+Tallenna asetukset
+Maksa veroja
+Ei mitään
+Vähän
+Melkein kaikki
+Varmasti tarpeeksi
+Kirjanpitäjä
+Epäpätevä
+Halpa
+Keskiverto
+Ammattilainen
+Vakuutukset
+Ei mitään
+Vähin vaadittu
+Vaaditut
+Kaikki mahdolliset
+Kilpailijat
+Aiheuta hidasteita työmailla
+Pilaa maine
+Palkkaa talonvaltaajia
+Palkkaa sabotoija
+tuloista
+Dynamiitti 20 %
+Dynamiitti 40 %
+Dynamiitti 60 %
+TNT
+C-4
+RDX
+Nalleja
+Laukaisimia
+Sytytyslankaa
+Suojia
+Työntekijöitä
+Maansiirtokoneita
+Rekkoja
+Vartijoita
+Pelaaja
+Kieli
+Käynnistys...
+Kartan muodostus...
+Keskeytyksen kesto:
+Keskeytyksen kulut:
+Räjäytystyömään esimies haluaa varmistaa:
+Täällä on sijoiteltu aivan liian suuri määrä
+räjähteitä. Oletko aivan varma tästä?
+Värimäärä/bittiä
+Vieritys
+Lisäkulut:
+Yritykseltäsi loppuivat rahat.
+Räjähteitä ei voi asettaa
+enempää.
+Meillä ei ole tarpeeksi rahaa
+tähän räjäytyssuunnitelmaan.
+Siirrä
+Räjähteitä on asetettu kohdealueen ulkopuolelle!
+Haluatko jatkaa?
+Urapeli
+Toimet
+Tee toimet
+
+Työntekijöiden määrä vaikut-
+taa valmisteluaikaan.
+Maansiirtokoneet ja rekat
+vaikuttavat siivousaikaan.
+Vartijat vaikuttavat turval-
+lisuuteen ja hoitavat mahdol-
+lisia ongelmatilanteita.
+Jokainen räjähdyspanos tar-
+vitsee nallin räjähtääkseen.
+Yksi laukaisin käytetään joka
+räjäytyksessä.
+Mitä korkeammalle räjähde
+sijoitetaan sitä pitempi
+Sytytyslanka tarvitaan.
+Suojat vaimentavat räjähdyk-
+sen voimaa mutta eivät ole
+tuhoutumattomia tai halpoja.
+
+
+
+United Demolishers
+Advanced Demolition Company
+BlastDem Corporation
+Dynamic Wrecking Inc.
+Nexor Team
+
+
+
+
+
+Viestit
+Ohjeet
+Virhe tiedoston avaamisessa
+Virhe kartan luonnissa.
+Tallennustiedosto ei yhteensopiva:
+
+
+
+
+
+DYNAMIITTI
+Räjähdysnopeus 2500-5500 m/s
+Dynamiitti pohjautuu nitro-
+glyseriiniin, epävakaaseen
+räjähteeseen joka on sitou-
+tettu savipohjaiseen ainee-
+seen. Räjähteen asteikko
+vaihtelee välillä 20-60 ja se
+ilmaisee räjähteen voiman.
+Nykyisin uudemmat räjähteet
+ovat korvanneet dynamiitin
+mutta se on melko edullinen
+vaihtoehto.
+Käyttö: Voidaan käyttää
+kaikkiin tarkoituksiin. Vähä-
+tehoinen dynamiitti soveltuu
+hyvin kohteen siivoamiseen
+ajastetulla räjäytyksellä kun
+rakennus on sortunut.
+
+TNT (trinitrotolueeni)
+Räjähdysnopeus 6900 m/s
+TNT on hyvin vakaa räjähde ja
+sitä voidaan varastoida vuo-
+sikausiksi toisin kuin dyna-
+miittia. TNT:tä käytetään
+paljon sotilas- ja siviili-
+käytössä. Se on myrkillistä
+ja voi aiheuttaa terveys-
+ongelmia jos sitä käsitel-
+lään varomattomasti. Ulko-
+näöltä se muistuttaa pala-
+saippuaa.
+Käyttö: Pääasiassa koviin
+rakenteisiin kuten teräkseen
+ja betoniin.
+
+
+
+
+C-4
+Räjähdysnopeus 8300 m/s
+C-4 on oikeastaan muovi-
+räjähde joka koostuu RDX:stä,
+sitoja-aineesta ja muovitus-
+aineesta. Se on erittäin
+tehokasta ja sitä tulisi
+käyttää suurella varovai-
+suudella. C-4 kehitettiin
+1960-luvulla. Se on hyvin
+vakaa ja sitä voidaan muo-
+toilla ja kuljettaa ilman
+vaaraa.
+Käyttö: Pääasiassa koviin
+rakenteisiin kuten teräkseen
+ja betoniin.
+
+
+
+
+RDX
+Räjähdysnopeus 8700 m/s
+Tunnetaan myös sykloniittinä,
+hexogenina ja muilla nimillä.
+Sitä käytetään laajalti sota-
+teollisuudessa ympäri maail-
+maa. Se kehitettiin alunperin
+1890-luvulla mutta meni noin
+50 vuotta ennenkuin tehokas
+valmistuskeino kehitettiin.
+RDX on yksi voimakkaimmista
+koskaan kehitetyistä räjäh-
+teistä ja sitä tulisi käyttää
+äärimmäisellä varovaisuu-
+della.
+HUOM: Suositellaan vain koke-
+neiden räjäyttäjien käyttöön.
+Käyttö: Pääasiassa koviin
+rakenteisiin kuten teräkseen
+ja betoniin.
+Pine Bluff Courier
+MUUTTAA KAUPUNKIIN!
+Nöyrä kaupunkimme on ylpeä saadessaan uuden
+räjäytysyrityksen kaupunkiimme. Se muutti
+kaupunkiin tänään ja aloittaa työt lähipäivinä. 
+Katsomme innokkaina tulevaisuuteen luottaen
+tähän uuteen rohkeaan yritykseen.
+Kaupunkimme toivottaa teidät tervetulleiksi!
+
+
+Äkäiset luonnonsuojelijat ovat vallanneet
+rakennuksen ja vaativat ettei sitä räjäytetä.
+He ovat kahlinneet itsensä rakennukseen kiinni.
+
+
+Vuokralaiset eivät lähteneet rakennukesta
+sovittuna aikana.
+
+Kaupunki haluaa tutkia kohdetta ympäröivät
+rakennukset tarkistaakseen niiden kunnon ennen
+räjäytystöitä.
+
+Laukaisimesta löytyi pikkuvika mutta se oli
+nopeasti korjattu.
+
+Käyttämästäsi räjähdetyypistä on löytänyt
+perustavaa laatua oleva vika. Sitä pitää tutkia
+ennenkuin räjäytystöitä voidaan jatkaa.
+
+Osa räjähteistä sijoitettiin väärin
+huolimattomuuden vuoksi.
+
+Joitakin varusteita on varastettu ja uusia 
+pitää käydä ostamassa jotta työt voivat jatkua.
+
+
+Holtiton kuumailmapalloilija lähestyi räjäytys-
+paikkaa minkä vuoksi räjäytystä piti lykätä.
+
+Miehistösi on yhden päivän lakossa
+vastalauseena sille että sijoitat
+räjähteet aina hankalimpiin paikkoihin.
+
+Vakuutuksesi korvaa takaisin $
+
+Et ole maksanut tarpeeksi veroja.
+Lisäveron määrä on
+
+Huonon kirjanpidon vuoksi joudut maksa-
+maan ylimääräistä ammattilaiselle:
+Kirjanpidon korjaus maksaa
+
+Sabotoit kilpailijaasi
+Sabotaasi aiheutti tappioita
+Sabotaasi epäonnistui ja jäit kiinni.
+Maksa korvauksia
+Et ottanut selvää kilpailijoiden suun-
+nitelmista ja he saivat arvokkaan
+sopimuksen jota myös tavoittelit.
+
+Räjäytysalan uutisia:
+MENEE KONKURSSIIN!
+Tunnettu purkufirma joka teki töitä
+päivän ajan meni konkurssiin.
+Syynä on työmaalla tapahtunut katastrofi. Sitä
+ympäröivät rakennukset tuhoutuivat täysin.
+Korjauskustannusten arvioidaan nousevan 
+dollariin ja tähän yrityksellä ei ole varaa.
+Yritys oli jo aiemmin rahoitusongelmissa.
+
+Suoritit kaikki urakat!
+Sijoitus huipputulosten listalla:
+
+Olet päättänyt urasi menestyksekkäästi.
+
+Olet saanut räjäytysalan laadukkuuspalkinnon.
+Palkinnon suuruus on 
+Laadukkuuspalkinto:
+
+
+Kiitokset
+- Simple Directmedia Layer (SDL) grafiikan, kont-
+  rollien ja äänen tuotto: http://www.libsdl.org
+  SDL:n versionumero:
+- Lähdekoodi äänentoistoon: 
+  http://docs.mandragor.org/
+- Tiedostonpakkauksen koodi: http://www.zlib.net/
+- Ääniefektit:
+  http://www.acoustica.com/
+  http://www.koumis.com/
+  http://www.ljudo.com/
+  http://www.partnersinrhyme.com/
+- Ideoita grafiikkaan: poddster@blueyonder.co.uk
+- Pelin kuvake: Andrew Munford
+- Petri Nyman: alkuperäinen idea (1985)
+Beta-testaajat:
+Darren
+fireball@mytrashmail.com
+Jaztee@gmail.com
+Jussi Pakkanen
+Andrew Munford
+_Sisu_
+ikozlov@gmail.com 
+Mikis Hanenkamp
+Michael Reed
+
+
+
+
+
+Opastus
+Tehtävät:
+Valitse asiakas
+Tarkista työntekijöiden määrä
+Räjähteiden asetus osa 1
+Räjähteiden asetus osa 2
+Suojien asetus
+Räjäytys
+Työmaan päättäminen
+
+Paina Asiakkaat-nappulaa.
+Voit valita edellisen tai
+seuraavan asiakkaan painik-
+keista.
+Voit tarkastella kohdealuetta
+Esikatselu-painikkeella.
+Valitse neljäs asiakas (kartta
+236553) ja paina Hyväksy.
+
+Paina Taloudelliset päätökset
+-nappulaa.
+Voit lisätä tai vähentää
+työntekijöiden määrää ja
+seurata tilannetta.
+Kun olet valmis paina Jatka.
+
+Nyt seuraa tärkein osa-alue:
+Sijoita oikea määrä räjäh-
+teitä kohderakennukseen. Olet
+kohdealueella kun oikeassa
+yläkulmassa oleva palikan
+nimi on vihreänä. Aseta
+räjähteet seuraavasti:
+X140 Y53 Dyn. 40% määrä 8
+X153 Y53 Dyn. 40% määrä 8
+X143 Y41 Dyn. 40% määrä 12
+X152 Y41 Dyn. 40% määrä 12
+
+
+
+
+
+
+Voit siirtää panoksia kun
+painat Lisää-painiketta niin
+että siinä lukee Valitse ja
+valitsemalla panos kartalta.
+Toinen klikkaus siirtää 
+panoksen.
+Voit suunnata räjähdyksiä
+haluttuun suuntaan. Panoksen
+sijoituksen yhteydessä paina
+nappia ja vedä hiirtä halut-
+tuun suuntaan. Tai klikkaa
+Lisää-painiketta niin että
+siinä lukee Valitse. Sitten
+vaihda suuntakiekosta suun-
+taa.
+
+Aseta suojat kohderakennuksen
+ympärille. Pääset suojien
+asetustilaan kun klikkaat
+Räj. asetus-painiketta. Sit-
+ten paina hiirellä kartalla
+ja vedä hiirellä alue jolle
+haluat asettaa suojia. Huomaa
+että suoja-alueen alaosan
+tulee osua maahan.
+Punaiset ympyrät panosten
+ympärillä ovat arvioituja
+räjähdyksen tuhoalueita.
+
+
+Räjäytä panokset Räjäytä-
+painikkeella.
+
+Huomaa että voit asettaa
+uusia räjähteitä ja räjäyt-
+tää ne jos ensimmäinen kerta
+ei mennyt kuten piti.
+On tärkeää saada purku-
+jätteiden määrä pieneksi jot-
+ta siivouskulut pienentyvät,
+mutta panosten asettaminen
+jätteeseen maksaa enemmän.
+
+Päätä työmaa painamalla pai-
+niketta Päätä työmaa.
+
+Tämä on opastuksen päätös.
+Tarvitset vielä lisää harjoitusta.
+Tämä oli ihan hyvä räjäytys.
+Erinomaista työtä!
+Menestystä urallesi!
+
+
+
+
+
+
+Apuri päälle
+Apuri pois
+Irtopalikka(a)
+Irtoputki
+Putket uusittu.
+Paloja putoaa:
+Odota...
+Näytä putoavat palat
+
+Kartan tarkistus OK.
+Kartan tarkistus epäonnistui!
+Tallennusvirhe. Tiedosto:
+Kirjoita tallennustiedoston nimi:
+Ei voi poistaa tiedostoa:
+Ladattu karttatiedosto:
+
+Kesto
+Hinta
+
+
+Yksittäinen palikka
+Täyttö
+Neliö
+Täytetty neliö
+Rakennus
+Kohdealue
+Leikkaa ja siirrä aluetta
+Tarkista
+Kart. asetukset
+Valitse rakennus
+Tyhj. kaikki
+Palaa editoriin
+Tyhjä kartta
+Lataa kartta
+Hylkää kartta
+Tallenna nimellä...
+Tee putket
+Leikkaa
+Kopioi
+Tyhjennä viestit
+Kartan tarkistuksen oltava OK ennen tallennusta.
+Takaisin muokkaukseen
+Karttatiedosto
+Tilastot
+Kuukausi
+Vaikeustaso
+Liitä
+Asiakkaan nimi puuttuu
+Rakennuksen nimi puuttuu
+Kohdealue puuttuu
+Vaikeustason vaikutukset
+Muuttokulut
+Alussa rahaa
+Suojien kesto
+Kulut ja suojien hinnat
+Vaurioiden kustannukset
+
+
+
+
+#

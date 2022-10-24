@@ -389,7 +389,6 @@ void GetCustomers()
 short SaveMap(char const* s)		// char *s NOT USED
 {// illegal chars: \/:*?"<>|
 	short ix,iy;
-	// char *s2="";
 /*
 	for(ix=0;ix<(short) strlen(s);ix++)		// illegal chars -> _
 		if(s[ix]==34 || s[ix]==42 || s[ix]==47 || s[ix]==58 || s[ix]==60 || s[ix]==62 || s[ix]==63 || s[ix]==92 || s[ix]==124) s[ix]=95;

@@ -1,0 +1,147 @@
+tyhjä
+betoniseinä 
+betonilattia
+betonitausta
+kellarin seinä
+kellarin lattia 
+kellarin tausta
+tiiliseinä
+tiililattia
+tiilitausta
+elementtiseinä
+elementtilattia
+elementtitausta
+puuseinä
+puulattia
+puutausta
+sisäseinä
+teräsrakenne
+ikkuna
+ovi
+metalliovi
+raskas ovi
+kaide
+aita
+aita
+verkkoaita
+katto
+katto 
+katto 
+katto 
+katto 
+katto 
+katto 
+lasikatto 
+lasikatto 
+lasikatto 
+lasikatto 
+lasikatto 
+lasikatto 
+lasikatto 
+putki
+putki
+putki
+putki
+putki
+putki
+putki
+putki
+putki
+putki
+putki
+vesiposti
+puhelinpylväs
+puhelinpylväs
+satelliittiantenni
+satelliittiantenni
+suoja
+asfaltti
+asfaltti
+asfaltti 
+asfaltti 
+asfaltti
+asfaltti 
+asfaltti 
+kivi
+kivinen maa
+kova maa
+soraa
+maa 
+maa
+maa
+maa
+maa
+maa
+maa
+tyhjä 
+tyhjä 
+tyhjä 
+hiekkaa
+hiekkaa
+hiekkaa
+hiekkaa
+hiekkaa
+hiekkaa
+hiekkaa
+ruohoa
+ruohoa
+ruohoa
+ruohoa
+ruohoa
+ruohoa
+ruohoa
+juuret
+puunrunko
+puunrunko
+puunrunko
+puunrunko
+puunrunko
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+lehtiä
+puska
+puska
+puska 
+kuusi 
+kuusi
+mänty
+mänty
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+vesi
+auto 1 (1/2)
+auto 1 (2/2)
+auto 2 (1/2)
+auto 2 (2/2)
+auto 3 (1/2)
+auto 3 (2/2)
+Hotellin merkki
+Hotellin merkki
+m-merkki
+Sairaalan merkki
+Sairaalan merkki
+Sairaalan merkki
+metallipylväs 
+Liikennemerkki
+Liikennemerkki
+Liikennemerkki
+Liikennemerkki
+Katulamppu
+Katulamppu
+Katulamppu

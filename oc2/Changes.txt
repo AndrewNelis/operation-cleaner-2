@@ -1,0 +1,69 @@
+CHANGES
+
+Version 1.2
+============================
+- Game: 
+	- Improved block handling so that single blocks don't keep the whole building up (except steel)
+	- Bug fix: Blocks falling to bottom of map caused problems
+- Builder: no empty blocks on bottom of the map
+- Editor: block picking with middle mouse button
+
+Version 1.1.3
+============================
+- Fixed error when playing on difficulty level 1, and adjusting Advanced decisions on Financial menu reduced money to $2.
+
+Version 1.1.2
+============================
+- Depending on difficulty level, 15-50% of target buildings blocks must be damaged before finishing map is possible
+- Adjusted difficulty levels
+
+Version 1.1.1 (editor 1.0.1)
+============================
+- Paste function to both (inputbox)
+
+Version 1.1
+===========
+Improvements:
+- Editor
+- Game:
+	- statistics: competitors, graphs
+	- map file may be loaded in quick game
+	- warning if explosive is on non-target area
+	- difficulty levels
+	- zoom works better now, positioning in the beginning of the map
+	- possibility of having map files in career mode
+	- if player makes hiscore causes save to be deleted (to avoid duplicate entries)
+	- sabotage remade
+	- new maps for career
+- General:
+	- editor and game produce similar maps
+	- building type selection from list
+	- target building based on number rather than random value
+	- lots of bugfixes and improvements
+
+Version 1.0.3
+=============
+Improvements:
+- Reduced small explosive charges' damage
+
+Version 1.0.2
+=============
+Bug fixes:
+- Savegame load error
+- Only existing savegame may be loaded
+- Special occasions check changed
+
+Version 1.0.1
+=============
+Bug fixes:
+- when no workers, game crashed.
+- When game cancelled, end game screen didn't always come properly
+- Sabotage competitors caused overflow in variable
+
+Improvements:
+- Min. amount of crew is amount of bulldozers or lorries (which one is greater)
+- Reputation decreases more when bigger damages to neighbours
+- Placing dampers increases readying time
+- Directed explosions are even more expensive and take longer readying time
+- More crew doesn't decrease readying time in linear way
+- Payments are smaller, especially in larger buildings

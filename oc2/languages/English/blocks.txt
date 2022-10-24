@@ -1,0 +1,147 @@
+air
+concrete wall 
+concrete floor 
+concrete back 
+basement wall 
+basement floor 
+basement back 
+brick wall 
+brick floor 
+brick back 
+element wall 
+element floor 
+element back 
+wood wall 
+wood floor 
+wood back 
+interior wall 
+steel structure 
+window
+door+frame
+metal door 
+heavy door 
+rail
+fence
+fence
+chain fence
+roof
+roof
+roof
+roof
+roof
+roof
+roof
+glass roof 
+glass roof 
+glass roof 
+glass roof 
+glass roof 
+glass roof 
+glass roof 
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+pipe
+water post 
+telephone pole 
+telephone pole 
+satellite dish 
+satellite dish 
+damper
+asphalt
+asphalt
+asphalt
+asphalt
+asphalt
+asphalt
+asphalt
+rock
+rocky ground 
+thick ground 
+gravel
+soil
+soil
+soil
+soil
+soil
+soil
+soil
+empty
+empty
+empty
+sand
+sand
+sand
+sand
+sand
+sand
+sand
+grass
+grass
+grass
+grass
+grass
+grass
+grass
+roots
+trunk
+trunk
+trunk
+trunk
+trunk
+leaves
+leaves
+leaves
+leaves
+leaves
+leaves
+leaves
+leaves
+leaves
+bush
+bush
+bush
+spruce
+spruce
+pine
+pine
+water
+water
+water
+water
+water
+water
+water
+water
+water
+water
+water
+water
+water
+car 1 (1/2)
+car 1 (2/2)
+car 2 (1/2)
+car 2 (2/2)
+car 3 (1/2)
+car 3 (2/2)
+Hotel sign
+Hotel sign
+m sign
+Hospital sign
+Hospital sign
+Hospital sign
+Metal pole
+Traffic sign
+Traffic sign
+Traffic sign
+Traffic sign
+Street lamp
+Street lamp
+Street lamp

@@ -1,0 +1,7 @@
+150 150 150
+-Description, 5 rows with max. 50 characters each-
+Row 2 -- This row is exactly 50 characters long --
+It is not recommended to use this theme in game.
+You can use this theme as base for new themes.
+(empty row)
+----- Author information, max. 50 characters -----

@@ -271,7 +271,7 @@ bool CheckCareerCustomers()
 void DrawCustomerMenu()
 {
 char msg[50];
-char * fn="";
+char fn[52] = {0};
 unsigned char cBld;
 short ix,iy,nr,ic;
 bool bOk=false;

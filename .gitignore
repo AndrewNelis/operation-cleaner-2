@@ -1,4 +1,2 @@
-*.o
-oc2-real
-oc2
-oc2build
+./oc2/oc2
+./oc2/oc2build
