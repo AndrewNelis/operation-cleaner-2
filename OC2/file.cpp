@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
-#include <glob.h>
+#include <dirent.h>
 
 short save_version=2;		// save file version number
 
@@ -177,18 +177,25 @@ if(iCode==0)
 	if(b_name[0][0]==0)
 	{
 
+		struct dirent *de;
+		DIR *dr = opendir("buildings");
+
+		if (dr == NULL) {
+			printf("Failed to open buildings folder");
+			exit(EXIT_FAILURE);
+		}
+
 		lb_freq=0;
 
-		glob_t globbuf;
-		int glob_return = glob("buildings/*.map", 0, NULL, &globbuf);
-		if (glob_return != 0) {
-			printf("Glob buildings/*.map failed with code: %d\n", glob_return);
+		while ((de = readdir(dr)) != NULL) {
+			if (de->d_type == DT_REG && strstr(de->d_name, ".map") != NULL) {
+				l = strlen(de->d_name);
+				strncpy(b_name[i], de->d_name, l - 4);
+				i++;
+			}
 		}
 
-		for (int i=0; i<globbuf.gl_pathc; i++) {
-			l = strlen(globbuf.gl_pathv[i]);
-			strncpy(b_name[i], globbuf.gl_pathv[i], l - 4);
-		}
+		closedir(dr);
 	}
 
 	for(l=0;l<i;l++)
@@ -588,7 +595,7 @@ bool LoadGame()
 
 void LoadButtonThemes()
 {
-	int i;
+	int i = 0;
 	short l;
 	unsigned char c;
 	char msg[100] = {0};
@@ -596,29 +603,29 @@ void LoadButtonThemes()
 	if (cButtonFileList[0][0] == 0)
 	{
 
-		glob_t globbuf;
-		int glob_return = glob("themes/*.bmp", 0, NULL, &globbuf);
+		struct dirent *de;
 
-		if (glob_return != 0)
-		{
-			printf("Themes listing: Glob error: %d\n", glob_return);
+		DIR *dr = opendir("themes");
+
+		if (dr == NULL) {
+			printf("Failed to open themes folder\n");
+			exit(EXIT_FAILURE);
 		}
-		else
-		{
 
-			for (i = 0; i < globbuf.gl_pathc; i++)
-			{
-				l = strlen(globbuf.gl_pathv[i]);
-				strncpy((char *)cButtonFileList[i], globbuf.gl_pathv[i], l - 4);
+		while ((de = readdir(dr)) != NULL) {
+			if (de->d_type == DT_REG && strstr(de->d_name, ".bmp") != NULL) {
+				l = strlen(de->d_name);
+				strncpy((char *)cButtonFileList[i], de->d_name, l - 4);
 				sprintf(msg, "%s", cButtonFileList[i]);
 				if (strcmp(msg, cButtonFile) == 0)
 				{
 					sButtonSelected = i;
 					sButtonBegin = i;
 				}
+				i++;
 			}
-			globfree(&globbuf);
 		}
+		closedir(dr);
 	}
 
 	if (sButtonBegin > 0 && i < 6)
@@ -630,40 +637,37 @@ void LoadButtonThemes()
 
 void LoadLanguages()
 {
-short i=0, j, l;
+short i=0, l;
 unsigned char c;
 
 if(cLanglist[0][0]==0)
 {
 
-	glob_t globbuf;
+	struct dirent *de;
 
-  	int glob_result = glob("languages/*.", 0, NULL, &globbuf);
+	DIR *dr = opendir("languages");
 
-	if (glob_result != 0) {
-		printf("Failed to load language: glob result: %d\n", glob_result);
+	if (dr == NULL) {
+		printf("Could not open language folder");
+		exit(EXIT_FAILURE);
 	}
 
-	for (i=0, j=0; i<globbuf.gl_pathc; i++) {
-		l = strlen(globbuf.gl_pathv[i]);
+	while ((de = readdir(dr)) != NULL) {
+		if (de->d_type == DT_DIR) {
+			strcpy(cLanglist[i], de->d_name);
+			i++;
 
-		if(globbuf.gl_pathv[i][0] != '.')
-		{
-				strncpy(cLanglist[j], globbuf.gl_pathv[i], l);
-
-				if (strcmp(cLanglist[j], cLangfile)==0)
-				{
-					sLangSelected=j;
-					sLangBegin=j;
-				}
-			j++;
+			if (strcmp(cLanglist[i], cLangfile)==0)
+			{
+				sLangSelected = i;
+				sLangBegin = i;
+			}
 		}
-
-		if(sLangBegin>0 && j<4) sLangBegin=0;
-
+		if(sLangBegin>0 && i<4) sLangBegin=0;
 		while(cLanglist[sLangBegin+3][0]==0 && sLangBegin>0) sLangBegin--;	// scroll the list
 	}
-	}
+	closedir(dr);
+}
 }
 
 
@@ -830,9 +834,8 @@ void LoadGameTexts()
 {
 	short i=1;
 	char msg[100] = {0};
-	const SDL_version * v = SDL_Linked_Version();
+	const SDL_version *v = SDL_Linked_Version();
 
-	printf("cLangfile = %s \n", cLangfile);
 	sprintf(msg,"languages/%s/gametext.txt", cLangfile);
 
 	if(OpenFile(msg,"r",1)==0)
@@ -1135,35 +1138,29 @@ short LoadMapTemp(char *s)
 
 void LoadMaplist(short iCode)
 {
-int l;
-int i=0;
-unsigned char c;
+	int l;
+	int i=0;
+	unsigned char c;
 
-if(ed_mapfile[0][0]==0 || iCode==1)
-{
+	if(ed_mapfile[0][0]==0 || iCode==1)
+	{
 
-	glob_t maps;
-
-	int glob_return = glob("maps/*.c2m", 0, NULL, &maps);
-
-  	if (glob_return != 0) {
-    	printf ("Failed to find maps: Glob errorcode: %d\n", glob_return);
-  	} else {
-	  ed_mapfilenr=0;
-
-		int j;
-		for (i=0; i<maps.gl_pathc; i++) {
-			if(maps.gl_pathv[i][0] != '.' && i < MAXMAPFILES)
-			{
-				l = strlen(maps.gl_pathv[i]) - 4;
-				strncpy(ed_mapfile[j], maps.gl_pathv[i], l);
-				j++;
-			}
-
+		struct dirent *de;
+		DIR *dr = opendir("maps");
+		if (dr == NULL) {
+			printf("Failed to open maps folder");
+			exit(EXIT_FAILURE);
 		}
 
-	}
+		ed_mapfilenr=0;
 
-	}
+		while ((de = readdir(dr)) != NULL && i < MAXMAPFILES) {
+			if (de->d_type == DT_REG) {
+				strcpy(ed_mapfile[i], de->d_name);
+				i++;
+			}
+		}
 
+		closedir(dr);
+	}
 }
