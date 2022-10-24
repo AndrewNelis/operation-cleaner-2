@@ -172,7 +172,7 @@ if(iCode==0)
 
 	for(l=0;l<i;l++)
 	{
-			sprintf(fn,"buildings\\%s.map",b_name[l]);
+			sprintf(fn,"buildings/%s.map",b_name[l]);
 			if(OpenFile(fn,"rb",1)==0)
 			{
 
@@ -198,7 +198,7 @@ if(iCode==0)
 
 	iCounter=0;
 
-	sprintf(fn,"languages\\%s\\buildings.txt",cLangfile);
+	sprintf(fn,"languages/%s/buildings.txt",cLangfile);
 	OpenFile(fn,"rb",1);
 
 	while(!feof(stream))
@@ -228,7 +228,7 @@ void LoadSettings()
 
 //	LoadTheme(cButtonFile);
 
-/*	sprintf(cBFTemp,"themes\\%s.txt",cButtonFile);
+/*	sprintf(cBFTemp,"themes/%s.txt",cButtonFile);
 
 	if(OpenFile(cBFTemp,"r")==0)
 		{
@@ -266,7 +266,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	// load block names from language file
 	iCounter=0;
 
-//	sprintf(cBfile,"languages\\%s\\blocks.txt",cLangfile);
+//	sprintf(cBfile,"languages/%s/blocks.txt",cLangfile);
 //	OpenFile(cBfile,"rb",1);
 
 //	while(block_penres[iCounter]==0)
@@ -283,7 +283,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	{
 		// load block data
 		iCounter=0;
-		sprintf(cBfile,"data\\blockdata.txt");
+		sprintf(cBfile,"data/blockdata.txt");
 		OpenFile(cBfile,"rb",1);
 
 		while(block_penres[iCounter]==0)
@@ -369,7 +369,7 @@ void GetCustomers()
 
 	iCounter=0;
 
-	sprintf(cBfile,"data\\customers.txt");
+	sprintf(cBfile,"data/customers.txt");
 	OpenFile(cBfile,"rb",1);
 
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)

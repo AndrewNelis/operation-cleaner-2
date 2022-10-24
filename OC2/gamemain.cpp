@@ -426,19 +426,19 @@ int LoadNeededFiles()
 {
 	char cTemp[70];
 
-	LoadBMP("media\\001.bmp",1);
+	LoadBMP("media/001.bmp",1);
 //	printf("001 ok\n");
 	LoadGameTexts();
 //	printf("loadgametxt ok\n");
 
 	ShowInitProgress();
 
-	LoadBMP("media\\002.bmp",2);
+	LoadBMP("media/002.bmp",2);
 //	printf("002 ok\n");
 	ShowInitProgress();
 
-	sprintf(cTemp,"themes\\%s.bmp",cButtonFile);
-	LoadBMP(cTemp,3);
+	sprintf(cTemp, "themes/%s.bmp", cButtonFile);
+	LoadBMP(cTemp, 3);
 	ShowInitProgress();
 //	printf("themes ok\n");
 

@@ -453,7 +453,7 @@ void AddExplosive()
 	}
 	else
 	{	//  can't add anymore
-		PlayWav("media\\beep.wav");
+		PlayWav("media/beep.wav");
 		AddMessage(gametxt[159],2);
 		AddMessage(gametxt[160],2);
 	}
@@ -536,7 +536,7 @@ void HandleExplosives()
 	else
 		idustp=0;
 
-//if(idustp<40 && idustp>10) if(lLastSound>0 && lTimer>0) PlayWav("media\\crash7.wav");	//if(lLastSound>0)
+//if(idustp<40 && idustp>10) if(lLastSound>0 && lTimer>0) PlayWav("media/crash7.wav");	//if(lLastSound>0)
 
 //	if(idustp>0 && cDraw==0) cDraw=1;
 

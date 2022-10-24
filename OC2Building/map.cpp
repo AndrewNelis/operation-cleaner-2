@@ -999,7 +999,7 @@ short GenerateMap()			// changed in version 1.1
 */
 //	if(bfirst==true) printf("SEL lbuilding: (%s) %d\n",b_name[xc],xc);
 
-	sprintf(fn,"buildings\\%s.map",b_name[xc]);
+	sprintf(fn,"buildings/%s.map",b_name[xc]);
 //	printf("%s\n",fn);
 	LoadMapCode(fn);
 //	printf("%s [%d] %d\n",fn,b_freq[xc],xc);

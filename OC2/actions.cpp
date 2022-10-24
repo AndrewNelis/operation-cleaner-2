@@ -690,7 +690,7 @@ void CheckActions()
 						}
 						else
 						{
-							PlayWav("media\\beep.wav");
+							PlayWav("media/beep.wav");
 							AddMessage(gametxt[8],2);		//expl not set
 						}
 					}
@@ -750,7 +750,7 @@ void CheckActions()
 					{
 						if(CountExplosives()==0)
 						{
-								PlayWav("media\\beep.wav");
+								PlayWav("media/beep.wav");
 								AddMessage(gametxt[9],2);	// no charges set
 						}
 						else
@@ -773,7 +773,7 @@ void CheckActions()
 										}
 										else
 										{
-											PlayWav("media\\beep.wav");
+											PlayWav("media/beep.wav");
 											AddMessage(gametxt[161],2);	//We don't have enough money
 											AddMessage(gametxt[162],2);	//for this detonation plan.
 
@@ -1261,7 +1261,7 @@ void CheckMenuActions()
 				if(bThemeChanged==true)
 				{
 				LoadTheme(cButtonFile);
-				sprintf(msg,"themes\\%s.bmp",cButtonFile);
+				sprintf(msg,"themes/%s.bmp",cButtonFile);
 				LoadBMP(msg,3);
 				}
 
@@ -1298,7 +1298,7 @@ void CheckMenuActions()
 				if(strlen(msg)>0)
 					{
 					LoadTheme(msg);
-					sprintf(msg,"themes\\%s.bmp",cButtonFileList[sButtonSelected]);
+					sprintf(msg,"themes/%s.bmp",cButtonFileList[sButtonSelected]);
 					LoadBMP(msg,3);
 					bThemeChanged=true;
 					}
@@ -1310,7 +1310,7 @@ void CheckMenuActions()
 				{
 //				sprintf(msg,"%s",cButtonFile);
 				LoadTheme(cButtonFile);
-				sprintf(msg,"themes\\%s.bmp",cButtonFile);
+				sprintf(msg,"themes/%s.bmp",cButtonFile);
 				LoadBMP(msg,3);
 				}
 

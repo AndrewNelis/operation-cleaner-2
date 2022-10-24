@@ -266,7 +266,7 @@ short CountNeeded(short icode)
 
 	if(lTotalcost>=plr_money)
 	{
-		if(icode==1) PlayWav("media\\beep.wav");
+		if(icode==1) PlayWav("media/beep.wav");
 		AddMessage(gametxt[161],2);	//We don't have enough money
 		AddMessage(gametxt[162],2);	//for this detonation plan.
 
@@ -443,7 +443,7 @@ void CheckIfGameEnds(long lAllCosts, long lDamage, short icode)
 
 			if(CheckCareerCustomers()==true)	// victorious game over
 			{
-				PlayWav("media\\cheer.wav");
+				PlayWav("media/cheer.wav");
 				GameOn=0;
 				iMenulevel=12;
 			}
@@ -453,7 +453,7 @@ void CheckIfGameEnds(long lAllCosts, long lDamage, short icode)
 			if(lAllCosts>0)
 				{
 				ix=rand()%8+1;
-				sprintf(msg,"media\\endjob%d.wav",ix);
+				sprintf(msg,"media/endjob%d.wav",ix);
 				PlayWav(msg);
 				}
 			}

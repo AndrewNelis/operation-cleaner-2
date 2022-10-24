@@ -239,7 +239,7 @@ short SpecialOccasions()
 
 		if(bOkBoxShown==true && lExtraCosts>0)
 		{
-		PlayWav("media\\siren.wav");
+		PlayWav("media/siren.wav");
 		sprintf(msg,"%s $%u",gametxt[157],lExtraCosts);		// extra cost
 		AddMessage(msg,2);
 

@@ -35,7 +35,7 @@ if(modes == (SDL_Rect **)0){
 
 /* Print valid modes */
 i2=0;
-//printf("Available Modes\n");
+// printf("Available Modes\n");
 for(i=0;modes[i];++i)
 {
 	if(modes[i]->w>=1024)
@@ -52,7 +52,7 @@ for(i=0;modes[i];++i)
 
 		i2++;
 		if(i2>=99) i2=99;
-//		printf("  %d x %d\n", modes[i]->w, modes[i]->h);
+		// printf("  %d x %d\n", modes[i]->w, modes[i]->h);
 	}
 
 }
@@ -86,7 +86,8 @@ int InitSDL()
 
 //	if(setAccelerationMode==2)
 	if(lMapnr==0)
-		screen = SDL_SetVideoMode(SIZE_X, SIZE_Y, setBits, SDL_SWSURFACE|SDL_ASYNCBLIT|SDL_FULLSCREEN); //|SDL_FULLSCREEN|SDL_DOUBLEBUF
+		// XXX: Removed SDL_FULLSCREEN
+		screen = SDL_SetVideoMode(SIZE_X, SIZE_Y, setBits, SDL_SWSURFACE|SDL_ASYNCBLIT ); //|SDL_FULLSCREEN|SDL_DOUBLEBUF
 	else
 		screen = SDL_SetVideoMode(320, 200, 0, SDL_SWSURFACE); //|SDL_FULLSCREEN|SDL_DOUBLEBUF
 //	else	// precaution, all other cases use hardware acceleration
@@ -159,8 +160,6 @@ void LoadBMP(char const* file, unsigned char imagenr)
 	col3=SDL_MapRGB(buttonimage->format, 255, 255, 255);
 	SDL_SetColorKey(buttonimage, SDL_SRCCOLORKEY, col3);
 	}
-
-
 }
 
 void DrawDigits(char *text,int x,int y)

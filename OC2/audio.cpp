@@ -103,5 +103,5 @@ if ( sounds[index].data ) {
 
 void PlayClick()
 {
-	PlayWav("media\\click.wav");
+	PlayWav("media/click.wav");
 }

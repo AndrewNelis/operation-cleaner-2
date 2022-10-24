@@ -143,12 +143,12 @@ void CrashSound(int block)
 
 		switch(isound)
 			{
-			case 1:PlayWav("media\\window1.wav");break;
-			case 2:PlayWav("media\\window2.wav");break;
-			case 3:PlayWav("media\\window3.wav");break;
-			case 4:PlayWav("media\\crash1.wav");break;
-			case 5:PlayWav("media\\crash2.wav");break;
-			case 6:PlayWav("media\\crash3.wav");break;
+			case 1:PlayWav("media/window1.wav");break;
+			case 2:PlayWav("media/window2.wav");break;
+			case 3:PlayWav("media/window3.wav");break;
+			case 4:PlayWav("media/crash1.wav");break;
+			case 5:PlayWav("media/crash2.wav");break;
+			case 6:PlayWav("media/crash3.wav");break;
 			default:break;
 			}
 

@@ -151,7 +151,7 @@ void DeleteCurrentSaveFile()
 
 	if(cSaveLoadFile>=0)
 	{
-	sprintf(sfile,"save\\plr%02d.txt",cSaveLoadFile);
+	sprintf(sfile,"save/plr%02d.txt",cSaveLoadFile);
 
 	if(remove(sfile) != 0)
 	{
@@ -193,7 +193,7 @@ if(iCode==0)
 
 	for(l=0;l<i;l++)
 	{
-			sprintf(fn,"buildings\\%s.map",b_name[l]);
+			sprintf(fn,"buildings/%s.map",b_name[l]);
 			if(OpenFile(fn,"rb",1)==0)
 			{
 
@@ -218,7 +218,7 @@ if(iCode==0)
 
 	iCounter=0;
 
-	sprintf(fn,"languages\\%s\\buildings.txt",cLangfile);
+	sprintf(fn,"languages/%s/buildings.txt",cLangfile);
 	OpenFile(fn,"rb",1);
 
 	while(!feof(stream))
@@ -235,7 +235,7 @@ if(iCode==0)
 void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 {
 	int iCounter;
-	char * cBfile="";
+	char cBfile[100] = {0};
 
 	for(iCounter=0;iCounter<MAXBLOCKS;iCounter++)
 	{
@@ -251,7 +251,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	// load block names from language file
 	iCounter=0;
 
-	sprintf(cBfile,"languages\\%s\\blocks.txt",cLangfile);
+	sprintf(cBfile,"languages/%s/blocks.txt",cLangfile);
 	OpenFile(cBfile,"rb",1);
 
 //	while(block_penres[iCounter]==0)
@@ -268,7 +268,7 @@ void GetBlockData(char iCode)	// 0=load all, 1=load only locale block names
 	{
 		// load block data
 		iCounter=0;
-		sprintf(cBfile,"data\\blockdata.txt",cLangfile);
+		sprintf(cBfile,"data/blockdata.txt",cLangfile);
 		OpenFile(cBfile,"rb",1);
 
 		while(block_penres[iCounter]==0)
@@ -299,7 +299,7 @@ void GetMapData()
 		map_city[iCounter]=-1;
 	}
 
-	OpenFile("data\\maps.txt","rb",1);
+	OpenFile("data/maps.txt","rb",1);
 
 	iCounter=1;
 
@@ -335,7 +335,7 @@ void GetCityData()
 		city_y[iCounter]=0;
 	}
 
-//	sprintf(cCfile,"languages\\%s\\cities.txt",cLangfile);
+//	sprintf(cCfile,"languages/%s/cities.txt",cLangfile);
 	sprintf(cCfile,"data/cities.txt");
 	OpenFile(cCfile,"rb",1);
 
@@ -382,7 +382,7 @@ void LoadSaveGameHeaders()
 	{
 		for(ix=0;ix<MAXSAVEFILES;ix++)
 		{
-			sprintf(sfile,"save\\plr%02d.txt",ix);
+			sprintf(sfile,"save/plr%02d.txt",ix);
 			if(OpenFile(sfile,"rb",0)==0)
 			{
 				fscanf(stream,"%u ",&save_tmp);
@@ -411,7 +411,7 @@ void SaveGame()
 	newtime = localtime( &aclock );
 	strftime(cdate, 20, "%y-%m-%d %H:%M", newtime);
 
-	sprintf(sfile,"save\\plr%02d.txt",plr_slot);
+	sprintf(sfile,"save/plr%02d.txt",plr_slot);
 
 	OpenFile(sfile,"wb",1);
 
@@ -484,7 +484,7 @@ bool LoadGame()
 
 	// _strdate(cdate);
 
-	sprintf(sfile,"save\\plr%02d.txt",plr_slot);
+	sprintf(sfile,"save/plr%02d.txt",plr_slot);
 
 	if(OpenFile(sfile,"rb",1)==0)
 	{
@@ -591,7 +591,7 @@ void LoadButtonThemes()
 	int i;
 	short l;
 	unsigned char c;
-	char *msg = "";
+	char msg[100] = {0};
 
 	if (cButtonFileList[0][0] == 0)
 	{
@@ -672,7 +672,7 @@ void LoadTheme(char *file)
 	char cBFTemp[300];
 	int i;
 
-	sprintf(cBFTemp,"themes\\%s.txt",file);
+	sprintf(cBFTemp,"themes/%s.txt",file);
 
 //	printf("Attempting to open %s\n",cBFTemp);
 
@@ -726,7 +726,7 @@ void LoadSettings()
 
 	LoadTheme(cButtonFile);
 
-/*	sprintf(cBFTemp,"themes\\%s.txt",cButtonFile);
+/*	sprintf(cBFTemp,"themes/%s.txt",cButtonFile);
 
 	if(OpenFile(cBFTemp,"r")==0)
 		{
@@ -829,10 +829,11 @@ void LoadMapCode(char * file)		// loads 'script' of building to memory for execu
 void LoadGameTexts()
 {
 	short i=1;
-	char *msg="";
+	char msg[100] = {0};
 	const SDL_version * v = SDL_Linked_Version();
 
-	sprintf(msg,"languages\\%s\\gametext.txt",cLangfile);
+	printf("cLangfile = %s \n", cLangfile);
+	sprintf(msg,"languages/%s/gametext.txt", cLangfile);
 
 	if(OpenFile(msg,"r",1)==0)
 	{
@@ -849,7 +850,7 @@ void LoadGameTexts()
 	CloseFile();
 	}
 	else
-	if(OpenFile("languages\\english.txt","r",1)==0)
+	if(OpenFile("languages/english.txt","r",1)==0)
 	{
 //		printf("Can't find %s.txt, using English.",cLangfile);
 		sprintf(cLangfile,"english");
@@ -882,7 +883,7 @@ void GetHiscores()
 		hs_player[iCounter][0]=0;
 	}
 
-	if(OpenFile("data\\hiscore.txt","rb",1)==0)
+	if(OpenFile("data/hiscore.txt","rb",1)==0)
 	{
 
 	iCounter=0;
@@ -938,7 +939,7 @@ void SaveHiscores()
 	short iCounter;
 	unsigned long lCheck=100;
 
-	if(OpenFile("data\\hiscore.txt","wb",1)==0)
+	if(OpenFile("data/hiscore.txt","wb",1)==0)
 	{
 	for(iCounter=0;iCounter<MAXHISCORE-1;iCounter++)
 	{
@@ -966,7 +967,7 @@ void GetCustomers()
 
 	iCounter=0;
 
-	sprintf(cBfile,"data\\customers.txt",cLangfile);
+	sprintf(cBfile,"data/customers.txt",cLangfile);
 	OpenFile(cBfile,"rb",1);
 
 	for(iCounter=0;iCounter<MAXCUSTOMERS;iCounter++)
