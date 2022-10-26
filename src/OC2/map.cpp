@@ -46,7 +46,7 @@ extern bool				boolMapgenerated;
 
 extern int				m_button,m_x,m_y,m_down_x,m_down_y,m_up_x,m_up_y,m_event,m_button_up;
 
-char					exp_selected=0;
+extern char				exp_selected=0;
 extern unsigned char	ec_selected;
 
 extern long				lTimer,lLastDetonation,lPlacehours,lExtraCosts;
@@ -969,7 +969,7 @@ void SeedGenerator(char *cText)
 		dResult=0;
 		i=0;
 
-		randseed=int(cTemp);
+		randseed=int (cTemp);
 		for(i=0;i<50;i++)
 		if(cTemp[i]>=0 && cTemp[i]<=9) max=i;
 

@@ -72,8 +72,8 @@ extern char				b_name[BUILDINGS][255];
 extern char				b_localename[BUILDINGS][52];
 extern bool				blocksmoving,boolJobDone,boolJobSuccess;
 
-int						exp_needed[MAXEXPLOSIVETYPES]={0,0,0,0,0,0};
-int						acc_needed[MAXEXPLOSIVETYPES]={0,1,50,0};
+extern int				exp_needed[MAXEXPLOSIVETYPES]={0,0,0,0,0,0};
+extern int				acc_needed[MAXEXPLOSIVETYPES]={0,1,50,0};
 extern long				lTotalcost,lPlacehours;
 
 extern bool				bAddCharge;
