@@ -1,7 +1,7 @@
 CXX = g++
 FLAGS =-lSDL -lz -fpermissive -Wno-narrowing -Wno-write-strings  # -Wall
-SRCS=$(wildcard ./src/OC2/*.cpp)
-BSRCS=$(wildcard ./src/OC2Building/*.cpp)
+SRCS=$(wildcard ./src/OC2/*.c)
+BSRCS=$(wildcard ./src/OC2Building/*.c)
 OC2=./oc2/oc2
 OC2BUILD=./oc2/oc2build
 
